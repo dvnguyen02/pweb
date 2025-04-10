@@ -1,196 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Projects</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .container {
-            display: flex;
-            flex-direction: row;
-            gap: 40px;
-        }
-        
-        .sidebar {
-            flex: 1;
-        }
-        
-        .main-content {
-            flex: 2;
-        }
-        
-        h1 {
-            margin-bottom: 5px;
-        }
-        
-        .profile-image {
-            max-width: 100%;
-            border-radius: 3px;
-            margin-bottom: 10px;
-        }
-        
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        
-        nav li {
-            margin-bottom: 10px;
-        }
-        
-        a {
-            color: #0366d6;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        .section {
-            margin-bottom: 40px;
-        }
-        
-        .new-badge {
-            background-color: #ffeb3b;
-            color: #000;
-            font-size: 0.7em;
-            padding: 2px 5px;
-            border-radius: 3px;
-            margin-left: 5px;
-            font-weight: bold;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            color: #666;
-            font-size: 0.9em;
-        }
-        
-        .project-card {
-            margin-bottom: 40px;
-            border: 1px solid #eee;
-            border-radius: 5px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        
-        .project-image {
-            max-width: 100%;
-            border-radius: 3px;
-            margin-bottom: 15px;
-        }
-        
-        .project-links {
-            margin-top: 10px;
-        }
-        
-        .github-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            background-color: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 0.9em;
-        }
-        
-        .github-link:hover {
-            background-color: #ebedf0;
-            text-decoration: none;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <title>David Nguyen - Projects</title>
+    
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <h1>Your Name</h1>
-            <div>Projects</div>
+            <h1>David Nguyen</h1>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#books">Books</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#podcasts">Podcasts</a></li>
-                    <li><a href="#talks">Talks</a></li>
-                    <li><a href="#newsletter">Register</a> <span class="new-badge">new!</span></li>
-                    <li><a href="#misc">Misc</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <ul>
+                    <li><a href="projects.html">Projects</a></li>
                 </ul>
             </nav>
         </div>
         
         <div class="main-content">
-            <h2>My Projects</h2>
-            <p>Here are some of the projects I've worked on recently.</p>
+            <h2>Projects</h2>
             
-            <!-- Project 1 -->
             <div class="project-card">
-                <img src="/api/placeholder/600/300" alt="Project 1 Screenshot" class="project-image">
-                <h3>Project Name 1</h3>
-                <p>A brief description of this project. This could include what problem it solves, what technologies were used, and what your role was in its development. Try to keep this concise but informative.</p>
-                <div class="project-links">
-                    <a href="https://github.com/yourusername/project1" class="github-link" target="_blank">
-                        <svg height="16" viewBox="0 0 16 16" width="16" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-                        </svg>
-                        View on GitHub
-                    </a>
+                <h3 class="project-title">IlliniSpots: Study Spot Finder</h3>
+                <p class="project-description">Shows all buildings on campus with room availability. Users can favorite buildings and comment.</p>
+                <div class="project-tags">
+                    <span class="project-tag">App Dev</span>
+                    <span class="project-tag">Postgres, Firebase</span>
+                    <span class="project-tag">Search</span>
                 </div>
+                
+                <a href="#" class="github-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
             </div>
             
-            <!-- Project 2 -->
             <div class="project-card">
-                <img src="/api/placeholder/600/300" alt="Project 2 Screenshot" class="project-image">
-                <h3>Project Name 2</h3>
-                <p>This project tackled [specific problem] using [technologies]. I was responsible for [your role], which helped achieve [specific outcome or result]. The project features [notable features or aspects].</p>
-                <div class="project-links">
-                    <a href="https://github.com/yourusername/project2" class="github-link" target="_blank">
-                        <svg height="16" viewBox="0 0 16 16" width="16" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-                        </svg>
-                        View on GitHub
-                    </a>
+                <h3 class="project-title">Data Visualization Dashboard</h3>
+                <p class="project-description">A responsive web application for visualizing complex datasets using D3.js and React.</p>
+                <div class="project-tags">
+                    <span class="project-tag">React</span>
+                    <span class="project-tag">D3.js</span>
+                    <span class="project-tag">Data Viz</span>
                 </div>
+                
+                <a href="#" class="github-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
             </div>
             
-            <!-- Project 3 -->
             <div class="project-card">
-                <img src="/api/placeholder/600/300" alt="Project 3 Screenshot" class="project-image">
-                <h3>Project Name 3</h3>
-                <p>Created a [type of application/tool] that [what it does]. Built with [technologies] and featuring [key features]. This project demonstrates my skills in [relevant skills or technologies].</p>
-                <div class="project-links">
-                    <a href="https://github.com/yourusername/project3" class="github-link" target="_blank">
-                        <svg height="16" viewBox="0 0 16 16" width="16" aria-hidden="true">
-                            <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-                        </svg>
-                        View on GitHub
-                    </a>
+                <h3 class="project-title">ML Recommender System</h3>
+                <p class="project-description">A content-based recommendation engine that analyzes user preferences to suggest relevant items.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">TensorFlow</span>
+                    <span class="project-tag">Machine Learning</span>
                 </div>
+                
+                <a href="#" class="github-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
             </div>
             
+            <div class="project-card">
+                <h3 class="project-title">NLP Chatbot</h3>
+                <p class="project-description">An intelligent conversational agent that understands and responds to user queries in natural language.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">NLTK</span>
+                    <span class="project-tag">Flask</span>
+                </div>
+                
+                <a href="#" class="github-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
     
     <footer>
-        <p>Copyright © 2025 Your Name. All rights reserved.</p>
+        <p>Copyright © 2025 David Nguyen. All rights reserved.</p>
     </footer>
 </body>
 </html>
