@@ -52,6 +52,12 @@ a:hover {
     fill: #fff;
 }
 
+html {
+    height: 100%;
+    background: linear-gradient(135deg, #212631 50%, #373F4E 80%, #373F4E 100%);
+    background-attachment: fixed;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
@@ -59,8 +65,8 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background: linear-gradient(135deg, #212631 50%, #373F4E 80%, #373F4E 100%);
     min-height: 100vh;
+    background: none; /* Remove background from body */
 }
 
 .container {
@@ -115,7 +121,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #5885e7;
+    color: #535353;
     text-decoration: none;
 }
 
@@ -352,4 +358,37 @@ footer {
     .language-name {
         width: 120px;
     }
+}
+
+blockquote {
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-style: italic;
+    color: #b3c7f7;
+    border-left: 4px solid #6b6b6b;
+    background: transparent;
+    padding: 1em 2em 1em 1.5em;
+    margin: 2em 0 2em 0;
+    font-size: 1.25em;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: box-shadow 0.2s;
+    box-shadow: 0 2px 16px 0 rgba(80, 140, 255, 0.08);
+}
+
+blockquote::before {
+    content: "“";
+    font-size: 2.5em;
+    color: #6b6c6e;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+    line-height: 1;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+blockquote strong {
+    color: #adadad;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
