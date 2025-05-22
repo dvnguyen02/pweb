@@ -159,7 +159,7 @@ function ProfileSection() {
 			<div className="flex justify-center items-center flex-shrink-0">
 				<div className="rounded-full ring-4 ring-neutral-200 dark:ring-neutral-800 overflow-hidden size-48 md:size-48 lg:size-56">
 					<Image
-						src="/images/me2.jpg"
+						src="/images/me.jpg"
 						alt="me"
 						width={512}
 						height={512}
