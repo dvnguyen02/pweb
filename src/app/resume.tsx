@@ -1,9 +1,15 @@
 import Link from "next/link";
 import { FileTextIcon, BookOpenIcon } from "lucide-react";
+import { Figtree } from "next/font/google";
+
+const font = Figtree({
+  subsets: ["latin"],
+  variable: "--font-figtree",
+});
 
 export function Resume() {
   return (
-    <>
+    <div className={`${font.className} flex flex-col gap-4`}>
       <h2 className="text-3xl font-bold">Resume & Documents</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -31,13 +37,13 @@ export function Resume() {
             <div className="relative flex flex-col gap-2 bg-muted rounded-xl p-3 transition-all duration-300 hover:ring-4 ring-neutral-200 dark:ring-neutral-700">
               <div className="flex items-center gap-2">
                 <Icon className="size-5 inline" />
-                <h3 className="text-lg font-semibold">{title}</h3>
+                <h3 className="text-xl font-bold">{title}</h3>
               </div>
               <p className="text-sm mb-2">{description}</p>
             </div>
           </Link>
         ))}
       </div>
-    </>
+    </div>
   );
 }

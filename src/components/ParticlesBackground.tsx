@@ -26,9 +26,18 @@ const particlesOptions: ISourceOptions = {
       onClick: {
         enable: false,
       },
-
+      onHover: {
+        enable: true,
+        mode: "connect",
+      },
     },
     modes: {
+      connect: {
+        distance: 150,
+        links: {
+          opacity: 0.4,
+        },
+      },
       repulse: {
         distance: 200,
         duration: 0.4,
@@ -39,25 +48,34 @@ const particlesOptions: ISourceOptions = {
     color: {
       value: "#FFFFFF",
     },
-    
+    links: {
+      color: "#FFFFFF",
+      distance: 120,
+      enable: true,
+      opacity: 0.2,
+      width: 1,
+      triangles: {
+        enable: false,
+      },
+    },
     move: {
       direction: MoveDirection.none,
       enable: true,
       outModes: {
         default: OutMode.out,
       },
-      random: false,
-      speed: 2,
+      random: true,
+      speed: 1,
       straight: false,
     },
     number: {
       density: {
         enable: true,
       },
-      value: 200,
+      value: 150,
     },
     opacity: {
-      value: 0.3,
+      value: 0.5,
     },
     shape: {
       type: "circle",

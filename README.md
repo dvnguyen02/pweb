@@ -1,3 +1,4 @@
-# Portfolio 👋
+# Portfolio
+You can check it out here [www.davidnguyen.codes](https://www.davidnguyen.codes)!
 
-My portfolio built in Next, React
+

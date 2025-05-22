@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { GithubIcon, LinkedinIcon } from "lucide-react";
+import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
 import { cn } from "../lib/utils";
 
 const skills = [
@@ -23,14 +23,15 @@ const experiences = [
 		name: "Data Science Intern",
 		company: "NZ Transport Agency",
 		description: [
-			"Enhanced AI performance by experimenting with embedding-based matching and LLM integrations.",
-			"Collaborated on the development of an AI assistant for shipping calculation and risk analysis using Python, FastAPI, and Langchain, under the mentorship of a senior Backend Engineer.",
-			"Streamlined team workflow by developing internal software in Budibase, transitioning the team from manual spreadsheet management to a more efficient system.",
+			"Conducted analysis of road maintenance data to identify correlations between soil group types and maintenance frequency, resulting in 15% more efficient resource allocation.",
+			"Developed predictive linear regression models to explore counterintuitive trends in road maintenance activities, achieving 83% accuracy in forecasting maintenance needs.",
+			"Created an interactive data visualization dashboard and data cube that enabled stakeholders to compare pre and post-COVID freight movement patterns.",
 		],
-		startDate: "Sep 2024",
+		startDate: "July 2024",
 		endDate: "Sep 2024",
 	},
 ];
+
 const certifications = [
 	{
 		logo: "/images/orgs/dlai.png",
@@ -58,6 +59,12 @@ const links = [
 		icon: <GithubIcon />,
 		color: "bg-neutral-800 dark:bg-neutral-900",
 		url: "https://github.com/dvnguyen02",
+	},
+	{
+		name: "Email",
+		icon: <MailIcon />,
+		color: "bg-green-500",
+		url: "mailto:duynguyen290502@gmail.com",
 	},
 ];
 
@@ -97,12 +104,20 @@ export function About() {
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-3">
 				<div className="order-2 sm:order-1 flex flex-col gap-3">
 					<h2 className="text-3xl font-bold">
-						Kia ora, I'm David Nguyen 👋
+						Kia ora, I'm David 👋
 					</h2>
 
 					<p className="text-lg font-semibold">
-						Data Science @ Victoria University of Wellington | Aspiring Data
+						Data Science Student @ Victoria University of Wellington | Aspiring Data
 						Scientist & Data Engineer/Software Engineer
+					</p>
+
+					<p className="text-base text-muted-foreground mb-4">
+						I'm deeply fascinated by the intersection of traditional data science and generative AI, where I've been 
+						building projects that leverage LLMs for complex data analysis and automated insights generation. 
+						My passion lies in creating intelligent systems that don't just process data, but actually understand 
+						and communicate findings in human-like ways. I'm particularly excited about RAG architectures and 
+						how they're revolutionizing the way we interact with enterprise data.
 					</p>
 
 					<h3 className="text-xl font-bold">Skills 💻</h3>
