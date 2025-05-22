@@ -1,20 +1,105 @@
-"use client";
-
 import Image from "next/image";
 
-import { GithubIcon, LinkedinIcon, MailIcon } from "lucide-react";
-import { cn } from "../lib/utils";
+import { 
+	GithubIcon, 
+	LinkedinIcon, 
+	MailIcon
+} from "lucide-react";
+import {
+	SiPython,
+	SiTypescript,
+	SiGo,
+	SiR,
+	SiReact,
+	SiNextdotjs,
+	SiTailwindcss,
+	SiPostgresql,
+	SiGit,
+	SiGooglecloud,
+	SiPandas,
+	SiScikitlearn,
+	SiTensorflow,
+	SiPytorch,
+	SiDocker,
+	SiFastapi,
+} from "react-icons/si";
 
 const skills = [
-	"Python",
-	"TypeScript",
-	"Go",
-	"R",
-	"React",
-	"Next.js",
-	"Tailwind CSS",
-	"SQL",
-	"Git",
+	{
+		name: "Python",
+		icon: <SiPython className="w-3 h-3" style={{ color: '#3776ab' }} />
+	},
+	{
+		name: "TypeScript",
+		icon: <SiTypescript className="w-3 h-3" style={{ color: '#3178c6' }} />
+	},
+	{
+		name: "Golang",
+		icon: <SiGo className="w-3 h-3" style={{ color: '#00add8' }} />
+	},
+	{
+		name: "R",
+		icon: <SiR className="w-3 h-3" style={{ color: '#276dc3' }} />
+	},
+	{
+		name: "React",
+		icon: <SiReact className="w-3 h-3" style={{ color: '#61dafb' }} />
+	},
+	{
+		name: "Next.js",
+		icon: <SiNextdotjs className="w-3 h-3" />
+	},
+	{
+		name: "Tailwind CSS",
+		icon: <SiTailwindcss className="w-3 h-3" style={{ color: '#06b6d4' }} />
+	},
+	{
+		name: "SQL",
+		icon: <SiPostgresql className="w-3 h-3" style={{ color: '#336791' }} />
+	},
+	{
+		name: "Git",
+		icon: <SiGit className="w-3 h-3" style={{ color: '#f05032' }} />
+	},
+];
+
+const frameworks = [
+	{
+		name: "LangGraph",
+		icon: <div className="w-3 h-3 bg-purple-500 rounded-sm"></div>
+	},
+	{
+		name: "Google SDK",
+		icon: <SiGooglecloud className="w-3 h-3" style={{ color: '#4285f4' }} />
+	},
+	{
+		name: "Neon Vector DB",
+		icon: <div className="w-3 h-3 bg-cyan-500 rounded-sm"></div>
+	},
+	{
+		name: "FAISS",
+		icon: <div className="w-3 h-3 bg-blue-600 rounded-sm"></div>
+	},
+	{
+		name: "Pandas",
+		icon: <SiPandas className="w-3 h-3" style={{ color: '#150458' }} />
+	},
+	{
+		name: "Scikit-learn",
+		icon: <SiScikitlearn className="w-3 h-3" style={{ color: '#f7931e' }} />
+	},
+	{
+		name: "PyTorch",
+		icon: <SiPytorch className="w-3 h-3" style={{ color: '#ee4c2c' }} />
+	},
+	{
+		name: "FastAPI",
+		icon: <SiFastapi className="w-3 h-3" style={{ color: '#009688' }} />
+	},
+	{
+		name: "Docker",
+		icon: <SiDocker className="w-3 h-3" style={{ color: '#2496ed' }} />
+	},
 ];
 
 const experiences = [
@@ -51,8 +136,8 @@ const links = [
 	{
 		name: "LinkedIn",
 		icon: <LinkedinIcon />,
-		color: "bg-blue-500",
-		url: "https://www.linkedin.com/in/dvnguyen02/",
+		color: "bg-blue-600",
+		url: "",
 	},
 	{
 		name: "GitHub",
@@ -63,7 +148,7 @@ const links = [
 	{
 		name: "Email",
 		icon: <MailIcon />,
-		color: "bg-green-500",
+		color: "bg-green-600",
 		url: "mailto:duynguyen290502@gmail.com",
 	},
 ];
@@ -108,26 +193,31 @@ export function About() {
 					</h2>
 
 					<p className="text-lg font-semibold">
-						Data Science Student @ Victoria University of Wellington | Aspiring Data
-						Scientist & Data Engineer/Software Engineer
+						Third Year Data Science Student @ Victoria University of Wellington | Aspiring Data Scientist & Data Engineer/Software Engineer
 					</p>
 
-					<p className="text-base text-muted-foreground mb-4">
-						I'm deeply fascinated by the intersection of traditional data science and generative AI, where I've been 
-						building projects that leverage LLMs for complex data analysis and automated insights generation. 
-						My passion lies in creating intelligent systems that don't just process data, but actually understand 
-						and communicate findings in human-like ways. I'm particularly excited about RAG architectures and 
-						how they're revolutionizing the way we interact with enterprise data.
-					</p>
-
-					<h3 className="text-xl font-bold">Skills 💻</h3>
+					<h3 className="text-xl font-bold">Programming Languages 💻</h3>
 					<div className="flex flex-wrap gap-1 mb-2">
 						{skills.map((skill) => (
 							<span
-								key={skill}
-								className="text-xs lg:text-sm text-slate-100 bg-slate-800 dark:bg-foreground dark:text-background rounded-full font-semibold px-3 py-1"
+								key={skill.name}
+								className="text-xs lg:text-sm text-slate-100 bg-slate-800 dark:bg-foreground dark:text-background rounded-full font-semibold px-3 py-1 flex items-center gap-1.5"
 							>
-								{skill}
+								{skill.icon}
+								{skill.name}
+							</span>
+						))}
+					</div>
+
+					<h3 className="text-xl font-bold">Frameworks & Libraries🔧</h3>
+					<div className="flex flex-wrap gap-1 mb-2">
+						{frameworks.map((framework) => (
+							<span
+								key={framework.name}
+								className="text-xs lg:text-sm text-slate-100 bg-slate-700 dark:bg-neutral-700 dark:text-slate-100 rounded-full font-semibold px-3 py-1 flex items-center gap-1.5"
+							>
+								{framework.icon}
+								{framework.name}
 							</span>
 						))}
 					</div>
