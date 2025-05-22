@@ -56,11 +56,10 @@ export default function RootLayout({
     <html lang="en" className={figtree.className} suppressHydrationWarning>
       <body>
         <main className="bg-background">
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+            {/* Settings button at top right */}
             {children}
           </ThemeProvider>
-
-        
           <ClientPointer />
         </main>
       </body>

@@ -136,19 +136,19 @@ const links = [
 	{
 		name: "LinkedIn",
 		icon: <LinkedinIcon />,
-		color: "bg-blue-600",
+		color: "bg-blue-900",
 		url: "",
 	},
 	{
 		name: "GitHub",
 		icon: <GithubIcon />,
-		color: "bg-neutral-800 dark:bg-neutral-900",
+		color: "bg-neutral-900 dark:bg-neutral-900",
 		url: "https://github.com/dvnguyen02",
 	},
 	{
 		name: "Email",
 		icon: <MailIcon />,
-		color: "bg-green-600",
+		color: "bg-green-800",
 		url: "mailto:duynguyen290502@gmail.com",
 	},
 ];
@@ -201,7 +201,7 @@ export function About() {
 						{skills.map((skill) => (
 							<span
 								key={skill.name}
-								className="text-xs lg:text-sm text-slate-100 bg-slate-800 dark:bg-foreground dark:text-background rounded-full font-semibold px-3 py-1 flex items-center gap-1.5"
+								className="text-xs lg:text-sm text-slate-100 bg-black dark:bg-neutral-800 dark:text-slate-100 rounded-full font-semibold px-3 py-1 flex items-center gap-1.5"
 							>
 								{skill.icon}
 								{skill.name}
@@ -214,7 +214,7 @@ export function About() {
 						{frameworks.map((framework) => (
 							<span
 								key={framework.name}
-								className="text-xs lg:text-sm text-slate-100 bg-slate-700 dark:bg-neutral-700 dark:text-slate-100 rounded-full font-semibold px-3 py-1 flex items-center gap-1.5"
+								className="text-xs lg:text-sm text-slate-100 bg-black dark:bg-neutral-800 dark:text-slate-100 rounded-full font-semibold px-3 py-1 flex items-center gap-1.5"
 							>
 								{framework.icon}
 								{framework.name}
