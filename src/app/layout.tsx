@@ -4,7 +4,7 @@ import { Figtree } from "next/font/google";
 import { ThemeProvider } from "@/lib/providers/theme-provider";
 import { ClientPointer } from "@/components/client-pointer";
 
-import "./globals.css";
+import "@/app/globals.css";
 
 const figtree = Figtree({
   subsets: ["latin"],
