@@ -15,7 +15,7 @@ const nextConfig = {
     GITHUB_TOKEN: process.env.GITHUB_TOKEN,
   },
   // Also add this to ensure proper static file serving
-  output: 'export',
+  //output: 'export',
 };
 
 export default nextConfig;

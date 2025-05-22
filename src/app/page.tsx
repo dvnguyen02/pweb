@@ -10,11 +10,13 @@ import ParticlesBackground from "@/components/ParticlesBackground";
 import { About } from "./about";
 import { Projects } from "./projects";
 import { Resume } from "./resume";
+import { Settings } from "./settings";
 
 const tabs = [
 	{ name: "About", component: <About /> },
 	{ name: "Projects", component: <Projects /> },
 	{ name: "Resume", component: <Resume /> },
+	{ name: "Settings", component: <Settings /> },
 ];
 
 export default function Page() {
