@@ -3,7 +3,8 @@ import Image from "next/image";
 import { 
 	GithubIcon, 
 	LinkedinIcon, 
-	MailIcon
+	MailIcon,
+	MapPinIcon
 } from "lucide-react";
 import {
 	SiPython,
@@ -136,19 +137,19 @@ const links = [
 	{
 		name: "LinkedIn",
 		icon: <LinkedinIcon />,
-		color: "bg-blue-900",
+		color: "bg-blue-950",
 		url: "",
 	},
 	{
 		name: "GitHub",
 		icon: <GithubIcon />,
-		color: "bg-neutral-900 dark:bg-neutral-900",
+		color: "bg-neutral-950 dark:bg-neutral-950",
 		url: "https://github.com/dvnguyen02",
 	},
 	{
 		name: "Email",
 		icon: <MailIcon />,
-		color: "bg-green-800",
+		color: "bg-green-950",
 		url: "mailto:duynguyen290502@gmail.com",
 	},
 ];
@@ -157,7 +158,7 @@ function ProfileSection() {
 	return (
 		<div className="flex flex-row sm:flex-col gap-8 sm:gap-5 items-center">
 			<div className="flex justify-center items-center flex-shrink-0">
-				<div className="rounded-full ring-4 ring-neutral-200 dark:ring-neutral-800 overflow-hidden size-48 md:size-48 lg:size-56">
+				<div className="rounded-full ring-4 ring-neutral-200 dark:ring-neutral-800 overflow-hidden size-48 md:size-48 lg:size-40">
 					<Image
 						src="/images/me.jpg"
 						alt="me"
@@ -189,12 +190,19 @@ export function About() {
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-3">
 				<div className="order-2 sm:order-1 flex flex-col gap-3">
 					<h2 className="text-3xl font-bold">
-						Kia ora, I'm David 👋
+						Kia ora, I'm David <span className="animate-wave hand-emoji">👋</span>
 					</h2>
 
-					<p className="text-lg font-semibold">
-						Third Year Data Science Student @ Victoria University of Wellington | Aspiring Data Scientist & Data Engineer/Software Engineer
+					<p className="text-lg font-semibold relative group">
+						Third Year Data Science <MapPinIcon className="inline-block w-4 h-4 mx-1 text-green-600 dark:text-emerald-500" /> <span className="text">Victoria University of Wellington</span>
+						<span className="absolute -bottom-1 left-0 w-0 h-0.5"></span>
 					</p>
+
+					<div className="mt-1 mb-3 p-4 bg-muted rounded-xl">
+						<p className="text-sm">
+							Studying data science and discovering that 80% data of it is just cleaning messy data.
+						</p>
+					</div>
 
 					<h3 className="text-xl font-bold">Programming Languages 💻</h3>
 					<div className="flex flex-wrap gap-1 mb-2">

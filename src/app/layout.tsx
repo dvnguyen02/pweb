@@ -14,16 +14,16 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   metadataBase: new URL("https://davidnguyen.codes"),
   title: {
-    default: "David Nguyen",
+    default: "Yo wsg I'm David Nguyen",
     template: "%s | David Nguyen",
   },
-  description: "My personal website.",
+  description: "David's personal website.",
   openGraph: {
     title: "David Nguyen",
-    description: "My personal website.",
+    description: "David's personal website.",
     url: "davidnguyen.codes",
     siteName: "David Nguyen",
-    locale: "en_US",
+    locale: "en_NZ",
     type: "website",
   },
   robots: {
