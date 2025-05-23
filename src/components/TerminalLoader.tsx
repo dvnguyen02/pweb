@@ -51,8 +51,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
       "$ python train_model.py",
       "Initializing neural network...",
       "Using CUDA-enabled GPU acceleration",
-      "Loading dataset...",
-      "Model architecture: ResNet-152", 
+      "Model architecture: EfficientNetV2", 
     ];
 
     const addLines = async () => {
