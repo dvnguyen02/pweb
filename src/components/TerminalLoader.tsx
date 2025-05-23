@@ -16,9 +16,16 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
   const [terminalLines, setTerminalLines] = useState<string[]>([]);
   const [currentPhase, setCurrentPhase] = useState<number>(0);
   const [isComplete, setIsComplete] = useState<boolean>(false);
+  const [isReady, setIsReady] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<string>("");
   const terminalRef = useRef<HTMLDivElement>(null);
   const hasInitialized = useRef(false);
+
+  // Set isReady after a small delay to ensure smooth mounting
+  useEffect(() => {
+    const timer = setTimeout(() => setIsReady(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Clock update - add this first
   useEffect(() => {
@@ -43,8 +50,9 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     const initializationLines = [
       "$ python train_model.py",
       "Initializing neural network...",
+      "Using CUDA-enabled GPU acceleration",
       "Loading dataset...",
-      "Model architecture: ResNet-50", 
+      "Model architecture: ResNet-152", 
     ];
 
     const addLines = async () => {
@@ -276,12 +284,22 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     return (
     <div 
       className={cn(
-        "fixed inset-0 flex items-center justify-center p-4 bg-black z-50 transition-opacity duration-1000",
-        isComplete ? "opacity-0" : "opacity-100",
+        "fixed inset-0 flex items-center justify-center p-4 bg-black z-50",
+        "transition-[opacity,transform] duration-500 ease-out",
+        !isReady ? "opacity-0" : "opacity-100",
+        isComplete ? "opacity-0 scale-[98%]" : "opacity-100 scale-100",
         className
       )}
     >
-      <div className="animate-in fade-in zoom-in-95 w-full sm:max-w-2xl lg:max-w-[70vw] h-full max-h-[75vh] sm:max-h-96 lg:max-h-[80vh] bg-background backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black transition-all duration-1000">
+      <div 
+        className={cn(
+          "w-full sm:max-w-2xl lg:max-w-[70vw] h-full max-h-[75vh] sm:max-h-96 lg:max-h-[80vh]",
+          "bg-background backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl",
+          "ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black",
+          "transition-[transform,opacity] duration-500 ease-out",
+          !isReady ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
+        )}
+      >
         {/* Terminal header */}        {/* Window controls */}
         <div className="bg-muted pt-3 px-3 gap-2 flex flex-row">
           <div className="size-4 rounded-full bg-red-400" />
@@ -299,7 +317,11 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
             {currentTime}
           </div>
         </div>
-          {/* Terminal content */}        <div          ref={terminalRef}          className="bg-black h-full p-4 font-mono text-sm sm:text-base"
+        
+        {/* Terminal content */}
+        <div 
+          ref={terminalRef}
+          className="bg-black h-full p-4 font-mono text-sm sm:text-base"
           style={{ 
             fontFamily: "'Fira Code', Consolas, Monaco, 'Courier New', monospace",
             color: '#00ff00',
@@ -308,7 +330,8 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
             backgroundSize: "30px 30px",
             backgroundPosition: "50% 50%",
           }}
-        >          {terminalLines.map((line, index) => (
+        >
+          {terminalLines.map((line, index) => (
             <div key={index} className="py-0.5 whitespace-pre-wrap">
               {line}
               {index === terminalLines.length - 1 && !isComplete && (

@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 import { 
 	GithubIcon, 
 	LinkedinIcon, 
@@ -19,11 +18,11 @@ import {
 	SiGooglecloud,
 	SiPandas,
 	SiScikitlearn,
-	SiTensorflow,
 	SiPytorch,
 	SiDocker,
 	SiFastapi,
 } from "react-icons/si";
+import { AboutFeatureTable } from "./AboutFeatureTable";
 
 const skills = [
 	{
@@ -200,9 +199,10 @@ export function About() {
 
 					<div className="mt-1 mb-3 p-4 bg-muted rounded-xl">
 						<p className="text-sm">
-							Studying data science and discovering that 80% data of it is just cleaning messy data.
+							Studying data science and discovering that 80% of it is just cleaning messy data.
 						</p>
 					</div>
+					<AboutFeatureTable />
 
 					<h3 className="text-xl font-bold">Programming Languages 💻</h3>
 					<div className="flex flex-wrap gap-1 mb-2">
@@ -303,6 +303,8 @@ export function About() {
 							</a>
 						))}
 					</div>
+
+					
 				</div>
 
 				<div className="order-1 sm:order-2">

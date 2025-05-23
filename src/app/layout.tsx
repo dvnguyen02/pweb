@@ -14,7 +14,7 @@ const figtree = Figtree({
 export const metadata: Metadata = {
   metadataBase: new URL("https://davidnguyen.codes"),
   title: {
-    default: "Yo wsg I'm David Nguyen",
+    default: "David Nguyen",
     template: "%s | David Nguyen",
   },
   description: "David's personal website.",
@@ -57,7 +57,6 @@ export default function RootLayout({
       <body>
         <main className="bg-background">
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-            {/* Settings button at top right */}
             {children}
           </ThemeProvider>
           <ClientPointer />
