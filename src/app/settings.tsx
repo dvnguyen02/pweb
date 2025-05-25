@@ -11,21 +11,21 @@ export function Settings() {
 
   return (
     <>
-      <h2 className="text-3xl font-bold">Settings 🔧</h2>
+      <h2 className="text-3xl font-bold transition-colors duration-300">Settings 🔧</h2>
 
       <div className="flex flex-wrap gap-6">
-        <div className="flex flex-col p-3 items-center justify-center min-w-36 gap-3 bg-muted rounded-lg">
-          <h3 className="text-lg font-semibold">Theme</h3>
+        <div className="flex flex-col p-3 items-center justify-center min-w-36 gap-3 bg-muted rounded-lg transition-colors duration-300">
+          <h3 className="text-lg font-semibold transition-colors duration-300">Theme</h3>
 
           <div className="flex items-center gap-2">
-            <Sun className="h-4 w-4 text-muted-foreground" />
+            <Sun className="h-4 w-4 text-muted-foreground transition-colors duration-300" />
             <Switch
               checked={resolvedTheme === "dark"}
               onCheckedChange={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
               aria-label="Toggle theme"
               className="sm:cursor-none"
             />
-            <Moon className="h-4 w-4 text-muted-foreground" />
+            <Moon className="h-4 w-4 text-muted-foreground transition-colors duration-300" />
           </div>
         </div>
       </div>

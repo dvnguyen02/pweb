@@ -85,7 +85,7 @@ export default function Page() {	const [background, setBackground] = useState<st
 							<div
 								key={tab.name}
 								className={cn(
-									"bg-background px-3 py-1 rounded-lg font-medium transition-all duration-300",
+									"bg-background px-3 py-1 rounded-lg font-medium duration-300",
 									activeTab.name === tab.name &&
 										"bg-black dark:bg-primary text-primary-foreground"
 								)}

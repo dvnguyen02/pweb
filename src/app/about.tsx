@@ -22,78 +22,77 @@ import {
 	SiDocker,
 	SiFastapi,
 } from "react-icons/si";
-
 const skills = [
 	{
 		name: "Python",
-		icon: <SiPython className="w-10 h-10" />
+		icon: <SiPython className="w-8 h-8" />
 	},
 	{
 		name: "TypeScript",
-		icon: <SiTypescript className="w-10 h-10" />
+		icon: <SiTypescript className="w-8 h-8" />
 	},
 	{
 		name: "Golang",
-		icon: <SiGo className="w-10 h-10" />
+		icon: <SiGo className="w-8 h-8" />
 	},
 	{
 		name: "R",
-		icon: <SiR className="w-10 h-10" />
+		icon: <SiR className="w-8 h-8" />
 	},
 	{
 		name: "React",
-		icon: <SiReact className="w-10 h-10" />
+		icon: <SiReact className="w-8 h-8" />
 	},
 	{
 		name: "Next.js",
-		icon: <SiNextdotjs className="w-10 h-10" />
+		icon: <SiNextdotjs className="w-8 h-8" />
 	},
 	{
 		name: "Tailwind CSS",
-		icon: <SiTailwindcss className="w-10 h-10" />
+		icon: <SiTailwindcss className="w-8 h-8" />
 	},
 	{
 		name: "SQL",
-		icon: <SiPostgresql className="w-10 h-10" />
+		icon: <SiPostgresql className="w-8 h-8" />
 	},
 	{
 		name: "Git",
-		icon: <SiGit className="w-10 h-10" />
+		icon: <SiGit className="w-8 h-8" />
 	},
 ];
 
 const frameworks = [
 	{
 		name: "LangGraph",
-		icon: <div className="w-10 h-10 bg-muted/50 rounded-md flex items-center justify-center text-sm font-semibold">LG</div>
+		icon: <div className="w-8 h-8 bg-muted/50 rounded-md flex items-center justify-center text-xs font-semibold">LG</div>
 	},
 	{
 		name: "Google SDK",
-		icon: <SiGooglecloud className="w-10 h-10" />
+		icon: <SiGooglecloud className="w-8 h-8" />
 	},
 	{
 		name: "FAISS",
-		icon: <div className="w-10 h-10 bg-muted/50 rounded-md flex items-center justify-center text-sm font-semibold">FS</div>
+		icon: <div className="w-8 h-8 bg-muted/50 rounded-md flex items-center justify-center text-xs font-semibold">FS</div>
 	},
 	{
 		name: "Pandas",
-		icon: <SiPandas className="w-10 h-10" />
+		icon: <SiPandas className="w-8 h-8" />
 	},
 	{
 		name: "Scikit-learn",
-		icon: <SiScikitlearn className="w-10 h-10" />
+		icon: <SiScikitlearn className="w-8 h-8" />
 	},
 	{
 		name: "PyTorch",
-		icon: <SiPytorch className="w-10 h-10" />
+		icon: <SiPytorch className="w-8 h-8" />
 	},
 	{
 		name: "FastAPI",
-		icon: <SiFastapi className="w-10 h-10" />
+		icon: <SiFastapi className="w-8 h-8" />
 	},
 	{
 		name: "Docker",
-		icon: <SiDocker className="w-10 h-10" />
+		icon: <SiDocker className="w-8 h-8" />
 	},
 ];
 
@@ -174,40 +173,38 @@ export function About() {
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-3">
 				<div className="order-2 sm:order-1 flex flex-col gap-6">
 					{/* Header Section - matching the image style */}
-					<div className="relative flex flex-col gap-3 pb-6 border border-border/50 rounded-lg p-6 bg-card transition-colors duration-300">
+					<div className="relative flex flex-col gap-3 pb-6 border border-border/50 rounded-lg p-6 bg-card">
 						{/* Social Icons - Top Right */}
 						<div className="absolute top-4 right-4 flex gap-2">
 							{links.map((link) => (
 								<a
 									href={link.url}
 									key={link.name}
-									className="sm:cursor-none p-2 rounded-lg bg-background hover:bg-muted transition-colors duration-300 border border-border/50"
+									className="sm:cursor-none p-2 rounded-lg bg-background hover:bg-muted border border-border/50"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<div className="transition-colors duration-300">
-										{link.icon}
-									</div>
+									{link.icon}
 								</a>
 							))}
 						</div>
 
-						<h1 className="text-4xl sm:text-5xl font-bold tracking-tight pr-32 transition-colors duration-300">
+						<h1 className="text-4xl sm:text-5xl font-bold tracking-tight pr-32">
 							David Nguyen
 						</h1>
 						
-						<div className="flex items-center gap-2 text-lg transition-colors duration-300">
-							<MapPinIcon className="w-5 h-5 text-green-600 dark:text-emerald-500 transition-colors duration-300" />
-							<span className="transition-colors duration-300">Victoria University of Wellington</span>
+						<div className="flex items-center gap-2 text-lg">
+							<MapPinIcon className="w-5 h-5 text-green-600 dark:text-emerald-500" />
+							<span>Victoria University of Wellington</span>
 						</div>
 						
-						<p className="text-lg leading-relaxed max-w-2xl transition-colors duration-300">
+						<p className="text-lg leading-relaxed max-w-2xl">
 							Kia ora! <span className="animate-wave hand-emoji">👋</span> I'm a Third Year Data Science Student. Currently studying data science and discovering that 80% of it is just cleaning messy data.
 						</p>
 					</div>
 
 
-					<h3 className="text-xl font-bold transition-colors duration-300">What I work with</h3>
+					<h3 className="text-xl font-bold">What I work with</h3>
 					
 					{/* Auto-Scrolling Icon Slider - Two Rows */}
 					<div className="w-full max-w-2xl mt-2 mb-6 space-y-4">
@@ -218,13 +215,13 @@ export function About() {
 								{skills.map((tech, index) => (
 									<div 
 										key={`skills-first-${index}`}
-										className="flex flex-col items-center gap-2 min-w-[90px] flex-shrink-0 group"
+										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
-										<div className="text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">
+										<div className="text-muted-foreground/50 group-hover:text-muted-foreground">
 											{tech.icon}
 										</div>
-										<span className="text-xs font-medium text-center text-foreground/50 group-hover:text-foreground/80 transition-colors duration-300 leading-tight">
+										<span className="text-xs font-medium text-center text-muted-foreground/60 group-hover:text-muted-foreground leading-tight">
 											{tech.name}
 										</span>
 									</div>
@@ -233,13 +230,13 @@ export function About() {
 								{skills.map((tech, index) => (
 									<div 
 										key={`skills-second-${index}`}
-										className="flex flex-col items-center gap-2 min-w-[90px] flex-shrink-0 group"
+										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
-										<div className="text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">
+										<div className="text-muted-foreground/50 group-hover:text-muted-foreground">
 											{tech.icon}
 										</div>
-										<span className="text-xs font-medium text-center text-foreground/50 group-hover:text-foreground/80 transition-colors duration-300 leading-tight">
+										<span className="text-xs font-medium text-center text-muted-foreground/60 group-hover:text-muted-foreground leading-tight">
 											{tech.name}
 										</span>
 									</div>
@@ -254,13 +251,13 @@ export function About() {
 								{frameworks.map((tech, index) => (
 									<div 
 										key={`frameworks-first-${index}`}
-										className="flex flex-col items-center gap-2 min-w-[90px] flex-shrink-0 group"
+										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
-										<div className="text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">
+										<div className="text-muted-foreground/50 group-hover:text-muted-foreground">
 											{tech.icon}
 										</div>
-										<span className="text-xs font-medium text-center text-foreground/50 group-hover:text-foreground/80 transition-colors duration-300 leading-tight">
+										<span className="text-xs font-medium text-center text-muted-foreground/60 group-hover:text-muted-foreground leading-tight">
 											{tech.name}
 										</span>
 									</div>
@@ -269,13 +266,13 @@ export function About() {
 								{frameworks.map((tech, index) => (
 									<div 
 										key={`frameworks-second-${index}`}
-										className="flex flex-col items-center gap-2 min-w-[90px] flex-shrink-0 group"
+										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
-										<div className="text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">
+										<div className="text-muted-foreground/50 group-hover:text-muted-foreground">
 											{tech.icon}
 										</div>
-										<span className="text-xs font-medium text-center text-foreground/50 group-hover:text-foreground/80 transition-colors duration-300 leading-tight">
+										<span className="text-xs font-medium text-center text-muted-foreground/60 group-hover:text-muted-foreground leading-tight">
 											{tech.name}
 										</span>
 									</div>
@@ -284,12 +281,12 @@ export function About() {
 						</div>
 					</div>
 
-					<h3 className="text-xl font-bold transition-colors duration-300">Experience 💼</h3>
+					<h3 className="text-xl font-bold">Experience 💼</h3>
 					<div className="flex flex-col gap-3">
 						{experiences.map((experience) => (
 							<div
 								key={experience.company}
-								className="flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted transition-colors duration-300 hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
+								className="flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
 							>
 								<div className="flex flex-row flex-1 gap-2">
 									<Image
@@ -301,18 +298,18 @@ export function About() {
 									/>
 									<div className="flex flex-col">
 										<div className="flex justify-between items-center">
-											<p className="text-lg font-semibold transition-colors duration-300">
+											<p className="text-lg font-semibold">
 												{experience.name}
 											</p>
-											<p className="text-sm transition-colors duration-300">
+											<p className="text-sm">
 												{experience.startDate} to{" "}
 												{experience.endDate}
 											</p>
 										</div>
-										<p className="text-sm transition-colors duration-300">
+										<p className="text-sm">
 											{experience.company}
 										</p>
-										<p className="text-sm mt-2 transition-colors duration-300">
+										<p className="text-sm mt-2">
 											{experience.description.map((desc, index) => (
 												<span
 													key={index}
@@ -327,7 +324,7 @@ export function About() {
 							</div>
 						))}
 					</div>
-					<h3 className="text-xl font-bold transition-colors duration-300">Certifications 📜</h3>
+					<h3 className="text-xl font-bold">Certifications 📜</h3>
 					<div className="flex flex-col gap-3">
 						{certifications.map((cert) => (
 							<a
@@ -335,7 +332,7 @@ export function About() {
 								href={cert.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="sm:cursor-none flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted transition-colors duration-300 hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
+								className="sm:cursor-none flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
 							>
 								<div className="flex flex-row flex-1 gap-2">
 									<Image
@@ -346,10 +343,10 @@ export function About() {
 										className="size-12 sm:size-14 rounded-full flex"
 									/>
 									<div className="flex flex-col">
-										<p className="text-lg font-semibold transition-colors duration-300">
+										<p className="text-lg font-semibold">
 											{cert.name}
 										</p>
-										<p className="text-sm transition-colors duration-300">
+										<p className="text-sm">
 											{cert.issuer}
 										</p>
 									</div>
