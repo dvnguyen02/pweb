@@ -23,6 +23,7 @@ import {
 	SiFastapi,
 } from "react-icons/si";
 import { AboutFeatureTable } from "./AboutFeatureTable";
+import { SkillCarousel } from "../components/SkillCarousel";
 
 const skills = [
 	{
@@ -155,29 +156,15 @@ const links = [
 
 function ProfileSection() {
 	return (
-		<div className="flex flex-row sm:flex-col gap-8 sm:gap-5 items-center">
-			<div className="flex justify-center items-center flex-shrink-0">
-				<div className="rounded-full ring-4 ring-neutral-200 dark:ring-neutral-800 overflow-hidden size-48 md:size-48 lg:size-40">
-					<Image
-						src="/images/me.jpg"
-						alt="me"
-						width={512}
-						height={512}
-						className="object-cover w-full h-full"
-					/>
-				</div>
-			</div>
-
-			<div className="flex flex-col gap-3 sm:bg-muted sm:p-3 rounded-xl w-full max-w-48">
-				{links.map((link) => (
-					<a
-						href={link.url}
-						key={link.name}
-						className={`sm:cursor-none ${link.color} text-white rounded-lg flex flex-row gap-2 px-3 py-2 text-lg font-semibold items-center`}
-					>
-						{link.icon} {link.name}
-					</a>
-				))}
+		<div className="flex justify-center items-center flex-shrink-0">
+			<div className="rounded-full ring-4 ring-neutral-200 dark:ring-neutral-800 overflow-hidden size-48 md:size-48 lg:size-40">
+				<Image
+					src="/images/me.jpg"
+					alt="me"
+					width={512}
+					height={512}
+					className="object-cover w-full h-full"
+				/>
 			</div>
 		</div>
 	);
@@ -187,21 +174,38 @@ export function About() {
 	return (
 		<div className="w-full h-full">
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-3">
-				<div className="order-2 sm:order-1 flex flex-col gap-3">
-					<h2 className="text-3xl font-bold">
-						Kia ora, I'm David <span className="animate-wave hand-emoji">👋</span>
-					</h2>
+				<div className="order-2 sm:order-1 flex flex-col gap-6">
+					{/* Header Section - matching the image style */}
+					<div className="relative flex flex-col gap-3 pb-6 border border-border/50 rounded-lg p-6 bg-card">
+						{/* Social Icons - Top Right */}
+						<div className="absolute top-4 right-4 flex gap-2">
+							{links.map((link) => (
+								<a
+									href={link.url}
+									key={link.name}
+									className="sm:cursor-none p-2 rounded-lg bg-background hover:bg-muted transition-all duration-300 border border-border/50"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{link.icon}
+								</a>
+							))}
+						</div>
 
-					<p className="text-lg font-semibold relative group">
-						Third Year Data Science <MapPinIcon className="inline-block w-4 h-4 mx-1 text-green-600 dark:text-emerald-500" /> <span className="text">Victoria University of Wellington</span>
-						<span className="absolute -bottom-1 left-0 w-0 h-0.5"></span>
-					</p>
-
-					<div className="mt-1 mb-3 p-4 bg-muted rounded-xl">
-						<p className="text-sm">
-							Studying data science and discovering that 80% of it is just cleaning messy data.
+						<h1 className="text-4xl sm:text-5xl font-bold tracking-tight pr-32 transition-colors duration-300">
+							David Nguyen
+						</h1>
+						
+						<div className="flex items-center gap-2 text-lg transition-colors duration-300">
+							<MapPinIcon className="w-5 h-5 text-green-600 dark:text-emerald-500 transition-colors duration-300" />
+							<span>Victoria University of Wellington</span>
+						</div>
+						
+						<p className="text-lg leading-relaxed max-w-2xl transition-colors duration-300">
+							Kia ora! <span className="animate-wave hand-emoji">👋</span> I'm a Third Year Data Science Student. Studying data science and discovering that 80% of it is just cleaning messy data.
 						</p>
 					</div>
+
 					<AboutFeatureTable />
 
 					<h3 className="text-xl font-bold">Programming Languages 💻</h3>
@@ -250,12 +254,12 @@ export function About() {
 											<p className="text-lg font-semibold">
 												{experience.name}
 											</p>
-											<p className="text-sm text-muted-foreground">
+											<p className="text-sm">
 												{experience.startDate} to{" "}
 												{experience.endDate}
 											</p>
 										</div>
-										<p className="text-sm text-muted-foreground">
+										<p className="text-sm">
 											{experience.company}
 										</p>
 										<p className="text-sm mt-2">
@@ -295,7 +299,7 @@ export function About() {
 										<p className="text-lg font-semibold">
 											{cert.name}
 										</p>
-										<p className="text-sm text-muted-foreground">
+										<p className="text-sm">
 											{cert.issuer}
 										</p>
 									</div>
