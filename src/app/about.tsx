@@ -171,7 +171,7 @@ export function About() {
 	return (
 		<div className="w-full h-full">
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-3">
-				<div className="order-2 sm:order-1 flex flex-col gap-6">
+				<div className="order-2 sm:order-1 flex flex-col gap-6 max-w-2xl">
 					{/* Header Section - matching the image style */}
 					<div className="relative flex flex-col gap-3 pb-6 border border-border/50 rounded-lg p-6 bg-card">
 						{/* Social Icons - Top Right */}
@@ -203,14 +203,13 @@ export function About() {
 						</p>
 					</div>
 
-
 					<h3 className="text-xl font-bold">What I work with</h3>
 					
 					{/* Auto-Scrolling Icon Slider - Two Rows */}
-					<div className="w-full max-w-2xl mt-2 mb-6 space-y-4">
+					<div className="-mx-6 px-6 w-screen max-w-none mt-2 mb-6 space-y-4 self-center">
 						{/* First Row - Languages & Core Technologies */}
-						<div className="overflow-hidden relative">
-							<div className="flex animate-scroll gap-8">
+						<div className="overflow-hidden relative w-full">
+							<div className="flex animate-scroll gap-8 w-full min-w-full">
 								{/* First set of icons (first half) */}
 								{skills.map((tech, index) => (
 									<div 
@@ -245,8 +244,8 @@ export function About() {
 						</div>
 
 						{/* Second Row - Frameworks & Tools */}
-						<div className="overflow-hidden relative">
-							<div className="flex animate-scroll-reverse gap-8">
+						<div className="overflow-hidden relative w-full">
+							<div className="flex animate-scroll-reverse gap-8 w-full min-w-full">
 								{/* First set of icons (second half) */}
 								{frameworks.map((tech, index) => (
 									<div 
