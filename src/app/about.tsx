@@ -23,83 +23,83 @@ import {
 	SiFastapi,
 } from "react-icons/si";
 import { AboutFeatureTable } from "./AboutFeatureTable";
-import { SkillCarousel } from "../components/SkillCarousel";
+import { useEffect, useRef } from "react";
 
 const skills = [
 	{
 		name: "Python",
-		icon: <SiPython className="w-3 h-3" style={{ color: '#3776ab' }} />
+		icon: <SiPython className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "TypeScript",
-		icon: <SiTypescript className="w-3 h-3" style={{ color: '#3178c6' }} />
+		icon: <SiTypescript className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "Golang",
-		icon: <SiGo className="w-3 h-3" style={{ color: '#00add8' }} />
+		icon: <SiGo className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "R",
-		icon: <SiR className="w-3 h-3" style={{ color: '#276dc3' }} />
+		icon: <SiR className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "React",
-		icon: <SiReact className="w-3 h-3" style={{ color: '#61dafb' }} />
+		icon: <SiReact className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "Next.js",
-		icon: <SiNextdotjs className="w-3 h-3" />
+		icon: <SiNextdotjs className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "Tailwind CSS",
-		icon: <SiTailwindcss className="w-3 h-3" style={{ color: '#06b6d4' }} />
+		icon: <SiTailwindcss className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "SQL",
-		icon: <SiPostgresql className="w-3 h-3" style={{ color: '#336791' }} />
+		icon: <SiPostgresql className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "Git",
-		icon: <SiGit className="w-3 h-3" style={{ color: '#f05032' }} />
+		icon: <SiGit className="w-10 h-10 text-foreground/80" />
 	},
 ];
 
 const frameworks = [
 	{
 		name: "LangGraph",
-		icon: <div className="w-3 h-3 bg-purple-500 rounded-sm"></div>
+		icon: <div className="w-10 h-10 bg-foreground/20 rounded-md flex items-center justify-center text-foreground/80">LG</div>
 	},
 	{
 		name: "Google SDK",
-		icon: <SiGooglecloud className="w-3 h-3" style={{ color: '#4285f4' }} />
+		icon: <SiGooglecloud className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "Neon Vector DB",
-		icon: <div className="w-3 h-3 bg-cyan-500 rounded-sm"></div>
+		icon: <div className="w-10 h-10 bg-foreground/20 rounded-md flex items-center justify-center text-foreground/80">NV</div>
 	},
 	{
 		name: "FAISS",
-		icon: <div className="w-3 h-3 bg-blue-600 rounded-sm"></div>
+		icon: <div className="w-10 h-10 bg-foreground/20 rounded-md flex items-center justify-center text-foreground/80">FS</div>
 	},
 	{
 		name: "Pandas",
-		icon: <SiPandas className="w-3 h-3" style={{ color: '#150458' }} />
+		icon: <SiPandas className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "Scikit-learn",
-		icon: <SiScikitlearn className="w-3 h-3" style={{ color: '#f7931e' }} />
+		icon: <SiScikitlearn className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "PyTorch",
-		icon: <SiPytorch className="w-3 h-3" style={{ color: '#ee4c2c' }} />
+		icon: <SiPytorch className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "FastAPI",
-		icon: <SiFastapi className="w-3 h-3" style={{ color: '#009688' }} />
+		icon: <SiFastapi className="w-10 h-10 text-foreground/80" />
 	},
 	{
 		name: "Docker",
-		icon: <SiDocker className="w-3 h-3" style={{ color: '#2496ed' }} />
+		icon: <SiDocker className="w-10 h-10 text-foreground/80" />
 	},
 ];
 
@@ -171,6 +171,7 @@ function ProfileSection() {
 }
 
 export function About() {
+
 	return (
 		<div className="w-full h-full">
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-3">
@@ -208,30 +209,30 @@ export function About() {
 
 					<AboutFeatureTable />
 
-					<h3 className="text-xl font-bold">Programming Languages 💻</h3>
-					<div className="flex flex-wrap gap-1 mb-2">
-						{skills.map((skill) => (
-							<span
-								key={skill.name}
-								className="text-xs lg:text-sm text-slate-100 bg-black dark:bg-neutral-800 dark:text-slate-100 rounded-full font-semibold px-3 py-1 flex items-center gap-1.5"
-							>
-								{skill.icon}
-								{skill.name}
-							</span>
-						))}
-					</div>
-
-					<h3 className="text-xl font-bold">Frameworks & Libraries🔧</h3>
-					<div className="flex flex-wrap gap-1 mb-2">
-						{frameworks.map((framework) => (
-							<span
-								key={framework.name}
-								className="text-xs lg:text-sm text-slate-100 bg-black dark:bg-neutral-800 dark:text-slate-100 rounded-full font-semibold px-3 py-1 flex items-center gap-1.5"
-							>
-								{framework.icon}
-								{framework.name}
-							</span>
-						))}
+					<h3 className="text-xl font-bold">What I work with</h3>
+					<div className="w-full mt-2 mb-6">
+						<div className="flex flex-wrap gap-4">
+							{skills.map((skill) => (
+								<div 
+									key={skill.name} 
+									className="flex items-center gap-1.5 bg-background border border-border/50 rounded-lg px-3 py-1.5 hover:border-border transition-all duration-300"
+									title={skill.name}
+								>
+									{skill.icon}
+									<span className="text-sm font-medium">{skill.name}</span>
+								</div>
+							))}
+							{frameworks.map((framework) => (
+								<div 
+									key={framework.name} 
+									className="flex items-center gap-1.5 bg-background border border-border/50 rounded-lg px-3 py-1.5 hover:border-border transition-all duration-300"
+									title={framework.name}
+								>
+									{framework.icon}
+									<span className="text-sm font-medium">{framework.name}</span>
+								</div>
+							))}
+						</div>
 					</div>
 
 					<h3 className="text-xl font-bold">Experience 💼</h3>
