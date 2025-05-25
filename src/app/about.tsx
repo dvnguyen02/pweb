@@ -22,86 +22,83 @@ import {
 	SiDocker,
 	SiFastapi,
 } from "react-icons/si";
-import { AboutFeatureTable } from "./AboutFeatureTable";
-import { useEffect, useRef } from "react";
 
 const skills = [
 	{
 		name: "Python",
-		icon: <SiPython className="w-10 h-10 text-foreground/80" />
+		icon: <SiPython className="w-10 h-10" />
 	},
 	{
 		name: "TypeScript",
-		icon: <SiTypescript className="w-10 h-10 text-foreground/80" />
+		icon: <SiTypescript className="w-10 h-10" />
 	},
 	{
 		name: "Golang",
-		icon: <SiGo className="w-10 h-10 text-foreground/80" />
+		icon: <SiGo className="w-10 h-10" />
 	},
 	{
 		name: "R",
-		icon: <SiR className="w-10 h-10 text-foreground/80" />
+		icon: <SiR className="w-10 h-10" />
 	},
 	{
 		name: "React",
-		icon: <SiReact className="w-10 h-10 text-foreground/80" />
+		icon: <SiReact className="w-10 h-10" />
 	},
 	{
 		name: "Next.js",
-		icon: <SiNextdotjs className="w-10 h-10 text-foreground/80" />
+		icon: <SiNextdotjs className="w-10 h-10" />
 	},
 	{
 		name: "Tailwind CSS",
-		icon: <SiTailwindcss className="w-10 h-10 text-foreground/80" />
+		icon: <SiTailwindcss className="w-10 h-10" />
 	},
 	{
 		name: "SQL",
-		icon: <SiPostgresql className="w-10 h-10 text-foreground/80" />
+		icon: <SiPostgresql className="w-10 h-10" />
 	},
 	{
 		name: "Git",
-		icon: <SiGit className="w-10 h-10 text-foreground/80" />
+		icon: <SiGit className="w-10 h-10" />
 	},
 ];
 
 const frameworks = [
 	{
 		name: "LangGraph",
-		icon: <div className="w-10 h-10 bg-foreground/20 rounded-md flex items-center justify-center text-foreground/80">LG</div>
+		icon: <div className="w-10 h-10 bg-muted/50 rounded-md flex items-center justify-center text-sm font-semibold">LG</div>
 	},
 	{
 		name: "Google SDK",
-		icon: <SiGooglecloud className="w-10 h-10 text-foreground/80" />
-	},
-	{
-		name: "Neon Vector DB",
-		icon: <div className="w-10 h-10 bg-foreground/20 rounded-md flex items-center justify-center text-foreground/80">NV</div>
+		icon: <SiGooglecloud className="w-10 h-10" />
 	},
 	{
 		name: "FAISS",
-		icon: <div className="w-10 h-10 bg-foreground/20 rounded-md flex items-center justify-center text-foreground/80">FS</div>
+		icon: <div className="w-10 h-10 bg-muted/50 rounded-md flex items-center justify-center text-sm font-semibold">FS</div>
 	},
 	{
 		name: "Pandas",
-		icon: <SiPandas className="w-10 h-10 text-foreground/80" />
+		icon: <SiPandas className="w-10 h-10" />
 	},
 	{
 		name: "Scikit-learn",
-		icon: <SiScikitlearn className="w-10 h-10 text-foreground/80" />
+		icon: <SiScikitlearn className="w-10 h-10" />
 	},
 	{
 		name: "PyTorch",
-		icon: <SiPytorch className="w-10 h-10 text-foreground/80" />
+		icon: <SiPytorch className="w-10 h-10" />
 	},
 	{
 		name: "FastAPI",
-		icon: <SiFastapi className="w-10 h-10 text-foreground/80" />
+		icon: <SiFastapi className="w-10 h-10" />
 	},
 	{
 		name: "Docker",
-		icon: <SiDocker className="w-10 h-10 text-foreground/80" />
+		icon: <SiDocker className="w-10 h-10" />
 	},
 ];
+
+// Combine all technologies for the grid
+const allTechnologies = [...skills, ...frameworks];
 
 const experiences = [
 	{
@@ -177,18 +174,20 @@ export function About() {
 			<div className="flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-3">
 				<div className="order-2 sm:order-1 flex flex-col gap-6">
 					{/* Header Section - matching the image style */}
-					<div className="relative flex flex-col gap-3 pb-6 border border-border/50 rounded-lg p-6 bg-card">
+					<div className="relative flex flex-col gap-3 pb-6 border border-border/50 rounded-lg p-6 bg-card transition-colors duration-300">
 						{/* Social Icons - Top Right */}
 						<div className="absolute top-4 right-4 flex gap-2">
 							{links.map((link) => (
 								<a
 									href={link.url}
 									key={link.name}
-									className="sm:cursor-none p-2 rounded-lg bg-background hover:bg-muted transition-all duration-300 border border-border/50"
+									className="sm:cursor-none p-2 rounded-lg bg-background hover:bg-muted transition-colors duration-300 border border-border/50"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									{link.icon}
+									<div className="transition-colors duration-300">
+										{link.icon}
+									</div>
 								</a>
 							))}
 						</div>
@@ -199,48 +198,98 @@ export function About() {
 						
 						<div className="flex items-center gap-2 text-lg transition-colors duration-300">
 							<MapPinIcon className="w-5 h-5 text-green-600 dark:text-emerald-500 transition-colors duration-300" />
-							<span>Victoria University of Wellington</span>
+							<span className="transition-colors duration-300">Victoria University of Wellington</span>
 						</div>
 						
 						<p className="text-lg leading-relaxed max-w-2xl transition-colors duration-300">
-							Kia ora! <span className="animate-wave hand-emoji">👋</span> I'm a Third Year Data Science Student. Studying data science and discovering that 80% of it is just cleaning messy data.
+							Kia ora! <span className="animate-wave hand-emoji">👋</span> I'm a Third Year Data Science Student. Currently studying data science and discovering that 80% of it is just cleaning messy data.
 						</p>
 					</div>
 
-					<AboutFeatureTable />
 
-					<h3 className="text-xl font-bold">What I work with</h3>
-					<div className="w-full mt-2 mb-6">
-						<div className="flex flex-wrap gap-4">
-							{skills.map((skill) => (
-								<div 
-									key={skill.name} 
-									className="flex items-center gap-1.5 bg-background border border-border/50 rounded-lg px-3 py-1.5 hover:border-border transition-all duration-300"
-									title={skill.name}
-								>
-									{skill.icon}
-									<span className="text-sm font-medium">{skill.name}</span>
-								</div>
-							))}
-							{frameworks.map((framework) => (
-								<div 
-									key={framework.name} 
-									className="flex items-center gap-1.5 bg-background border border-border/50 rounded-lg px-3 py-1.5 hover:border-border transition-all duration-300"
-									title={framework.name}
-								>
-									{framework.icon}
-									<span className="text-sm font-medium">{framework.name}</span>
-								</div>
-							))}
+					<h3 className="text-xl font-bold transition-colors duration-300">What I work with</h3>
+					
+					{/* Auto-Scrolling Icon Slider - Two Rows */}
+					<div className="w-full max-w-2xl mt-2 mb-6 space-y-4">
+						{/* First Row - Languages & Core Technologies */}
+						<div className="overflow-hidden relative">
+							<div className="flex animate-scroll gap-8">
+								{/* First set of icons (first half) */}
+								{skills.map((tech, index) => (
+									<div 
+										key={`skills-first-${index}`}
+										className="flex flex-col items-center gap-2 min-w-[90px] flex-shrink-0 group"
+										title={tech.name}
+									>
+										<div className="text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">
+											{tech.icon}
+										</div>
+										<span className="text-xs font-medium text-center text-foreground/50 group-hover:text-foreground/80 transition-colors duration-300 leading-tight">
+											{tech.name}
+										</span>
+									</div>
+								))}
+								{/* Duplicate set for seamless loop */}
+								{skills.map((tech, index) => (
+									<div 
+										key={`skills-second-${index}`}
+										className="flex flex-col items-center gap-2 min-w-[90px] flex-shrink-0 group"
+										title={tech.name}
+									>
+										<div className="text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">
+											{tech.icon}
+										</div>
+										<span className="text-xs font-medium text-center text-foreground/50 group-hover:text-foreground/80 transition-colors duration-300 leading-tight">
+											{tech.name}
+										</span>
+									</div>
+								))}
+							</div>
+						</div>
+
+						{/* Second Row - Frameworks & Tools */}
+						<div className="overflow-hidden relative">
+							<div className="flex animate-scroll-reverse gap-8">
+								{/* First set of icons (second half) */}
+								{frameworks.map((tech, index) => (
+									<div 
+										key={`frameworks-first-${index}`}
+										className="flex flex-col items-center gap-2 min-w-[90px] flex-shrink-0 group"
+										title={tech.name}
+									>
+										<div className="text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">
+											{tech.icon}
+										</div>
+										<span className="text-xs font-medium text-center text-foreground/50 group-hover:text-foreground/80 transition-colors duration-300 leading-tight">
+											{tech.name}
+										</span>
+									</div>
+								))}
+								{/* Duplicate set for seamless loop */}
+								{frameworks.map((tech, index) => (
+									<div 
+										key={`frameworks-second-${index}`}
+										className="flex flex-col items-center gap-2 min-w-[90px] flex-shrink-0 group"
+										title={tech.name}
+									>
+										<div className="text-foreground/40 group-hover:text-foreground/80 transition-colors duration-300">
+											{tech.icon}
+										</div>
+										<span className="text-xs font-medium text-center text-foreground/50 group-hover:text-foreground/80 transition-colors duration-300 leading-tight">
+											{tech.name}
+										</span>
+									</div>
+								))}
+							</div>
 						</div>
 					</div>
 
-					<h3 className="text-xl font-bold">Experience 💼</h3>
+					<h3 className="text-xl font-bold transition-colors duration-300">Experience 💼</h3>
 					<div className="flex flex-col gap-3">
 						{experiences.map((experience) => (
 							<div
 								key={experience.company}
-								className="flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted transition-all duration-300 hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
+								className="flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted transition-colors duration-300 hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
 							>
 								<div className="flex flex-row flex-1 gap-2">
 									<Image
@@ -252,18 +301,18 @@ export function About() {
 									/>
 									<div className="flex flex-col">
 										<div className="flex justify-between items-center">
-											<p className="text-lg font-semibold">
+											<p className="text-lg font-semibold transition-colors duration-300">
 												{experience.name}
 											</p>
-											<p className="text-sm">
+											<p className="text-sm transition-colors duration-300">
 												{experience.startDate} to{" "}
 												{experience.endDate}
 											</p>
 										</div>
-										<p className="text-sm">
+										<p className="text-sm transition-colors duration-300">
 											{experience.company}
 										</p>
-										<p className="text-sm mt-2">
+										<p className="text-sm mt-2 transition-colors duration-300">
 											{experience.description.map((desc, index) => (
 												<span
 													key={index}
@@ -278,7 +327,7 @@ export function About() {
 							</div>
 						))}
 					</div>
-					<h3 className="text-xl font-bold">Certifications 📜</h3>
+					<h3 className="text-xl font-bold transition-colors duration-300">Certifications 📜</h3>
 					<div className="flex flex-col gap-3">
 						{certifications.map((cert) => (
 							<a
@@ -286,7 +335,7 @@ export function About() {
 								href={cert.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								className="sm:cursor-none flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted transition-all duration-300 hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
+								className="sm:cursor-none flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted transition-colors duration-300 hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
 							>
 								<div className="flex flex-row flex-1 gap-2">
 									<Image
@@ -297,10 +346,10 @@ export function About() {
 										className="size-12 sm:size-14 rounded-full flex"
 									/>
 									<div className="flex flex-col">
-										<p className="text-lg font-semibold">
+										<p className="text-lg font-semibold transition-colors duration-300">
 											{cert.name}
 										</p>
-										<p className="text-sm">
+										<p className="text-sm transition-colors duration-300">
 											{cert.issuer}
 										</p>
 									</div>
