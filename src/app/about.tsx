@@ -66,7 +66,7 @@ const skills = [
 		icon: <SiTailwindcss className="w-10 h-10" /> // Changed size
 	},
 	{
-		name: "SQL",
+		name: "PostgreSQL",
 		icon: <SiPostgresql className="w-10 h-10" /> // Changed size
 	},
 	{
@@ -255,7 +255,7 @@ export function About() {
 						</p>
 					</div>
 
-					<h3 className="text-xl font-bold">What I work with</h3>
+					<h3 className="text-xl font-bold">What I have worked with</h3>
 					
 					{/* Auto-Scrolling Icon Slider - Two Rows */}
 					<div className="relative w-full mt-2 mb-6 space-y-4">

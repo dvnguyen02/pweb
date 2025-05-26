@@ -292,7 +292,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     >
       <div 
         className={cn(
-          "w-full sm:max-w-2xl lg:max-w-[70vw] h-full max-h-[75vh] sm:max-h-96 lg:max-h-[85vh]",
+          "w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[75vh] sm:max-h-96 lg:max-h-[90vh]",
           "bg-background backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl",
           "ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black",
           "transition-[transform,opacity] duration-500 ease-out",

@@ -68,7 +68,7 @@ export default function Page() {	const [background, setBackground] = useState<st
 					showLoader ? "opacity-0" : "opacity-100"
 				)}
 			>
-				<div className="animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[70vw] h-full max-h-[75vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black transition-all duration-1000">
+				<div className="animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[75vh] sm:max-h-96 lg:max-h-[90vh] overflow-hidden ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black transition-all duration-1000">
 					{/* Settings and theme switch inside the card, top right */}
 					<div className="absolute top-4 right-4 z-20 flex items-center gap-2">
 						<Sun className="h-4 w-4 text-muted-foreground" />
