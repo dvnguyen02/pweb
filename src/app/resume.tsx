@@ -50,13 +50,13 @@ export function Resume() {
             target="_blank"
             className="sm:cursor-none group"
           >
-            <div className="relative flex flex-col gap-3 bg-muted rounded-xl p-4 transition-all duration-300 hover:ring-4 ring-neutral-200 dark:ring-neutral-700 h-full">
+            <div className="relative flex flex-col gap-3 bg-muted rounded-xl p-4 hover:ring-4 ring-neutral-200 dark:ring-neutral-700 h-full">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
                   <Icon className="size-5" />
                   <h3 className="text-xl font-bold">{title}</h3>
                 </div>
-                <ExternalLinkIcon className="size-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+                <ExternalLinkIcon className="size-4 opacity-50 group-hover:opacity-100" />
               </div>
               <p className="text-sm text-muted-foreground flex-grow">{description}</p>
               <div className="flex items-center justify-between text-xs text-muted-foreground">
