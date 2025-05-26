@@ -209,13 +209,12 @@ export function About() {
 					{/* Auto-Scrolling Icon Slider - Two Rows */}
 					<div className="relative w-full mt-2 mb-6 space-y-4">
 						{/* First Row - Languages & Core Technologies */}
-						<div className="overflow-hidden relative w-full slider-mask">
-							<div className="flex animate-scroll gap-8">
-								{/* First set */}
+						<div className="w-full inline-flex flex-nowrap overflow-hidden slider-mask">
+							<ul className="flex items-center justify-center md:justify-start animate-scroll">
 								{skills.map((tech, index) => (
-									<div 
+									<li 
 										key={`skills-first-${index}`}
-										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
+										className="mx-4 flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
 										<div>
@@ -224,13 +223,14 @@ export function About() {
 										<span className="text-sm font-medium text-center leading-tight">
 											{tech.name}
 										</span>
-									</div>
+									</li>
 								))}
-								{/* Second set */}
+							</ul>
+							<ul className="flex items-center justify-center md:justify-start animate-scroll" aria-hidden="true">
 								{skills.map((tech, index) => (
-									<div 
+									<li 
 										key={`skills-second-${index}`}
-										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
+										className="mx-4 flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
 										<div>
@@ -239,34 +239,18 @@ export function About() {
 										<span className="text-sm font-medium text-center leading-tight">
 											{tech.name}
 										</span>
-									</div>
+									</li>
 								))}
-								{/* Third set for smooth transition */}
-								{skills.map((tech, index) => (
-									<div 
-										key={`skills-third-${index}`}
-										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
-										title={tech.name}
-									>
-										<div>
-											{tech.icon}
-										</div>
-										<span className="text-sm font-medium text-center leading-tight">
-											{tech.name}
-										</span>
-									</div>
-								))}
-							</div>
+							</ul>
 						</div>
 
 						{/* Second Row - Frameworks & Tools */}
-						<div className="overflow-hidden relative w-full slider-mask">
-							<div className="flex animate-scroll-reverse gap-8">
-								{/* First set */}
+						<div className="w-full inline-flex flex-nowrap overflow-hidden slider-mask">
+							<ul className="flex items-center justify-center md:justify-start animate-scroll-reverse">
 								{frameworks.map((tech, index) => (
-									<div 
+									<li 
 										key={`frameworks-first-${index}`}
-										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
+										className="mx-4 flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
 										<div>
@@ -275,13 +259,14 @@ export function About() {
 										<span className="text-sm font-medium text-center leading-tight">
 											{tech.name}
 										</span>
-									</div>
+									</li>
 								))}
-								{/* Second set */}
+							</ul>
+							<ul className="flex items-center justify-center md:justify-start animate-scroll-reverse" aria-hidden="true">
 								{frameworks.map((tech, index) => (
-									<div 
+									<li 
 										key={`frameworks-second-${index}`}
-										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
+										className="mx-4 flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
 										<div>
@@ -290,24 +275,9 @@ export function About() {
 										<span className="text-sm font-medium text-center leading-tight">
 											{tech.name}
 										</span>
-									</div>
+									</li>
 								))}
-								{/* Third set for smooth transition */}
-								{frameworks.map((tech, index) => (
-									<div 
-										key={`frameworks-third-${index}`}
-										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
-										title={tech.name}
-									>
-										<div>
-											{tech.icon}
-										</div>
-										<span className="text-sm font-medium text-center leading-tight">
-											{tech.name}
-										</span>
-									</div>
-								))}
-							</div>
+							</ul>
 						</div>
 					</div>
 
