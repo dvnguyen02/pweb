@@ -217,10 +217,10 @@ export function About() {
 										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
-										<div className="text-muted-foreground/50 group-hover:text-muted-foreground">
+										<div>
 											{tech.icon}
 										</div>
-										<span className="text-xs font-medium text-center text-muted-foreground/60 group-hover:text-muted-foreground leading-tight">
+										<span className="text-sm font-medium text-center leading-tight">
 											{tech.name}
 										</span>
 									</div>
@@ -232,10 +232,10 @@ export function About() {
 										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
-										<div className="text-muted-foreground/50 group-hover:text-muted-foreground">
+										<div>
 											{tech.icon}
 										</div>
-										<span className="text-xs font-medium text-center text-muted-foreground/60 group-hover:text-muted-foreground leading-tight">
+										<span className="text-sm font-medium text-center leading-tight">
 											{tech.name}
 										</span>
 									</div>
@@ -253,10 +253,10 @@ export function About() {
 										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
-										<div className="text-muted-foreground/50 group-hover:text-muted-foreground">
+										<div>
 											{tech.icon}
 										</div>
-										<span className="text-xs font-medium text-center text-muted-foreground/60 group-hover:text-muted-foreground leading-tight">
+										<span className="text-sm font-medium text-center leading-tight">
 											{tech.name}
 										</span>
 									</div>
@@ -268,10 +268,10 @@ export function About() {
 										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
-										<div className="text-muted-foreground/50 group-hover:text-muted-foreground">
+										<div>
 											{tech.icon}
 										</div>
-										<span className="text-xs font-medium text-center text-muted-foreground/60 group-hover:text-muted-foreground leading-tight">
+										<span className="text-sm font-medium text-center leading-tight">
 											{tech.name}
 										</span>
 									</div>
