@@ -4,8 +4,19 @@ import {
 	GithubIcon, 
 	LinkedinIcon, 
 	MailIcon,
-	MapPinIcon
+	MapPinIcon,
+	PhoneIcon // Added PhoneIcon
 } from "lucide-react";
+import Link from "next/link";
+import { SquareArrowOutUpRightIcon, XIcon } from "lucide-react"; // Added XIcon
+import { useState } from "react"; // Added useState
+import React from "react"; // Added React import for React.cloneElement
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"; // Added Tooltip components
 import {
 	SiPython,
 	SiTypescript,
@@ -22,6 +33,8 @@ import {
 	SiPytorch,
 	SiDocker,
 	SiFastapi,
+	// SiFastify, // Removed unused import
+	SiWebrtc, 
 } from "react-icons/si";
 const skills = [
 	{
@@ -93,9 +106,6 @@ const frameworks = [
 	},
 ];
 
-// Combine all technologies for the grid
-// const allTechnologies = [...skills, ...frameworks]; // This line seems unused, consider removing if not needed elsewhere
-
 const experiences = [
 	{
 		logo: "/images/orgs/nzta.jpg",
@@ -114,7 +124,7 @@ const experiences = [
 const education = [
 	{
 		logo: "/images/orgs/vuw.png", // Placeholder logo path
-		name: "Bachelor of Commerce in Data Science",
+		name: "Commerce in Data Science",
 		institution: "Victoria University of Wellington",
 		description: [
 			"Relevant coursework: Machine Learning, Statistical Learning",
@@ -146,7 +156,7 @@ const links = [
 		name: "LinkedIn",
 		icon: <LinkedinIcon />,
 		color: "bg-blue-950",
-		url: "",
+		url: "https://www.linkedin.com/in/david-nguyen-58a378315/",
 	},
 	{
 		name: "GitHub",
@@ -162,16 +172,46 @@ const links = [
 	},
 ];
 
+const currentProject = {
+	coverImage: "/images/projects/7.gif",
+	name: "Notetaker",
+	description:
+		"Notetaker automatically transcribes audio from your system and microphone in real-time, capturing every word of your meetings without manual effort.",
+	link: "https://github.com/dvnguyen02/notetaker",
+	tags: [
+		{ name: "FastAPI", icon: <SiFastapi className="w-4 h-4" /> },
+		{ name: "React", icon: <SiReact className="w-4 h-4" /> },
+		{ name: "LangGraph", icon: <Image src="/images/orgs/langgraph.png" alt="LangGraph" width={16} height={16} /> }, // Placeholder for LangGraph
+		{ name: "Python", icon: <SiPython className="w-4 h-4" /> },
+		{ name: "RAG", icon: null }, // RAG is a concept
+		{ name: "WebRTC", icon: <SiWebrtc className="w-4 h-4" /> },
+	],
+};
+
 export function About() {
+    const [isCurrentProjectExpanded, setCurrentProjectExpanded] = useState(false);
+
+    // Function to stop propagation for the actual link click
+    // and ensure the modal doesn't close if the link is clicked.
+    const handleLinkClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    };
 
 	return (
-		<div className="w-full h-full flex flex-col items-center"> {/* Added flex flex-col items-center */}
-			<div className="flex flex-col items-center w-full gap-6 sm:gap-3"> {/* Changed classes, removed justify-between, items-start */}
-				<div className="flex flex-col gap-6 max-w-2xl w-full"> {/* Removed order classes, added w-full */}
+		<div className="w-full h-full flex flex-col items-center relative"> {/* Added relative for z-indexing context */}
+            {/* Overlay */}
+            {isCurrentProjectExpanded && (
+                <div
+                    className="fixed inset-0 bg-black/70 backdrop-blur-md z-40 ease-in-out animate-in fade-in"
+                    onClick={() => setCurrentProjectExpanded(false)}
+                />
+            )}
+			<div className="flex flex-col items-center w-full gap-6 sm:gap-3">
+				<div className="flex flex-col gap-6 max-w-2xl w-full">
 					{/* Header Section - matching the image style */}
 					<div className="relative flex flex-col gap-3 pb-6 border border-border/50 rounded-lg p-6 bg-card">
 						{/* Social Icons - Top Right */}
-						<div className="absolute top-4 right-4 flex gap-2">
+						<div className="absolute top-4 right-4 flex gap-2 items-center"> {/* Added items-center for vertical alignment if needed */}
 							{links.map((link) => (
 								<a
 									href={link.url}
@@ -179,10 +219,26 @@ export function About() {
 									className="sm:cursor-none p-2 rounded-lg bg-background hover:bg-muted border border-border/50"
 									target="_blank"
 									rel="noopener noreferrer"
+									aria-label={link.name} // Added aria-label for accessibility
 								>
 									{link.icon}
 								</a>
 							))}
+							{/* Phone Icon with Custom Tooltip */}
+							<TooltipProvider>
+								<Tooltip>
+									<TooltipTrigger asChild>
+										<div
+											className="sm:cursor-none p-2 rounded-lg bg-background hover:bg-muted border border-border/50"
+										>
+											<PhoneIcon className="w-5 h-5" /> {/* Adjust size as needed */}
+										</div>
+									</TooltipTrigger>
+									<TooltipContent>
+										<p>+64 221900286</p> {/* Placeholder phone number */}
+									</TooltipContent>
+								</Tooltip>
+							</TooltipProvider>
 						</div>
 
 						<h1 className="text-4xl sm:text-5xl font-bold tracking-tight pr-32">
@@ -380,6 +436,86 @@ export function About() {
 						</div>
 					</div>
 					{/* End of Experience and Education Section */}
+
+                    {/* Current Project Section */}
+					<h3 className="text-xl font-bold">My Current Project</h3>
+					
+                    {/* Container for positioning the card when expanded */}
+                    <div 
+                        className={`
+                            w-full
+                            ${isCurrentProjectExpanded 
+                                ? 'fixed inset-0 z-50 flex items-center justify-center p-4' 
+                                : 'relative'
+                            }
+                        `}
+                    >
+                        {/* The actual project card */}
+                        <div 
+                            onClick={() => { if (!isCurrentProjectExpanded) setCurrentProjectExpanded(true); }}
+                            className={`
+                                relative flex flex-col bg-muted rounded-xl w-full
+                                ease-in-out
+                                ${isCurrentProjectExpanded 
+                                    ? 'max-w-2xl max-h-[80vh] p-4 scale-100 ring-4 ring-primary shadow-2xl overflow-y-auto animate-in fade-in gap-2' // Expanded styles: max-w-2xl, max-h-[80vh]
+                                    : 'group sm:cursor-none p-1 hover:ring-4 ring-neutral-200 dark:ring-neutral-700 gap-1 max-w-md' // Collapsed styles: max-w-md
+                                }
+                            `}
+                        >
+                            {isCurrentProjectExpanded && (
+                                <button 
+                                    onClick={(e) => { e.stopPropagation(); setCurrentProjectExpanded(false); }}
+                                    className="absolute top-3 right-3 z-[51] p-2 bg-background/70 hover:bg-background/90 rounded-full text-muted-foreground hover:text-primary transition-colors"
+                                    aria-label="Close project details"
+                                >
+                                    <XIcon className="size-5" />
+                                </button>
+                            )}
+							<Image
+								src={currentProject.coverImage}
+								alt={currentProject.name}
+								width={1280} // Keep original width/height for aspect ratio, actual size controlled by className
+								height={720}
+								className={`aspect-video rounded-lg ${isCurrentProjectExpanded ? 'w-full' : 'w-full'}`}
+							/>
+							<div className={`flex flex-col ${isCurrentProjectExpanded ? 'gap-2' : 'gap-1'}`}> {/* Collapsed: gap-1 (this is for content below image) */}
+								<div className="flex flex-row gap-2 items-center">
+									<h4 className={`font-bold ${isCurrentProjectExpanded ? 'text-3xl' : 'text-base'}`}>{currentProject.name}</h4> {/* Collapsed: text-base */}
+                                    <Link 
+                                        href={currentProject.link} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        onClick={handleLinkClick} 
+                                        className={`
+                                            text-muted-foreground hover:text-primary
+                                            ${isCurrentProjectExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
+                                        `}
+                                        aria-label={`Open ${currentProject.name} in new tab`}
+                                    >
+									    <SquareArrowOutUpRightIcon className="size-5" />
+                                    </Link>
+								</div>
+								<p className={`text-muted-foreground ${isCurrentProjectExpanded ? 'text-lg' : 'text-xs'}`}>
+									{currentProject.description}
+								</p>
+								<div className="flex flex-wrap gap-1.5 items-center"> {/* Gap between tags */}
+									{currentProject.tags.map((tag) => (
+										<span
+											key={tag.name}
+											className={`flex items-center bg-background rounded-full text-muted-foreground 
+                                                        ${isCurrentProjectExpanded 
+                                                            ? 'gap-1.5 text-sm px-3 py-1.5' 
+                                                            : 'gap-0.5 text-xs px-1.5 py-0.5' // Collapsed: smaller text, padding, gap
+                                                        }`}
+										>
+											{tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: `${isCurrentProjectExpanded ? 'w-4 h-4' : 'w-2.5 h-2.5'} ${ (tag.icon as React.ReactElement).props.className || '' }` })}{/* Collapsed icon: w-2.5 h-2.5 */}
+											{tag.name}
+										</span>
+									))}
+								</div>
+							</div>
+						</div>
+                    </div>
 
 					<h3 className="text-xl font-bold">Certifications 📜</h3>
 					<div className="flex flex-col gap-3">
