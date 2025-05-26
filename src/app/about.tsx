@@ -1,4 +1,5 @@
 import Image from "next/image";
+import "./slider.css";
 import { 
 	GithubIcon, 
 	LinkedinIcon, 
@@ -206,11 +207,11 @@ export function About() {
 					<h3 className="text-xl font-bold">What I work with</h3>
 					
 					{/* Auto-Scrolling Icon Slider - Two Rows */}
-					<div className="-mx-6 px-6 w-screen max-w-none mt-2 mb-6 space-y-4 self-center">
+					<div className="relative w-full mt-2 mb-6 space-y-4">
 						{/* First Row - Languages & Core Technologies */}
-						<div className="overflow-hidden relative w-full">
-							<div className="flex animate-scroll gap-8 w-full min-w-full">
-								{/* First set of icons (first half) */}
+						<div className="overflow-hidden relative w-full slider-mask">
+							<div className="flex animate-scroll gap-8">
+								{/* First set */}
 								{skills.map((tech, index) => (
 									<div 
 										key={`skills-first-${index}`}
@@ -225,10 +226,25 @@ export function About() {
 										</span>
 									</div>
 								))}
-								{/* Duplicate set for seamless loop */}
+								{/* Second set */}
 								{skills.map((tech, index) => (
 									<div 
 										key={`skills-second-${index}`}
+										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
+										title={tech.name}
+									>
+										<div>
+											{tech.icon}
+										</div>
+										<span className="text-sm font-medium text-center leading-tight">
+											{tech.name}
+										</span>
+									</div>
+								))}
+								{/* Third set for smooth transition */}
+								{skills.map((tech, index) => (
+									<div 
+										key={`skills-third-${index}`}
 										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
@@ -244,9 +260,9 @@ export function About() {
 						</div>
 
 						{/* Second Row - Frameworks & Tools */}
-						<div className="overflow-hidden relative w-full">
-							<div className="flex animate-scroll-reverse gap-8 w-full min-w-full">
-								{/* First set of icons (second half) */}
+						<div className="overflow-hidden relative w-full slider-mask">
+							<div className="flex animate-scroll-reverse gap-8">
+								{/* First set */}
 								{frameworks.map((tech, index) => (
 									<div 
 										key={`frameworks-first-${index}`}
@@ -261,10 +277,25 @@ export function About() {
 										</span>
 									</div>
 								))}
-								{/* Duplicate set for seamless loop */}
+								{/* Second set */}
 								{frameworks.map((tech, index) => (
 									<div 
 										key={`frameworks-second-${index}`}
+										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
+										title={tech.name}
+									>
+										<div>
+											{tech.icon}
+										</div>
+										<span className="text-sm font-medium text-center leading-tight">
+											{tech.name}
+										</span>
+									</div>
+								))}
+								{/* Third set for smooth transition */}
+								{frameworks.map((tech, index) => (
+									<div 
+										key={`frameworks-third-${index}`}
 										className="flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
 										title={tech.name}
 									>
