@@ -26,79 +26,79 @@ import {
 const skills = [
 	{
 		name: "Python",
-		icon: <SiPython className="w-8 h-8" />
+		icon: <SiPython className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "TypeScript",
-		icon: <SiTypescript className="w-8 h-8" />
+		icon: <SiTypescript className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "Golang",
-		icon: <SiGo className="w-8 h-8" />
+		icon: <SiGo className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "R",
-		icon: <SiR className="w-8 h-8" />
+		icon: <SiR className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "React",
-		icon: <SiReact className="w-8 h-8" />
+		icon: <SiReact className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "Next.js",
-		icon: <SiNextdotjs className="w-8 h-8" />
+		icon: <SiNextdotjs className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "Tailwind CSS",
-		icon: <SiTailwindcss className="w-8 h-8" />
+		icon: <SiTailwindcss className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "SQL",
-		icon: <SiPostgresql className="w-8 h-8" />
+		icon: <SiPostgresql className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "Git",
-		icon: <SiGit className="w-8 h-8" />
+		icon: <SiGit className="w-10 h-10" /> // Changed size
 	},
 ];
 
 const frameworks = [
 	{
 		name: "LangGraph",
-		icon: <div className="w-8 h-8 bg-muted/50 rounded-md flex items-center justify-center text-xs font-semibold">LG</div>
+		icon: <div className="w-10 h-10 bg-muted/50 rounded-md flex items-center justify-center text-sm font-semibold">LG</div> // Changed size & text size
 	},
 	{
 		name: "Google SDK",
-		icon: <SiGooglecloud className="w-8 h-8" />
+		icon: <SiGooglecloud className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "FAISS",
-		icon: <div className="w-8 h-8 bg-muted/50 rounded-md flex items-center justify-center text-xs font-semibold">FS</div>
+		icon: <div className="w-10 h-10 bg-muted/50 rounded-md flex items-center justify-center text-sm font-semibold">FS</div> // Changed size & text size
 	},
 	{
 		name: "Pandas",
-		icon: <SiPandas className="w-8 h-8" />
+		icon: <SiPandas className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "Scikit-learn",
-		icon: <SiScikitlearn className="w-8 h-8" />
+		icon: <SiScikitlearn className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "PyTorch",
-		icon: <SiPytorch className="w-8 h-8" />
+		icon: <SiPytorch className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "FastAPI",
-		icon: <SiFastapi className="w-8 h-8" />
+		icon: <SiFastapi className="w-10 h-10" /> // Changed size
 	},
 	{
 		name: "Docker",
-		icon: <SiDocker className="w-8 h-8" />
+		icon: <SiDocker className="w-10 h-10" /> // Changed size
 	},
 ];
 
 // Combine all technologies for the grid
-const allTechnologies = [...skills, ...frameworks];
+// const allTechnologies = [...skills, ...frameworks]; // This line seems unused, consider removing if not needed elsewhere
 
 const experiences = [
 	{
@@ -151,28 +151,12 @@ const links = [
 	},
 ];
 
-function ProfileSection() {
-	return (
-		<div className="flex justify-center items-center flex-shrink-0">
-			<div className="rounded-full ring-4 ring-neutral-200 dark:ring-neutral-800 overflow-hidden size-48 md:size-48 lg:size-40">
-				<Image
-					src="/images/me.jpg"
-					alt="me"
-					width={512}
-					height={512}
-					className="object-cover w-full h-full"
-				/>
-			</div>
-		</div>
-	);
-}
-
 export function About() {
 
 	return (
-		<div className="w-full h-full">
-			<div className="flex flex-col sm:flex-row justify-between items-start gap-6 sm:gap-3">
-				<div className="order-2 sm:order-1 flex flex-col gap-6 max-w-2xl">
+		<div className="w-full h-full flex flex-col items-center"> {/* Added flex flex-col items-center */}
+			<div className="flex flex-col items-center w-full gap-6 sm:gap-3"> {/* Changed classes, removed justify-between, items-start */}
+				<div className="flex flex-col gap-6 max-w-2xl w-full"> {/* Removed order classes, added w-full */}
 					{/* Header Section - matching the image style */}
 					<div className="relative flex flex-col gap-3 pb-6 border border-border/50 rounded-lg p-6 bg-card">
 						{/* Social Icons - Top Right */}
@@ -209,75 +193,79 @@ export function About() {
 					{/* Auto-Scrolling Icon Slider - Two Rows */}
 					<div className="relative w-full mt-2 mb-6 space-y-4">
 						{/* First Row - Languages & Core Technologies */}
-						<div className="w-full inline-flex flex-nowrap overflow-hidden slider-mask">
-							<ul className="flex items-center justify-center md:justify-start animate-scroll">
-								{skills.map((tech, index) => (
-									<li 
-										key={`skills-first-${index}`}
-										className="mx-4 flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
-										title={tech.name}
-									>
-										<div>
-											{tech.icon}
-										</div>
-										<span className="text-sm font-medium text-center leading-tight">
-											{tech.name}
-										</span>
-									</li>
-								))}
-							</ul>
-							<ul className="flex items-center justify-center md:justify-start animate-scroll" aria-hidden="true">
-								{skills.map((tech, index) => (
-									<li 
-										key={`skills-second-${index}`}
-										className="mx-4 flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
-										title={tech.name}
-									>
-										<div>
-											{tech.icon}
-										</div>
-										<span className="text-sm font-medium text-center leading-tight">
-											{tech.name}
-										</span>
-									</li>
-								))}
-							</ul>
+						<div className="w-full overflow-hidden slider-mask"> {/* Changed: Removed inline-flex, flex-nowrap */}
+							<div className="flex animate-scroll"> {/* Added: New wrapper div with animation and flex */}
+								<ul className="flex items-center justify-center md:justify-start flex-shrink-0"> {/* Changed: Removed animation, added flex-shrink-0 */}
+									{skills.map((tech, index) => (
+										<li
+											key={`skills-first-${index}`}
+											className="mx-4 flex flex-col items-center gap-2 min-w-[100px] flex-shrink-0 group" // Changed: min-w
+											title={tech.name}
+										>
+											<div>
+												{tech.icon}
+											</div>
+											<span className="text-base font-medium text-center leading-tight"> {/* Changed: text-sm to text-base */}
+												{tech.name}
+											</span>
+										</li>
+									))}
+								</ul>
+								<ul className="flex items-center justify-center md:justify-start flex-shrink-0" aria-hidden="true"> {/* Changed: Removed animation, added flex-shrink-0 */}
+									{skills.map((tech, index) => (
+										<li
+											key={`skills-second-${index}`}
+											className="mx-4 flex flex-col items-center gap-2 min-w-[100px] flex-shrink-0 group" // Changed: min-w
+											title={tech.name}
+										>
+											<div>
+												{tech.icon}
+											</div>
+											<span className="text-base font-medium text-center leading-tight"> {/* Changed: text-sm to text-base */}
+												{tech.name}
+											</span>
+										</li>
+									))}
+								</ul>
+							</div>
 						</div>
 
 						{/* Second Row - Frameworks & Tools */}
-						<div className="w-full inline-flex flex-nowrap overflow-hidden slider-mask">
-							<ul className="flex items-center justify-center md:justify-start animate-scroll-reverse">
-								{frameworks.map((tech, index) => (
-									<li 
-										key={`frameworks-first-${index}`}
-										className="mx-4 flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
-										title={tech.name}
-									>
-										<div>
-											{tech.icon}
-										</div>
-										<span className="text-sm font-medium text-center leading-tight">
-											{tech.name}
-										</span>
-									</li>
-								))}
-							</ul>
-							<ul className="flex items-center justify-center md:justify-start animate-scroll-reverse" aria-hidden="true">
-								{frameworks.map((tech, index) => (
-									<li 
-										key={`frameworks-second-${index}`}
-										className="mx-4 flex flex-col items-center gap-2 min-w-[80px] flex-shrink-0 group"
-										title={tech.name}
-									>
-										<div>
-											{tech.icon}
-										</div>
-										<span className="text-sm font-medium text-center leading-tight">
-											{tech.name}
-										</span>
-									</li>
-								))}
-							</ul>
+						<div className="w-full overflow-hidden slider-mask"> {/* Changed: Removed inline-flex, flex-nowrap */}
+							<div className="flex animate-scroll-reverse"> {/* Added: New wrapper div with animation and flex */}
+								<ul className="flex items-center justify-center md:justify-start flex-shrink-0"> {/* Changed: Removed animation, added flex-shrink-0 */}
+									{frameworks.map((tech, index) => (
+										<li
+											key={`frameworks-first-${index}`}
+											className="mx-4 flex flex-col items-center gap-2 min-w-[100px] flex-shrink-0 group" // Changed: min-w
+											title={tech.name}
+										>
+											<div>
+												{tech.icon}
+											</div>
+											<span className="text-base font-medium text-center leading-tight"> {/* Changed: text-sm to text-base */}
+												{tech.name}
+											</span>
+										</li>
+									))}
+								</ul>
+								<ul className="flex items-center justify-center md:justify-start flex-shrink-0" aria-hidden="true"> {/* Changed: Removed animation, added flex-shrink-0 */}
+									{frameworks.map((tech, index) => (
+										<li
+											key={`frameworks-second-${index}`}
+											className="mx-4 flex flex-col items-center gap-2 min-w-[100px] flex-shrink-0 group" // Changed: min-w
+											title={tech.name}
+										>
+											<div>
+												{tech.icon}
+											</div>
+											<span className="text-base font-medium text-center leading-tight"> {/* Changed: text-sm to text-base */}
+												{tech.name}
+											</span>
+										</li>
+									))}
+								</ul>
+							</div>
 						</div>
 					</div>
 
@@ -358,9 +346,9 @@ export function About() {
 					
 				</div>
 
-				<div className="order-1 sm:order-2">
+				{/* <div className="order-1 sm:order-2">
 					<ProfileSection />
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);
