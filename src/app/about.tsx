@@ -65,15 +65,11 @@ const skills = [
 const frameworks = [
 	{
 		name: "LangGraph",
-		icon: <div className="w-10 h-10 bg-muted/50 rounded-md flex items-center justify-center text-sm font-semibold">LG</div> // Changed size & text size
+		icon: <Image src="/images/orgs/langgraph.png" alt="LangGraph" width={40} height={40} className="w-10 h-10" /> // Changed to Image placeholder
 	},
 	{
 		name: "Google SDK",
 		icon: <SiGooglecloud className="w-10 h-10" /> // Changed size
-	},
-	{
-		name: "FAISS",
-		icon: <div className="w-10 h-10 bg-muted/50 rounded-md flex items-center justify-center text-sm font-semibold">FS</div> // Changed size & text size
 	},
 	{
 		name: "Pandas",
@@ -106,13 +102,28 @@ const experiences = [
 		name: "Data Science Intern",
 		company: "NZ Transport Agency",
 		description: [
-			"Conducted analysis of road maintenance data to identify correlations between soil group types and maintenance frequency, resulting in 15% more efficient resource allocation.",
+			"Conducted analysis of road maintenance data to identify correlations between soil group types and maintenance frequency.",
 			"Developed predictive linear regression models to explore counterintuitive trends in road maintenance activities, achieving 83% accuracy in forecasting maintenance needs.",
-			"Created an interactive data visualization dashboard and data cube that enabled stakeholders to compare pre and post-COVID freight movement patterns.",
+			"Created an interactive data visualization dashboard and heat map that enabled stakeholders to compare pre and post-COVID freight movement patterns.",
 		],
 		startDate: "July 2024",
 		endDate: "Sep 2024",
 	},
+];
+
+const education = [
+	{
+		logo: "/images/orgs/vuw.png", // Placeholder logo path
+		name: "Bachelor of Commerce in Data Science",
+		institution: "Victoria University of Wellington",
+		description: [
+			"Relevant coursework: Machine Learning, Statistical Learning",
+			"Completed a capstone project on predictive Kidney Stone Analysis.",
+			"Received letter of Excellence for outstanding performance in Machine Learning course.",
+		],
+		startDate: "Mar 2022",
+		endDate: "June 2025 ",
+	}
 ];
 
 const certifications = [
@@ -269,49 +280,107 @@ export function About() {
 						</div>
 					</div>
 
-					<h3 className="text-xl font-bold">Experience 💼</h3>
-					<div className="flex flex-col gap-3">
-						{experiences.map((experience) => (
-							<div
-								key={experience.company}
-								className="flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
-							>
-								<div className="flex flex-row flex-1 gap-2">
-									<Image
-										src={experience.logo}
-										alt={experience.company}
-										width={256}
-										height={256}
-										className="size-12 sm:size-14 rounded-full flex"
-									/>
-									<div className="flex flex-col">
-										<div className="flex justify-between items-center">
-											<p className="text-lg font-semibold">
-												{experience.name}
-											</p>
-											<p className="text-sm">
-												{experience.startDate} to{" "}
-												{experience.endDate}
-											</p>
+					{/* Experience and Education Section */}
+					<div className="flex flex-col md:flex-row gap-y-6 md:gap-x-0"> {/* Changed: from grid to flex, adjusted gap */}
+						<div className="md:w-1/2 md:pr-4 md:border-r md:border-border/50"> {/* Added: width, padding, and right border for md screens */}
+							<h3 className="text-xl font-bold mb-3 text-center">Experience</h3> {/* Added: text-center */}
+							<div className="flex flex-col gap-3">
+								{experiences.map((experience) => (
+									<div
+										key={experience.company}
+										className="flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
+									>
+										<div className="flex flex-row flex-1 gap-2">
+											<Image
+												src={experience.logo}
+												alt={experience.company}
+												width={256}
+												height={256}
+												className="size-12 sm:size-14 rounded-full flex"
+											/>
+											<div className="flex flex-col">
+												<div className="flex justify-between items-center">
+													<p className="text-lg font-semibold">
+														{experience.name}
+													</p>
+													<p className="text-sm">
+														{experience.startDate} -{" "}
+														{experience.endDate}
+													</p>
+												</div>
+												<p className="text-sm">
+													{experience.company}
+												</p>
+												<p className="text-sm mt-2">
+													{experience.description.map((desc, index) => (
+														<span
+															key={index}
+															className="block mb-2"
+														>
+															• {desc}
+														</span>
+													))}
+												</p>
+											</div>
 										</div>
-										<p className="text-sm">
-											{experience.company}
-										</p>
-										<p className="text-sm mt-2">
-											{experience.description.map((desc, index) => (
-												<span
-													key={index}
-													className="block mb-2"
-												>
-													• {desc}
-												</span>
-											))}
-										</p>
 									</div>
-								</div>
+								))}
 							</div>
-						))}
+						</div>
+
+						<div className="md:w-1/2 md:pl-4">  {/* Added: width and padding for md screens */}
+							<h3 className="text-xl font-bold mb-3 text-center">Education</h3> {/* Added: text-center */}
+							<div className="flex flex-col gap-3">
+								{education.map((edu) => (
+									<div
+										key={edu.institution}
+										className="flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700" // Changed dark:hover:ring-neutral-900 to dark:hover:ring-neutral-700
+									>
+										<div className="flex flex-row flex-1 gap-2">
+											{/* You might want to add a generic school icon or specific logos like with experience */}
+											{edu.logo && (
+												<Image
+													src={edu.logo}
+													alt={edu.institution}
+													width={256}
+													height={256}
+													className="size-12 sm:size-14 rounded-full flex"
+												/>
+											)}
+											<div className="flex flex-col">
+												<div className="flex justify-between items-center"> {/* Changed items-start to items-center */}
+													<p className="text-lg font-semibold">
+														{edu.name}
+													</p>
+													<p className="text-sm"> {/* Removed text-right, whitespace-nowrap, pl-2 */}
+														{edu.startDate} - {/* Removed <br/> */}
+														{edu.endDate}
+													</p>
+												</div>
+												<p className="text-sm">
+													{edu.institution}
+												</p>
+												{edu.description && edu.description.length > 0 && (
+													<p className="text-sm mt-2">
+														{edu.description.map((desc, index) => (
+															<span
+																key={index}
+																className="block mb-2" // Changed mb-1 to mb-2
+															>
+																• {desc}
+															</span>
+														))}
+													</p>
+												)}
+											</div>
+										</div>
+									</div>
+								))}
+							</div>
+						</div>
 					</div>
+					{/* End of Experience and Education Section */}
+
 					<h3 className="text-xl font-bold">Certifications 📜</h3>
 					<div className="flex flex-col gap-3">
 						{certifications.map((cert) => (
