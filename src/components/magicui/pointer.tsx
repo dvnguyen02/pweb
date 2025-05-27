@@ -31,7 +31,11 @@ export function Pointer({
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && containerRef.current) {
+    let originalHtmlCursor = "";
+    if (typeof window !== "undefined" && document.documentElement) {
+      originalHtmlCursor = document.documentElement.style.cursor;
+      document.documentElement.style.cursor = "none";
+
       // Initialize mouse position to center of screen
       const initializeMousePosition = () => {
         if (window) {
@@ -39,52 +43,59 @@ export function Pointer({
           y.set(window.innerHeight / 2);
         }
       };
-      
       initializeMousePosition();
 
-      // Get the parent element directly from the ref
-      const parentElement = containerRef.current.parentElement;
+      const handleMouseMove = (e: MouseEvent) => {
+        x.set(e.clientX);
+        y.set(e.clientY);
+      };
 
+      const handleMouseEnterDoc = () => {
+        setIsActive(true);
+        document.documentElement.style.cursor = "none"; // Ensure it's none when mouse enters document
+      };
+
+      const handleMouseLeaveDoc = () => {
+        setIsActive(false);
+        // Optional: Restore cursor if mouse leaves the entire document/window, 
+        // but typically not needed if Pointer is always rendered.
+      };
+      
+      // Listen for mouse move on the whole document
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseenter", handleMouseEnterDoc); // Use document for these events
+      document.addEventListener("mouseleave", handleMouseLeaveDoc); // Use document for these events
+
+      // Fallback for parent element if ClientPointer is not at the root
+      const parentElement = containerRef.current?.parentElement;
+      let originalParentCursor = "";
       if (parentElement) {
-        // Add cursor-none to parent
-        parentElement.style.cursor = "none";
-
-        // Add event listeners to parent
-        const handleMouseMove = (e: MouseEvent) => {
-          x.set(e.clientX);
-          y.set(e.clientY);
-        };
-
-        const handleMouseEnter = () => {
-          setIsActive(true);
-        };
-
-        const handleMouseLeave = () => {
-          setIsActive(false);
-        };
-
-        // Listen for mouse move on the whole document
-        document.addEventListener("mousemove", handleMouseMove);
-        parentElement.addEventListener("mouseenter", handleMouseEnter);
-        parentElement.addEventListener("mouseleave", handleMouseLeave);
-
-        return () => {
-          parentElement.style.cursor = "";
-          document.removeEventListener("mousemove", handleMouseMove);
-          parentElement.removeEventListener("mouseenter", handleMouseEnter);
-          parentElement.removeEventListener("mouseleave", handleMouseLeave);
-        };
+        originalParentCursor = parentElement.style.cursor;
+        parentElement.style.cursor = "none"; 
       }
+
+      return () => {
+        document.documentElement.style.cursor = originalHtmlCursor;
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseenter", handleMouseEnterDoc);
+        document.removeEventListener("mouseleave", handleMouseLeaveDoc);
+        if (parentElement) {
+          parentElement.style.cursor = originalParentCursor;
+        }
+      };
     }
-  }, [x, y]);
+  }, [x, y]); // isActive removed as it's controlled by document mouseenter/leave
 
   return (
     <>
       <div ref={containerRef} />
       <AnimatePresence>
-        {isActive && (
+        {isActive && ( // Always render if active
           <motion.div
-            className="transform-[translate(-50%,-50%)] pointer-events-none fixed z-50"
+            className={cn(
+              "transform-[translate(-50%,-50%)] pointer-events-none fixed z-[9999]", // Increased z-index
+              className
+            )}
             style={{
               top: y,
               left: x,

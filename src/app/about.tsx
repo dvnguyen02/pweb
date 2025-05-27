@@ -183,7 +183,7 @@ const currentProject = {
 	coverImage: "/images/projects/7.gif",
 	name: "Notetaker",
 	description:
-			"Notetaker performs real-time transcription of audio streams from both system output and microphone input, accurately capturing spoken content from meetings, lectures, and other sources. The transcribed data can be queried using a large language model (LLM) for further analysis or summarization",
+			"AI Real-Time Notetaker",
 	link: "https://github.com/dvnguyen02/notetaker",
 	tags: [
 		{ name: "Next.js", icon: <SiNextdotjs className="w-4 h-4" /> },
@@ -198,7 +198,7 @@ const currentProject = {
 const placeholderProject = {
 	coverImage: "/images/projects/1.png", 
 	name: "RAG",
-	description: "An intelligent chatbot for PBTech that helps customers find laptops through natural language conversations. Uses Retrieval-Augmented Generation to search 500+ products and provide personalized recommendations, comparisons, and technical specifications.",
+	description: "AI Laptop Shopping Assistant",
 	link: "https://pbtechrag.onrender.com",
 	tags: [
 		{ name: "React", icon: <SiReact className="w-4 h-4" /> },
@@ -209,15 +209,13 @@ const placeholderProject = {
 };
 
 export function About() {
-    const [isCurrentProjectExpanded, setCurrentProjectExpanded] = useState(false);
+    const [expandedProject, setExpandedProject] = useState<string | null>(null); // Changed state
     const [mounted, setMounted] = useState(false);
     // Scroll lock/restore state
     const scrollPositionRef = React.useRef<number>(0);
     const aboutContainerRef = React.useRef<HTMLDivElement>(null); // Ref for the About component's root
 
-    React.useEffect(() => { setMounted(true); }, []);
-
-    // Scroll lock and restore logic
+    React.useEffect(() => { setMounted(true); }, []);    // Scroll lock and restore logic
     React.useEffect(() => {
         if (!mounted) {
             return;
@@ -225,7 +223,7 @@ export function About() {
 
         const scrollableViewport = aboutContainerRef.current?.closest<HTMLElement>('[data-radix-scroll-area-viewport]');
 
-        if (isCurrentProjectExpanded) {
+        if (expandedProject) {
             // Save scroll position of the ScrollArea viewport
             if (scrollableViewport) {
                 scrollPositionRef.current = scrollableViewport.scrollTop;
@@ -247,16 +245,29 @@ export function About() {
                 document.documentElement.style.overflow = originalDocumentOverflow;
                 document.body.style.paddingRight = originalBodyPaddingRight;
 
-                // Restore ScrollArea's scroll position
+                // Restore ScrollArea's scroll position with multiple attempts for reliability
                 if (scrollableViewport) {
+                    const savedPosition = scrollPositionRef.current;
+                    
+                    // Immediate restore
+                    scrollableViewport.scrollTop = savedPosition;
+                    
+                    // Backup restore attempts with slight delays
                     requestAnimationFrame(() => {
-                        scrollableViewport.scrollTop = scrollPositionRef.current;
+                        scrollableViewport.scrollTop = savedPosition;
                     });
+                    
+                    setTimeout(() => {
+                        scrollableViewport.scrollTop = savedPosition;
+                    }, 50);
+                    
+                    setTimeout(() => {
+                        scrollableViewport.scrollTop = savedPosition;
+                    }, 100);
                 }
             };
         }
-        // No explicit 'else' needed here, as the cleanup function handles restoration when isCurrentProjectExpanded becomes false.
-    }, [isCurrentProjectExpanded, mounted]); // mounted ensures aboutContainerRef.current is available
+    }, [expandedProject, mounted]);
 
 	return (
 		<div ref={aboutContainerRef} className="w-full h-full flex flex-col items-center relative">
@@ -503,18 +514,17 @@ export function About() {
 
                     {/* Current Project Section */}
 					<h3 className="text-xl font-bold">My Current Projects</h3>
-					<div className="w-full flex flex-col items-center gap-8">
-					  {/* Notetaker Project Card */}
+					<div className="w-full flex flex-col items-center gap-8">					  {/* Notetaker Project Card */}
 					  <div className="w-full flex justify-center">
 					    <Card
-					      className={`relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full ${isCurrentProjectExpanded ? 'max-w-2xl max-h-[80vh] scale-100 ring-4 ring-primary shadow-2xl animate-in fade-in' : 'max-w-lg'} transition-all duration-300`}
+					      className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-lg transition-all duration-300"
 					      style={{
 					        background: 'linear-gradient(180deg, rgba(24,24,27,0.9) 60%, rgba(24,24,27,1) 100%)',
-					        boxShadow: '0 8px 32px 0 rgba(0,0,0,0.37)'
+					        boxShadow: '0 0 15px 2px rgba(255, 255, 255, 0.08), 0 8px 32px 0 rgba(0,0,0,0.37)'
 					      }}
-					      onClick={() => { if (!isCurrentProjectExpanded) setCurrentProjectExpanded(true); }}
+					      onClick={() => { if (!expandedProject) setExpandedProject('notetaker'); }}
 					    >
-					      {!isCurrentProjectExpanded && (
+					      {expandedProject !== 'notetaker' && (
 					        <>
 					          <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden rounded-b-none rounded-t-2xl">
 					            <Image
@@ -545,7 +555,7 @@ export function About() {
 					            </p>
 					            <button
 					              className="mt-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
-					              onClick={e => { e.stopPropagation(); setCurrentProjectExpanded(true); }}
+					              onClick={e => { e.stopPropagation(); setExpandedProject('notetaker'); }}
 					            >
 					              More details
 					            </button>
@@ -553,123 +563,144 @@ export function About() {
 					        </>
 					      )}
 					    </Card>
-					  </div>
-					  {/* Placeholder Project Card */}
+					  </div>					  {/* Placeholder Project Card */}
 					  <div className="w-full flex justify-center">
 					    <Card
 					      className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-lg transition-all duration-300"
 					      style={{
 					        background: 'linear-gradient(180deg, rgba(24,24,27,0.9) 60%, rgba(24,24,27,1) 100%)',
-					        boxShadow: '0 8px 32px 0 rgba(0,0,0,0.37)'
+					        boxShadow: '0 0 15px 2px rgba(255, 255, 255, 0.08), 0 8px 32px 0 rgba(0,0,0,0.37)'
 					      }}
+                          onClick={() => { if (!expandedProject) setExpandedProject('rag'); }}
 					    >
-					      <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden rounded-b-none rounded-t-2xl">
-					        <Image
-					          src={placeholderProject.coverImage}
-					          alt={placeholderProject.name}
-					          fill
-					          className="object-cover w-full h-full"
-					          style={{filter: 'blur(0px)'}}
-					          priority
-					        />
-					        <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] via-[#18181b]/80 to-transparent" />
-					      </div>
-					      <CardHeader className="pb-0 pt-4 px-6 flex-col items-start bg-transparent">
-					        <h4 className="font-bold text-2xl text-white drop-shadow-lg mb-2">{placeholderProject.name}</h4>
-					        <div className="flex flex-row gap-2 items-center mb-3">
-					          <Link
-					            href={placeholderProject.link}
-					            target="_blank"
-					            rel="noopener noreferrer"
-					            className="text-white/80 hover:text-primary"
-					            aria-label={`Open ${placeholderProject.name} in new tab`}
-					          >
-					            <SquareArrowOutUpRightIcon className="size-5" />
-					          </Link>
-					        </div>
-					        <div className="flex flex-wrap gap-2 items-center mb-2">
-					          {placeholderProject.tags.map((tag) => (
-					            <span
-					              key={tag.name}
-					              className="flex items-center bg-[#23232a] border border-[#23232a] rounded-full text-white/90 gap-2 text-sm px-3 py-1.5 shadow"
-					            >
-					              {tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: 'w-5 h-5 mr-1' })}
-					              {tag.name}
-					            </span>
-					          ))}
-					        </div>
-					        <p className="text-white/80 text-base mt-2 mb-1">
-					          {placeholderProject.description}
-					        </p>
-					      </CardHeader>
+                          {expandedProject !== 'rag' && (
+                            <>
+					          <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden rounded-b-none rounded-t-2xl">
+					            <Image
+					              src={placeholderProject.coverImage}
+					              alt={placeholderProject.name}
+					              fill
+					              className="object-cover w-full h-full"
+					              style={{filter: 'blur(0px)'}}
+					              priority
+					            />
+					            <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] via-[#18181b]/80 to-transparent" />
+					          </div>
+					          <CardHeader className="pb-0 pt-4 px-6 flex-col items-start bg-transparent">
+					            <h4 className="font-bold text-2xl text-white drop-shadow-lg mb-2">{placeholderProject.name}</h4>
+					            <div className="flex flex-row gap-2 items-center mb-3">
+					              <Link
+					                href={placeholderProject.link}
+					                target="_blank"
+					                rel="noopener noreferrer"
+					                className="text-white/80 hover:text-primary"
+					                aria-label={`Open ${placeholderProject.name} in new tab`}
+					              >
+					                <SquareArrowOutUpRightIcon className="size-5" />
+					              </Link>
+					            </div>
+					            <div className="flex flex-wrap gap-2 items-center mb-2">
+					              {placeholderProject.tags.map((tag) => (
+					                <span
+					                  key={tag.name}
+					                  className="flex items-center bg-[#23232a] border border-[#23232a] rounded-full text-white/90 gap-2 text-sm px-3 py-1.5 shadow"
+					                >
+					                  {tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: 'w-5 h-5 mr-1' })}
+					                  {tag.name}
+					                </span>
+					              ))}
+					            </div>
+					            <p className="text-white/80 text-base mt-2 mb-1">
+					              {placeholderProject.description}
+					            </p>
+                                <button
+                                  className="mt-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+                                  onClick={e => { e.stopPropagation(); setExpandedProject('rag'); }}
+                                >
+                                  More details
+                                </button>
+					          </CardHeader>
+                            </>
+                          )}
 					    </Card>
 					  </div>
 					</div>
 				</div>
 			</div>
 			{/* Modal Portal for expanded card */}
-			{mounted && isCurrentProjectExpanded && typeof window !== 'undefined' && createPortal(
+			{mounted && expandedProject && typeof window !== 'undefined' && createPortal(
                 <div
                     className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md"
                     onClick={e => {
                         // Only close if the click is directly on the overlay (not on children)
                         if (e.target === e.currentTarget) {
-                            setCurrentProjectExpanded(false);
+                            setExpandedProject(null);
                         }
                     }}
                 >
-                    <Card
-                        className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-2xl max-h-[80vh] scale-100 ring-4 ring-primary shadow-2xl animate-in fade-in transition-all duration-300"
-                        onClick={e => e.stopPropagation()}
-                    >
-                        <button
-                            onClick={e => { e.stopPropagation(); setCurrentProjectExpanded(false); }}
-                            className="absolute top-3 right-3 z-[51] p-2 bg-background/70 hover:bg-background/90 rounded-full text-muted-foreground hover:text-primary transition-colors"
-                            aria-label="Close project details"
-                        >
-                            <XIcon className="size-5" />
-                        </button>
-                        <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden rounded-b-none rounded-t-2xl">
-                            <Image
-                                src={currentProject.coverImage}
-                                alt={currentProject.name}
-                                fill
-                                className="object-cover w-full h-full"
-                                style={{filter: 'blur(0px)'}}
-                                priority
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] via-[#18181b]/80 to-transparent" />
-                        </div>
-                        <CardHeader className="pb-0 pt-4 px-6 flex-col items-start bg-transparent">
-                            <h4 className="font-bold text-2xl text-white drop-shadow-lg mb-2">{currentProject.name}</h4>
-                            <div className="flex flex-wrap gap-2 items-center mb-2">
-                                {currentProject.tags.map((tag) => (
-                                    <span
-                                        key={tag.name}
-                                        className="flex items-center bg-[#23232a] border border-[#23232a] rounded-full text-white/90 gap-2 text-sm px-3 py-1.5 shadow"
-                                    >
-                                        {tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: 'w-5 h-5 mr-1' })}
-                                        {tag.name}
-                                    </span>
-                                ))}
-                            </div>
-                            <p className="text-white/80 text-base mt-2 mb-1">
-                                {currentProject.description}
-                            </p>
-                            {/* Add more detailed info here if needed */}
-                            <div className="mt-4">
-                                <a
-                                    href={currentProject.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
-                                    onClick={e => e.stopPropagation()}
+                    {(() => {
+                        const projectData = expandedProject === 'notetaker' ? currentProject : placeholderProject;
+                        return (
+                            <Card
+                                className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-2xl max-h-[80vh] scale-100 ring-4 ring-primary shadow-2xl animate-in fade-in transition-all duration-300"
+                                onClick={e => e.stopPropagation()}
+                                style={{ boxShadow: '0 0 20px 3px rgba(255, 255, 255, 0.12), 0 25px 50px -12px rgba(0, 0, 0, 0.3)' }}
+                            >
+                                <button
+                                    onClick={e => { e.stopPropagation(); setExpandedProject(null); }}
+                                    className="absolute top-3 right-3 z-[51] p-2 bg-background/70 hover:bg-background/90 rounded-full text-muted-foreground hover:text-primary transition-colors"
+                                    aria-label="Close project details"
                                 >
-                                    View on GitHub <SquareArrowOutUpRightIcon className="size-4" />
-                                </a>
-                            </div>
-                        </CardHeader>
-                    </Card>
+                                    <XIcon className="size-5" />
+                                </button>
+                                <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden rounded-b-none rounded-t-2xl">
+                                    <Image
+                                        src={projectData.coverImage}
+                                        alt={projectData.name}
+                                        fill
+                                        className="object-cover w-full h-full"
+                                        style={{filter: 'blur(0px)'}}
+                                        priority
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] via-[#18181b]/80 to-transparent" />
+                                </div>
+                                <CardHeader className="pb-0 pt-4 px-6 flex-col items-start bg-transparent">
+                                    <h4 className="font-bold text-2xl text-white drop-shadow-lg mb-2">{projectData.name}</h4>
+                                    <div className="flex flex-wrap gap-2 items-center mb-2">
+                                        {projectData.tags.map((tag) => (
+                                            <span
+                                                key={tag.name}
+                                                className="flex items-center bg-[#23232a] border border-[#23232a] rounded-full text-white/90 gap-2 text-sm px-3 py-1.5 shadow"
+                                            >
+                                                {tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: 'w-5 h-5 mr-1' })}
+                                                {tag.name}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <p className="text-white/80 text-base mt-2 mb-1">
+                                        {projectData.description}
+                                    </p>
+                                    {/* Placeholder for more detailed description */}
+                                    <p className="text-white/70 text-sm mt-3 mb-3">
+										An intelligent chatbot for PBTech that helps customers find laptops through natural language conversations. Uses Retrieval-Augmented Generation to search 500+ products and provide personalized recommendations, comparisons, and technical specifications.
+
+                                    </p>
+                                    {/* Add more detailed info here if needed */}
+                                    <div className="mt-4 mb-4"> {/* Added mb-4 for spacing */}
+                                        <a
+                                            href={projectData.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+                                            onClick={e => e.stopPropagation()}
+                                        >
+                                            {projectData.name === "Notetaker" ? "View on GitHub" : "Open Link"} <SquareArrowOutUpRightIcon className="size-4" />
+                                        </a>
+                                    </div>
+                                </CardHeader>
+                            </Card>
+                        );
+                    })()}
                 </div>,
                 window.document.body
             )}

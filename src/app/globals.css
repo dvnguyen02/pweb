@@ -201,3 +201,28 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
 .animate-scroll-reverse:hover {
   animation-play-state: paused;
 }
+
+/* Force cursor: none on all interactive elements to prevent default cursor from showing */
+*, *::before, *::after,
+a, button, [role="button"], [tabindex], input, textarea, select, 
+.cursor-pointer, [data-state], [data-radix-collection-item],
+[data-radix-scroll-area-viewport], [data-radix-tooltip-trigger],
+svg, img, [onclick], [onmouseover], [onmouseenter] {
+  cursor: none !important;
+}
+
+/* Also apply to hover and focus states */
+*:hover, *:focus, *:active,
+a:hover, a:focus, a:active, 
+button:hover, button:focus, button:active, 
+[role="button"]:hover, [role="button"]:focus, [role="button"]:active, 
+[tabindex]:hover, [tabindex]:focus, [tabindex]:active,
+input:hover, input:focus, input:active, 
+textarea:hover, textarea:focus, textarea:active, 
+select:hover, select:focus, select:active,
+.cursor-pointer:hover, .cursor-pointer:focus, .cursor-pointer:active,
+[data-state]:hover, [data-state]:focus, [data-state]:active,
+[data-radix-collection-item]:hover, [data-radix-collection-item]:focus, [data-radix-collection-item]:active,
+svg:hover, img:hover, [onclick]:hover, [onmouseover]:hover, [onmouseenter]:hover {
+  cursor: none !important;
+}
