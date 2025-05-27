@@ -268,13 +268,13 @@ export function About() {
 									{skills.map((tech, index) => (
 										<li
 											key={`skills-first-${index}`}
-											className="mx-2 flex items-center gap-2 min-w-[70px] flex-shrink-0 group"
+											className="mx-3 flex flex-col items-center gap-1.5 min-w-[90px] flex-shrink-0 group"
 											title={tech.name}
 										>
 											<div>
 												{tech.icon}
 											</div>
-											<span className="text-base font-medium">
+											<span className="text-base font-medium text-center leading-tight">
 												{tech.name}
 											</span>
 										</li>
@@ -284,13 +284,13 @@ export function About() {
 									{skills.map((tech, index) => (
 										<li
 											key={`skills-second-${index}`}
-											className="mx-2 flex items-center gap-2 min-w-[70px] flex-shrink-0 group"
+											className="mx-3 flex flex-col items-center gap-1.5 min-w-[90px] flex-shrink-0 group"
 											title={tech.name}
 										>
 											<div>
 												{tech.icon}
 											</div>
-											<span className="text-base font-medium">
+											<span className="text-base font-medium text-center leading-tight">
 												{tech.name}
 											</span>
 										</li>
@@ -306,13 +306,13 @@ export function About() {
 									{frameworks.map((tech, index) => (
 										<li
 											key={`frameworks-first-${index}`}
-											className="mx-2 flex items-center gap-2 min-w-[120px] flex-shrink-0 group"
+											className="mx-3 flex flex-col items-center gap-1.5 min-w-[90px] flex-shrink-0 group"
 											title={tech.name}
 										>
 											<div>
 												{tech.icon}
 											</div>
-											<span className="text-base font-medium">
+											<span className="text-base font-medium text-center leading-tight">
 												{tech.name}
 											</span>
 										</li>
@@ -322,13 +322,13 @@ export function About() {
 									{frameworks.map((tech, index) => (
 										<li
 											key={`frameworks-second-${index}`}
-											className="mx-2 flex items-center gap-2 min-w-[120px] flex-shrink-0 group"
+											className="mx-3 flex flex-col items-center gap-1.5 min-w-[90px] flex-shrink-0 group"
 											title={tech.name}
 										>
 											<div>
 												{tech.icon}
 											</div>
-											<span className="text-base font-medium">
+											<span className="text-base font-medium text-center leading-tight">
 												{tech.name}
 											</span>
 										</li>

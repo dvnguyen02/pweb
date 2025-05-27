@@ -155,7 +155,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
           const actualStep = Math.floor((500 / stepsPerEpoch) * step);
           const trainingLine = `Epoch [${epoch}/3], Step [${actualStep}/500], Loss: ${loss}, Accuracy: ${accuracy}%, LR: ${lr}`;
           
-          const stepDelay = 1000; // ~1000ms per step
+          const stepDelay = 600;
           totalTrainingTime += stepDelay;
           
           await new Promise(resolve => setTimeout(resolve, stepDelay));
