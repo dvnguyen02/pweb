@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { Figtree } from "next/font/google";
-
+import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/lib/providers/theme-provider";
 import { ClientPointer } from "@/components/client-pointer";
 
@@ -60,6 +60,7 @@ export default function RootLayout({
             {children}
           </ThemeProvider>
           <ClientPointer />
+          <Analytics />
         </main>
       </body>
     </html>
