@@ -11,14 +11,18 @@ import TerminalLoader from "@/components/TerminalLoader";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 
+import { Main } from "./main";
 import { About } from "./about";
 import { Projects } from "./projects";
 import { Resume } from "./resume";
+import Contact from "./contact";
 
 const tabs = [
+	{ name: "Main", component: <Main /> },
 	{ name: "About", component: <About /> },
 	{ name: "Projects", component: <Projects /> },
 	{ name: "Resume", component: <Resume /> },
+	{ name: "Contact", component: <Contact /> },
 ];
 
 export default function Page() {	const [background, setBackground] = useState<string>(
