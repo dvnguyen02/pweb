@@ -33,9 +33,13 @@ import {
 	SiPytorch,
 	SiDocker,
 	SiFastapi,
-	// SiFastify, // Removed unused import
-	SiWebrtc, 
+	SiWebrtc,
+	SiFlask,
+	SiLangchain 
 } from "react-icons/si";
+import { Card, CardHeader, CardBody, Image as HeroImage } from "@heroui/react";
+import { createPortal } from "react-dom";
+
 const skills = [
 	{
 		name: "Python",
@@ -179,9 +183,10 @@ const currentProject = {
 	coverImage: "/images/projects/7.gif",
 	name: "Notetaker",
 	description:
-		"Notetaker automatically transcribes audio from your system and microphone in real-time, capturing every word of your meetings without manual effort.",
+			"Notetaker performs real-time transcription of audio streams from both system output and microphone input, accurately capturing spoken content from meetings, lectures, and other sources. The transcribed data can be queried using a large language model (LLM) for further analysis or summarization",
 	link: "https://github.com/dvnguyen02/notetaker",
 	tags: [
+		{ name: "Next.js", icon: <SiNextdotjs className="w-4 h-4" /> },
 		{ name: "FastAPI", icon: <SiFastapi className="w-4 h-4" /> },
 		{ name: "React", icon: <SiReact className="w-4 h-4" /> },
 		{ name: "LangGraph", icon: <Image src="/images/orgs/langgraph.png" alt="LangGraph" width={16} height={16} /> }, // Placeholder for LangGraph
@@ -190,26 +195,73 @@ const currentProject = {
 	],
 };
 
+const placeholderProject = {
+	coverImage: "/images/projects/1.png", 
+	name: "RAG",
+	description: "An intelligent chatbot for PBTech that helps customers find laptops through natural language conversations. Uses Retrieval-Augmented Generation to search 500+ products and provide personalized recommendations, comparisons, and technical specifications.",
+	link: "https://pbtechrag.onrender.com",
+	tags: [
+		{ name: "React", icon: <SiReact className="w-4 h-4" /> },
+		{ name: "Python", icon: <SiPython className="w-4 h-4" /> },
+		{ name: "Flask", icon: <SiFlask className="w-4 h-4" /> },
+		{ name: "LangGraph", icon: <Image src="/images/orgs/langgraph.png" alt="LangGraph" width={16} height={16} /> },
+	],
+};
+
 export function About() {
     const [isCurrentProjectExpanded, setCurrentProjectExpanded] = useState(false);
+    const [mounted, setMounted] = useState(false);
+    // Scroll lock/restore state
+    const scrollPositionRef = React.useRef<number>(0);
+    const aboutContainerRef = React.useRef<HTMLDivElement>(null); // Ref for the About component's root
 
-    // Function to stop propagation for the actual link click
-    // and ensure the modal doesn't close if the link is clicked.
-    const handleLinkClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
+    React.useEffect(() => { setMounted(true); }, []);
+
+    // Scroll lock and restore logic
+    React.useEffect(() => {
+        if (!mounted) {
+            return;
+        }
+
+        const scrollableViewport = aboutContainerRef.current?.closest<HTMLElement>('[data-radix-scroll-area-viewport]');
+
+        if (isCurrentProjectExpanded) {
+            // Save scroll position of the ScrollArea viewport
+            if (scrollableViewport) {
+                scrollPositionRef.current = scrollableViewport.scrollTop;
+            }
+
+            // Prevent background scroll and compensate for scrollbar
+            const originalDocumentOverflow = document.documentElement.style.overflow;
+            const originalBodyPaddingRight = document.body.style.paddingRight;
+            
+            document.documentElement.style.overflow = 'hidden';
+            
+            const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            if (scrollbarWidth > 0) {
+                document.body.style.paddingRight = `${scrollbarWidth}px`;
+            }
+
+            return () => {
+                // Restore document/body styles
+                document.documentElement.style.overflow = originalDocumentOverflow;
+                document.body.style.paddingRight = originalBodyPaddingRight;
+
+                // Restore ScrollArea's scroll position
+                if (scrollableViewport) {
+                    requestAnimationFrame(() => {
+                        scrollableViewport.scrollTop = scrollPositionRef.current;
+                    });
+                }
+            };
+        }
+        // No explicit 'else' needed here, as the cleanup function handles restoration when isCurrentProjectExpanded becomes false.
+    }, [isCurrentProjectExpanded, mounted]); // mounted ensures aboutContainerRef.current is available
 
 	return (
-		<div className="w-full h-full flex flex-col items-center relative"> {/* Added relative for z-indexing context */}
-            {/* Overlay */}
-            {isCurrentProjectExpanded && (
-                <div
-                    className="fixed inset-0 bg-black/70 backdrop-blur-md z-40 ease-in-out animate-in fade-in"
-                    onClick={() => setCurrentProjectExpanded(false)}
-                />
-            )}
-			<div className="flex flex-col items-center w-full gap-6 sm:gap-3">
-				<div className="flex flex-col gap-6 max-w-2xl w-full">
+		<div ref={aboutContainerRef} className="w-full h-full flex flex-col items-center relative">
+            <div className="flex flex-col items-center w-full gap-6 sm:gap-3">
+                <div className="flex flex-col gap-6 max-w-2xl w-full">
 					{/* Header Section - matching the image style */}
 					<div className="relative flex flex-col gap-3 pb-6 border border-border/50 rounded-lg p-6 bg-card">
 						{/* Social Icons - Top Right */}
@@ -218,7 +270,7 @@ export function About() {
 								<a
 									href={link.url}
 									key={link.name}
-									className="sm:cursor-none p-2 rounded-lg bg-background hover:bg-muted border border-border/50"
+									className="p-2 rounded-lg bg-background hover:bg-muted border border-border/50"
 									target="_blank"
 									rel="noopener noreferrer"
 									aria-label={link.name} // Added aria-label for accessibility
@@ -231,13 +283,13 @@ export function About() {
 								<Tooltip>
 									<TooltipTrigger asChild>
 										<div
-											className="sm:cursor-none p-2 rounded-lg bg-background hover:bg-muted border border-border/50"
+											className="p-2 rounded-lg bg-background hover:bg-muted border border-border/50"
 										>
-											<PhoneIcon className="w-5 h-5" /> {/* Adjust size as needed */}
+											<PhoneIcon className="w-5 h-5" />
 										</div>
 									</TooltipTrigger>
 									<TooltipContent>
-										<p>+64 221900286</p> {/* Placeholder phone number */}
+										<p>+64 221900286</p> 
 									</TooltipContent>
 								</Tooltip>
 							</TooltipProvider>
@@ -450,92 +502,177 @@ export function About() {
 					{/* End of Experience and Education Section */}
 
                     {/* Current Project Section */}
-					<h3 className="text-xl font-bold">My Current Project</h3>
-					
-                    {/* Container for positioning the card when expanded */}
-                    <div 
-                        className={`
-                            w-full
-                            ${isCurrentProjectExpanded 
-                                ? 'fixed inset-0 z-50 flex items-center justify-center p-4' 
-                                : 'relative'
-                            }
-                        `}
-                    >
-                        {/* The actual project card */}
-                        <div 
-                            onClick={() => { if (!isCurrentProjectExpanded) setCurrentProjectExpanded(true); }}
-                            className={`
-                                relative flex flex-col bg-muted rounded-xl w-full
-                                ease-in-out
-                                ${isCurrentProjectExpanded 
-                                    ? 'max-w-2xl max-h-[80vh] p-4 scale-100 ring-4 ring-primary shadow-2xl overflow-y-auto animate-in fade-in gap-2' // Expanded styles: max-w-2xl, max-h-[80vh]
-                                    : 'group sm:cursor-none p-1 hover:ring-4 ring-neutral-200 dark:ring-neutral-700 gap-1 max-w-md' // Collapsed styles: max-w-md
-                                }
-                            `}
-                        >
-                            {isCurrentProjectExpanded && (
-                                <button 
-                                    onClick={(e) => { e.stopPropagation(); setCurrentProjectExpanded(false); }}
-                                    className="absolute top-3 right-3 z-[51] p-2 bg-background/70 hover:bg-background/90 rounded-full text-muted-foreground hover:text-primary transition-colors"
-                                    aria-label="Close project details"
-                                >
-                                    <XIcon className="size-5" />
-                                </button>
-                            )}
-							<Image
-								src={currentProject.coverImage}
-								alt={currentProject.name}
-								width={1280} // Keep original width/height for aspect ratio, actual size controlled by className
-								height={720}
-								className={`aspect-video rounded-lg ${isCurrentProjectExpanded ? 'w-full' : 'w-full'}`}
-							/>
-							<div className={`flex flex-col ${isCurrentProjectExpanded ? 'gap-2' : 'gap-1'}`}> {/* Collapsed: gap-1 (this is for content below image) */}
-								<div className="flex flex-row gap-2 items-center">
-									<h4 className={`font-bold ${isCurrentProjectExpanded ? 'text-3xl' : 'text-base'}`}>{currentProject.name}</h4> {/* Collapsed: text-base */}
-                                    <Link 
-                                        href={currentProject.link} 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        onClick={handleLinkClick} 
-                                        className={`
-                                            text-muted-foreground hover:text-primary
-                                            ${isCurrentProjectExpanded ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
-                                        `}
-                                        aria-label={`Open ${currentProject.name} in new tab`}
-                                    >
-									    <SquareArrowOutUpRightIcon className="size-5" />
-                                    </Link>
-								</div>
-								<p className={`text-muted-foreground ${isCurrentProjectExpanded ? 'text-lg' : 'text-xs'}`}>
-									{currentProject.description}
-								</p>
-								<div className="flex flex-wrap gap-1.5 items-center"> {/* Gap between tags */}
-									{currentProject.tags.map((tag) => (
-										<span
-											key={tag.name}
-											className={`flex items-center bg-background rounded-full text-muted-foreground 
-                                                        ${isCurrentProjectExpanded 
-                                                            ? 'gap-1.5 text-sm px-3 py-1.5' 
-                                                            : 'gap-0.5 text-xs px-1.5 py-0.5' // Collapsed: smaller text, padding, gap
-                                                        }`}
-										>
-											{tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: `${isCurrentProjectExpanded ? 'w-4 h-4' : 'w-2.5 h-2.5'} ${ (tag.icon as React.ReactElement).props.className || '' }` })}{/* Collapsed icon: w-2.5 h-2.5 */}
-											{tag.name}
-										</span>
-									))}
-								</div>
-							</div>
-						</div>
-                    </div>
-
-					
+					<h3 className="text-xl font-bold">My Current Projects</h3>
+					<div className="w-full flex flex-col items-center gap-8">
+					  {/* Notetaker Project Card */}
+					  <div className="w-full flex justify-center">
+					    <Card
+					      className={`relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full ${isCurrentProjectExpanded ? 'max-w-2xl max-h-[80vh] scale-100 ring-4 ring-primary shadow-2xl animate-in fade-in' : 'max-w-lg'} transition-all duration-300`}
+					      style={{
+					        background: 'linear-gradient(180deg, rgba(24,24,27,0.9) 60%, rgba(24,24,27,1) 100%)',
+					        boxShadow: '0 8px 32px 0 rgba(0,0,0,0.37)'
+					      }}
+					      onClick={() => { if (!isCurrentProjectExpanded) setCurrentProjectExpanded(true); }}
+					    >
+					      {!isCurrentProjectExpanded && (
+					        <>
+					          <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden rounded-b-none rounded-t-2xl">
+					            <Image
+					              src={currentProject.coverImage}
+					              alt={currentProject.name}
+					              fill
+					              className="object-cover w-full h-full"
+					              style={{filter: 'blur(0px)'}}
+					              priority
+					            />
+					            <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] via-[#18181b]/80 to-transparent" />
+					          </div>
+					          <CardHeader className="pb-0 pt-4 px-6 flex-col items-start bg-transparent">
+					            <h4 className="font-bold text-2xl text-white drop-shadow-lg mb-2">{currentProject.name}</h4>
+					            <div className="flex flex-wrap gap-2 items-center mb-2">
+					              {currentProject.tags.map((tag) => (
+					                <span
+					                  key={tag.name}
+					                  className="flex items-center bg-[#23232a] border border-[#23232a] rounded-full text-white/90 gap-2 text-sm px-3 py-1.5 shadow"
+					                >
+					                  {tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: 'w-5 h-5 mr-1' })}
+					                  {tag.name}
+					                </span>
+					              ))}
+					            </div>
+					            <p className="text-white/80 text-base mt-2 mb-1">
+					              {currentProject.description}
+					            </p>
+					            <button
+					              className="mt-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+					              onClick={e => { e.stopPropagation(); setCurrentProjectExpanded(true); }}
+					            >
+					              More details
+					            </button>
+					          </CardHeader>
+					        </>
+					      )}
+					    </Card>
+					  </div>
+					  {/* Placeholder Project Card */}
+					  <div className="w-full flex justify-center">
+					    <Card
+					      className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-lg transition-all duration-300"
+					      style={{
+					        background: 'linear-gradient(180deg, rgba(24,24,27,0.9) 60%, rgba(24,24,27,1) 100%)',
+					        boxShadow: '0 8px 32px 0 rgba(0,0,0,0.37)'
+					      }}
+					    >
+					      <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden rounded-b-none rounded-t-2xl">
+					        <Image
+					          src={placeholderProject.coverImage}
+					          alt={placeholderProject.name}
+					          fill
+					          className="object-cover w-full h-full"
+					          style={{filter: 'blur(0px)'}}
+					          priority
+					        />
+					        <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] via-[#18181b]/80 to-transparent" />
+					      </div>
+					      <CardHeader className="pb-0 pt-4 px-6 flex-col items-start bg-transparent">
+					        <h4 className="font-bold text-2xl text-white drop-shadow-lg mb-2">{placeholderProject.name}</h4>
+					        <div className="flex flex-row gap-2 items-center mb-3">
+					          <Link
+					            href={placeholderProject.link}
+					            target="_blank"
+					            rel="noopener noreferrer"
+					            className="text-white/80 hover:text-primary"
+					            aria-label={`Open ${placeholderProject.name} in new tab`}
+					          >
+					            <SquareArrowOutUpRightIcon className="size-5" />
+					          </Link>
+					        </div>
+					        <div className="flex flex-wrap gap-2 items-center mb-2">
+					          {placeholderProject.tags.map((tag) => (
+					            <span
+					              key={tag.name}
+					              className="flex items-center bg-[#23232a] border border-[#23232a] rounded-full text-white/90 gap-2 text-sm px-3 py-1.5 shadow"
+					            >
+					              {tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: 'w-5 h-5 mr-1' })}
+					              {tag.name}
+					            </span>
+					          ))}
+					        </div>
+					        <p className="text-white/80 text-base mt-2 mb-1">
+					          {placeholderProject.description}
+					        </p>
+					      </CardHeader>
+					    </Card>
+					  </div>
+					</div>
 				</div>
-
-				{/* <div className="order-1 sm:order-2">
-					<ProfileSection />
-				</div> */}
 			</div>
-		</div>
+			{/* Modal Portal for expanded card */}
+			{mounted && isCurrentProjectExpanded && typeof window !== 'undefined' && createPortal(
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md"
+                    onClick={e => {
+                        // Only close if the click is directly on the overlay (not on children)
+                        if (e.target === e.currentTarget) {
+                            setCurrentProjectExpanded(false);
+                        }
+                    }}
+                >
+                    <Card
+                        className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-2xl max-h-[80vh] scale-100 ring-4 ring-primary shadow-2xl animate-in fade-in transition-all duration-300"
+                        onClick={e => e.stopPropagation()}
+                    >
+                        <button
+                            onClick={e => { e.stopPropagation(); setCurrentProjectExpanded(false); }}
+                            className="absolute top-3 right-3 z-[51] p-2 bg-background/70 hover:bg-background/90 rounded-full text-muted-foreground hover:text-primary transition-colors"
+                            aria-label="Close project details"
+                        >
+                            <XIcon className="size-5" />
+                        </button>
+                        <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden rounded-b-none rounded-t-2xl">
+                            <Image
+                                src={currentProject.coverImage}
+                                alt={currentProject.name}
+                                fill
+                                className="object-cover w-full h-full"
+                                style={{filter: 'blur(0px)'}}
+                                priority
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] via-[#18181b]/80 to-transparent" />
+                        </div>
+                        <CardHeader className="pb-0 pt-4 px-6 flex-col items-start bg-transparent">
+                            <h4 className="font-bold text-2xl text-white drop-shadow-lg mb-2">{currentProject.name}</h4>
+                            <div className="flex flex-wrap gap-2 items-center mb-2">
+                                {currentProject.tags.map((tag) => (
+                                    <span
+                                        key={tag.name}
+                                        className="flex items-center bg-[#23232a] border border-[#23232a] rounded-full text-white/90 gap-2 text-sm px-3 py-1.5 shadow"
+                                    >
+                                        {tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: 'w-5 h-5 mr-1' })}
+                                        {tag.name}
+                                    </span>
+                                ))}
+                            </div>
+                            <p className="text-white/80 text-base mt-2 mb-1">
+                                {currentProject.description}
+                            </p>
+                            {/* Add more detailed info here if needed */}
+                            <div className="mt-4">
+                                <a
+                                    href={currentProject.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+                                    onClick={e => e.stopPropagation()}
+                                >
+                                    View on GitHub <SquareArrowOutUpRightIcon className="size-4" />
+                                </a>
+                            </div>
+                        </CardHeader>
+                    </Card>
+                </div>,
+                window.document.body
+            )}
+        </div>
 	);
 }
