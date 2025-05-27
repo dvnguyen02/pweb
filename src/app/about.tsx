@@ -133,22 +133,25 @@ const education = [
 		],
 		startDate: "Mar 2022",
 		endDate: "June 2025 ",
-	}
-];
-
-const certifications = [
+	},
 	{
 		logo: "/images/orgs/dlai.png",
 		name: "Deep Learning Specialization",
-		issuer: "DeepLearning.AI",
-		url: "https://coursera.org/share/28858a91ab81b6eedc6f26fee08eb2a3",
+		institution: "DeepLearning.AI",
+		description: [
+			"Comprehensive understanding of deep learning fundamentals",
+		],
+		url: "https://coursera.org/share/28858a91ab81b6eedc6f26fee08eb2a3"
 	},
 	{
 		logo: "/images/orgs/aws.png",
 		name: "Data Engineering Specialization",
-		issuer: "AWS & DeepLearning.AI",
-		url: "https://coursera.org/share/709c4292daa131efdf2876dc07a45b44",
-	},
+		institution: "AWS & DeepLearning.AI",
+		description: [
+			"Worked with AWS data engineering services and their best practices",
+		],
+		url: "https://coursera.org/share/709c4292daa131efdf2876dc07a45b44"
+	}
 ];
 
 const links = [
@@ -183,7 +186,6 @@ const currentProject = {
 		{ name: "React", icon: <SiReact className="w-4 h-4" /> },
 		{ name: "LangGraph", icon: <Image src="/images/orgs/langgraph.png" alt="LangGraph" width={16} height={16} /> }, // Placeholder for LangGraph
 		{ name: "Python", icon: <SiPython className="w-4 h-4" /> },
-		{ name: "RAG", icon: null }, // RAG is a concept
 		{ name: "WebRTC", icon: <SiWebrtc className="w-4 h-4" /> },
 	],
 };
@@ -260,35 +262,35 @@ export function About() {
 					{/* Auto-Scrolling Icon Slider - Two Rows */}
 					<div className="relative w-full mt-2 mb-6 space-y-4">
 						{/* First Row - Languages & Core Technologies */}
-						<div className="w-full overflow-hidden slider-mask"> {/* Changed: Removed inline-flex, flex-nowrap */}
-							<div className="flex animate-scroll"> {/* Added: New wrapper div with animation and flex */}
-								<ul className="flex items-center justify-center md:justify-start flex-shrink-0"> {/* Changed: Removed animation, added flex-shrink-0 */}
+						<div className="w-full overflow-hidden slider-mask">
+							<div className="flex animate-scroll">
+								<ul className="flex items-center justify-center md:justify-start flex-shrink-0">
 									{skills.map((tech, index) => (
 										<li
 											key={`skills-first-${index}`}
-											className="mx-4 flex flex-col items-center gap-2 min-w-[100px] flex-shrink-0 group" // Changed: min-w
+											className="mx-2 flex items-center gap-2 min-w-[70px] flex-shrink-0 group"
 											title={tech.name}
 										>
 											<div>
 												{tech.icon}
 											</div>
-											<span className="text-base font-medium text-center leading-tight"> {/* Changed: text-sm to text-base */}
+											<span className="text-base font-medium">
 												{tech.name}
 											</span>
 										</li>
 									))}
 								</ul>
-								<ul className="flex items-center justify-center md:justify-start flex-shrink-0" aria-hidden="true"> {/* Changed: Removed animation, added flex-shrink-0 */}
+								<ul className="flex items-center justify-center md:justify-start flex-shrink-0" aria-hidden="true">
 									{skills.map((tech, index) => (
 										<li
 											key={`skills-second-${index}`}
-											className="mx-4 flex flex-col items-center gap-2 min-w-[100px] flex-shrink-0 group" // Changed: min-w
+											className="mx-2 flex items-center gap-2 min-w-[70px] flex-shrink-0 group"
 											title={tech.name}
 										>
 											<div>
 												{tech.icon}
 											</div>
-											<span className="text-base font-medium text-center leading-tight"> {/* Changed: text-sm to text-base */}
+											<span className="text-base font-medium">
 												{tech.name}
 											</span>
 										</li>
@@ -298,35 +300,35 @@ export function About() {
 						</div>
 
 						{/* Second Row - Frameworks & Tools */}
-						<div className="w-full overflow-hidden slider-mask"> {/* Changed: Removed inline-flex, flex-nowrap */}
-							<div className="flex animate-scroll-reverse"> {/* Added: New wrapper div with animation and flex */}
-								<ul className="flex items-center justify-center md:justify-start flex-shrink-0"> {/* Changed: Removed animation, added flex-shrink-0 */}
+						<div className="w-full overflow-hidden slider-mask">
+							<div className="flex animate-scroll-reverse">
+								<ul className="flex items-center justify-center md:justify-start flex-shrink-0">
 									{frameworks.map((tech, index) => (
 										<li
 											key={`frameworks-first-${index}`}
-											className="mx-4 flex flex-col items-center gap-2 min-w-[100px] flex-shrink-0 group" // Changed: min-w
+											className="mx-2 flex items-center gap-2 min-w-[120px] flex-shrink-0 group"
 											title={tech.name}
 										>
 											<div>
 												{tech.icon}
 											</div>
-											<span className="text-base font-medium text-center leading-tight"> {/* Changed: text-sm to text-base */}
+											<span className="text-base font-medium">
 												{tech.name}
 											</span>
 										</li>
 									))}
 								</ul>
-								<ul className="flex items-center justify-center md:justify-start flex-shrink-0" aria-hidden="true"> {/* Changed: Removed animation, added flex-shrink-0 */}
+								<ul className="flex items-center justify-center md:justify-start flex-shrink-0" aria-hidden="true">
 									{frameworks.map((tech, index) => (
 										<li
 											key={`frameworks-second-${index}`}
-											className="mx-4 flex flex-col items-center gap-2 min-w-[100px] flex-shrink-0 group" // Changed: min-w
+											className="mx-2 flex items-center gap-2 min-w-[120px] flex-shrink-0 group"
 											title={tech.name}
 										>
 											<div>
 												{tech.icon}
 											</div>
-											<span className="text-base font-medium text-center leading-tight"> {/* Changed: text-sm to text-base */}
+											<span className="text-base font-medium">
 												{tech.name}
 											</span>
 										</li>
@@ -390,27 +392,37 @@ export function About() {
 								{education.map((edu) => (
 									<div
 										key={edu.institution}
-										className="flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700" // Changed dark:hover:ring-neutral-900 to dark:hover:ring-neutral-700
+										className="flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
 									>
 										<div className="flex flex-row flex-1 gap-2">
-											{/* You might want to add a generic school icon or specific logos like with experience */}
 											{edu.logo && (
 												<Image
 													src={edu.logo}
 													alt={edu.institution}
 													width={256}
 													height={256}
-													className="size-12 sm:size-14 rounded-full flex"
+													className="size-10 sm:size-14 rounded-full flex"
 												/>
 											)}
 											<div className="flex flex-col">
-												<div className="flex justify-between items-center"> {/* Changed items-start to items-center */}
-													<p className="text-lg font-semibold">
-														{edu.name}
-													</p>
-													<p className="text-sm"> {/* Removed text-right, whitespace-nowrap, pl-2 */}
-														{edu.startDate} - {/* Removed <br/> */}
-														{edu.endDate}
+												<div className="flex justify-between items-center">
+													<div className="flex items-center gap-2">
+														<p className="text-lg font-semibold">
+															{edu.name}
+														</p>
+														{edu.url && (
+															<Link 
+																href={edu.url}
+																target="_blank"
+																rel="noopener noreferrer"
+																className="text-muted-foreground hover:text-primary"
+															>
+																<SquareArrowOutUpRightIcon className="size-4" />
+															</Link>
+														)}
+													</div>
+													<p className="text-sm">
+														{edu.startDate} - {edu.endDate}
 													</p>
 												</div>
 												<p className="text-sm">
@@ -421,7 +433,7 @@ export function About() {
 														{edu.description.map((desc, index) => (
 															<span
 																key={index}
-																className="block mb-2" // Changed mb-1 to mb-2
+																className="block mb-2"
 															>
 																• {desc}
 															</span>
@@ -516,37 +528,6 @@ export function About() {
 							</div>
 						</div>
                     </div>
-
-					<h3 className="text-xl font-bold">Certifications 📜</h3>
-					<div className="flex flex-col gap-3">
-						{certifications.map((cert) => (
-							<a
-								key={cert.name}
-								href={cert.url}
-								target="_blank"
-								rel="noopener noreferrer"
-								className="sm:cursor-none flex flex-row gap-2 justify-between max-w-2xl p-3 rounded-xl bg-muted hover:ring-4 hover:ring-neutral-200 dark:hover:ring-neutral-700"
-							>
-								<div className="flex flex-row flex-1 gap-2">
-									<Image
-										src={cert.logo}
-										alt={cert.name}
-										width={256}
-										height={256}
-										className="size-12 sm:size-14 rounded-full flex"
-									/>
-									<div className="flex flex-col">
-										<p className="text-lg font-semibold">
-											{cert.name}
-										</p>
-										<p className="text-sm">
-											{cert.issuer}
-										</p>
-									</div>
-								</div>
-							</a>
-						))}
-					</div>
 
 					
 				</div>
