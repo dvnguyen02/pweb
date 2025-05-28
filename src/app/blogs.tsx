@@ -24,14 +24,14 @@ const blogPosts: BlogPost[] = [
     content: `
       <p>For the longest time, I thought LeetCode was just for software engineers. As a data science student, I figured my path would be different and focus more on statistics and machine learning. Why would I need to solve algorithm puzzles when I'm building predictive models?</p>
       
-      <p>In New Zealand, data science roles often require a lot of years in experience. More importantly, I realized that strong problem-solving skills are also universal.</p>
+      <p>In New Zealand, data science roles often require a lot of years in experience. More importantly, I realized that strong problem-solving skills are also universal for any roles.</p>
       
       <h3>Why I Finally Started LeetCode</h3>
-      <p>Two main reasons pushed me to finally create my LeetCode account:</p>
+      <p>There are two main reasons pushed me to finally create my LeetCode account (https://leetcode.com/u/kokzodiac/):</p>
       
-      <p><strong>Software Job Prep:</strong> Let's be honest—the job market is competitive, and having options is crucial. Many companies, even for data science roles, include algorithmic thinking in their interview process. I want to be prepared for whatever comes my way.</p>
+      <p>Let's be honest—the job market is competitive, and having options is crucial. Many companies, even for data science roles, include algorithmic thinking in their interview process. I want to be prepared for whatever comes my way.</p>
       
-      <p><strong>Improving Problem-Solving Skills:</strong> This was the bigger motivator for me. I sometimes struggled to break them down systematically. LeetCode forces you to think step-by-step and consider edge cases, these skills could directly translate to any type of work.</p>
+      <p>This was the bigger motivator for me. I sometimes struggled to break them down systematically. LeetCode forces you to think step-by-step and consider edge cases, these skills could directly translate to any type of work.</p>
       
       <h3>The Honest Struggle</h3>
       <p>I won't sugarcoat it—there are days when I look at a medium-level problem and feel completely lost. The jump from easy to medium feels massive sometimes. Dynamic programming problems still make me second-guess myself constantly.</p>

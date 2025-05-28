@@ -83,7 +83,7 @@ export function About() {
 												</div>
 												<h3 className="text-lg font-semibold mb-2">Switch & Commitment</h3>
 												<p className="text-sm text-muted-foreground leading-relaxed">
-													Made the leap to switch majors and committed fully to understanding the material. Grades improved dramatically.
+													Made the leap to switch majors and committed fully to data science materials.
 												</p>
 											</div>
 										</div>
@@ -101,7 +101,7 @@ export function About() {
 														2024
 													</span>
 												</div>
-												<h3 className="text-lg font-semibold mb-2">Self-Teaching Software Engineering</h3>
+												<h3 className="text-lg font-semibold mb-2">Learning Application Development</h3>
 												<p className="text-sm text-muted-foreground leading-relaxed">
 													Realized that building models is only half the story. Started learning frameworks, cloud platforms, and deployment to turn models into real applications.
 												</p>
@@ -121,7 +121,7 @@ export function About() {
 														2025
 													</span>
 												</div>
-												<h3 className="text-lg font-semibold mb-2">Ready for What's Next</h3>
+												<h3 className="text-lg font-semibold mb-2">What's Next</h3>
 												<p className="text-sm text-muted-foreground leading-relaxed">
 													Finishing degree in June and actively seeking graduate roles.
 												</p>
@@ -131,18 +131,12 @@ export function About() {
 								</div>
 							</div>
 						</div>
-						
-											
-						<h2 className="text-xl font-semibold tracking-tight mt-6 text-card-foreground">What's Next</h2>
+
+
+						<h2 className="text-xl font-semibold tracking-tight mt-6 text-card-foreground">Upcoming Timeline</h2>
 								<p>
 							I'm actively looking for graduate roles where I can 
-							bring together my academic background in data science with my passion for building software. Whether 
-							that's as an <strong>AI engineer, software engineer, or data scientist,</strong> I'm excited about roles where I can 
-							continue learning and building intelligent systems that make a difference.
-						</p>
-						
-						<p>
-							My early struggles taught me resilience and the importance of finding work that genuinely motivates you. Now I'm eager to bring that same commitment and curiosity to a team where I can contribute to meaningful projects while continuing to grow professionally.
+							bring together my academic background in data science with my passion for building software.
 						</p>
 					</div>
 				</div>
