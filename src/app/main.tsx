@@ -1,5 +1,5 @@
 import "./slider.css";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import React from "react";
 import {
     HeroSection,
@@ -15,9 +15,10 @@ export function Main({ scrollAreaViewportRef }: { scrollAreaViewportRef?: React.
     const [expandedProject, setExpandedProject] = useState<string | null>(null);
     const [mounted, setMounted] = useState(false);
     const scrollPositionRef = React.useRef<number>(0);
-    const [isExperienceEducationVisible, setIsExperienceEducationVisible] = useState(false);
-    const experienceEducationRef = React.useRef<HTMLDivElement>(null);
-
+    const experienceRef = useRef<HTMLDivElement>(null);
+    const [showExperience, setShowExperience] = useState(false);
+    const projectsRef = useRef<HTMLDivElement>(null);
+    const [showProjects, setShowProjects] = useState(false);
     React.useEffect(() => { setMounted(true); }, []);
     
     // Scroll lock and restore logic
@@ -70,34 +71,37 @@ export function Main({ scrollAreaViewportRef }: { scrollAreaViewportRef?: React.
         }
     }, [expandedProject, mounted, scrollAreaViewportRef]);
 
-    // Intersection Observer for ExperienceEducation section
-    React.useEffect(() => {
-        if (!mounted) return;
-
-        const observer = new IntersectionObserver(
+    useEffect(() => {
+        const node = experienceRef.current;
+        if (!node) return;
+        const observer = new window.IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    setIsExperienceEducationVisible(true);
-                    observer.unobserve(entry.target); // Stop observing once visible
+                    setShowExperience(true);
+                    observer.disconnect();
                 }
             },
-            {
-                root: scrollAreaViewportRef?.current || null, // Use scrollArea if available, otherwise viewport
-                threshold: 0.1, // Trigger when 10% of the element is visible
-            }
+            { threshold: 0.2 }
         );
+        observer.observe(node);
+        return () => observer.disconnect();
+    }, []);
 
-        const currentRef = experienceEducationRef.current;
-        if (currentRef) {
-            observer.observe(currentRef);
-        }
-
-        return () => {
-            if (currentRef) {
-                observer.unobserve(currentRef);
-            }
-        };
-    }, [mounted, scrollAreaViewportRef]);
+    useEffect(() => {
+        const node = projectsRef.current;
+        if (!node) return;
+        const observer = new window.IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setShowProjects(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.2 }
+        );
+        observer.observe(node);
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <div className="w-full h-full flex flex-col items-center relative">
@@ -105,18 +109,19 @@ export function Main({ scrollAreaViewportRef }: { scrollAreaViewportRef?: React.
                 <div className="flex flex-col gap-6 max-w-2xl w-full">
                     <HeroSection />
                     <SkillsSlider />
-                    <div
-                        ref={experienceEducationRef}
-                        className={`transition-all duration-700 ease-out ${
-                            isExperienceEducationVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                        }`}
-                    >
-                        <ExperienceEducation />
+                    <div ref={experienceRef}>
+                        <div className={`transition-opacity duration-700 ease-out ${showExperience ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
+                            <ExperienceEducation />
+                        </div>
                     </div>
-                    <ProjectsSection 
-                        expandedProject={expandedProject}
-                        onExpandProject={setExpandedProject}
-                    />
+                    <div ref={projectsRef}>
+                        <div className={`transition-opacity duration-700 ease-out ${showProjects ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
+                            <ProjectsSection 
+                                expandedProject={expandedProject}
+                                onExpandProject={setExpandedProject}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
             <ProjectModal

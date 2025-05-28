@@ -72,7 +72,7 @@ const particlesOptions: ISourceOptions = {
       density: {
         enable: true,
       },
-      value: 100,
+      value: 60,
     },
     opacity: {
       value: 0.5,
