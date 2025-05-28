@@ -44,7 +44,7 @@ export function HeroSection() {
             </h1>
             
             <div className="flex items-center gap-2 text-lg">
-                <MapPinIcon className="w-5 h-5 text-green-600 dark:text-emerald-500" />
+                <MapPinIcon className="w-5 h-5" />
                 <span>Victoria University of Wellington</span>
             </div>
             

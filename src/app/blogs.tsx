@@ -1,0 +1,231 @@
+import { CalendarIcon, ClockIcon, X } from "lucide-react";
+import { useState } from "react";
+
+interface BlogPost {
+  id: string;
+  title: string;
+  date: string;
+  readTime: string;
+  excerpt: string;
+  content: string;
+  imageUrl?: string;
+  imageAlt?: string;
+}
+
+const blogPosts: BlogPost[] = [  
+  {
+    id: "1",
+    title: "I Started to do LeetCode as a Data Science Student",
+    date: "May 28, 2025",
+    readTime: "10 min read",
+    excerpt: "As a data science student, I thought I could skip the traditional coding interviews. I was wrong. Here's why I finally picked up LeetCode and what I'm learning along the way.",
+    imageUrl: "/images/blogs/lc.jpeg", 
+    imageAlt: "LeetCode practice and coding challenges",
+    content: `
+      <p>For the longest time, I thought LeetCode was just for software engineers. As a data science student, I figured my path would be different and focus more on statistics and machine learning. Why would I need to solve algorithm puzzles when I'm building predictive models?</p>
+      
+      <p>In New Zealand, data science roles often require a lot of years in experience. More importantly, I realized that strong problem-solving skills are also universal.</p>
+      
+      <h3>Why I Finally Started LeetCode</h3>
+      <p>Two main reasons pushed me to finally create my LeetCode account:</p>
+      
+      <p><strong>Software Job Prep:</strong> Let's be honest—the job market is competitive, and having options is crucial. Many companies, even for data science roles, include algorithmic thinking in their interview process. I want to be prepared for whatever comes my way.</p>
+      
+      <p><strong>Improving Problem-Solving Skills:</strong> This was the bigger motivator for me. I sometimes struggled to break them down systematically. LeetCode forces you to think step-by-step and consider edge cases, these skills could directly translate to any type of work.</p>
+      
+      <h3>The Honest Struggle</h3>
+      <p>I won't sugarcoat it—there are days when I look at a medium-level problem and feel completely lost. The jump from easy to medium feels massive sometimes. Dynamic programming problems still make me second-guess myself constantly.</p>
+      
+      
+      <h3>Moving Forward</h3>
+      <p>My goal isn't to become a competitive programmer overnight. I want to build solid problem-solving fundamentals that will serve me well in interviews and in my career. Whether I end up in data science, software engineering, or somewhere in between, these skills will be valuable.</p>
+      
+        `
+  },
+    {
+    id: "2",
+    title: "The Reality of Data Science",
+    date: "May 28, 2025",
+    readTime: "8 min read",
+    excerpt: "After my internship at NZTA and countless university projects, I've learned that data science isn't what they show you in movies. Here's the real breakdown of what you'll actually be doing as a data scientist",
+    imageUrl: "/images/blogs/data.jpg",
+    imageAlt: "Data science workflow visualization",
+    content: `
+      <p>Data science is often portrayed as this glamorous field where you build amazing machine learning models and uncover groundbreaking insights. While that's partially true, the reality is quite different.</p>
+      
+      <p>After spending countless hours on university projects and a last year internship at NZTA, I've learned that the majority of data science work involves cleaning and preparing data. It's not the most exciting part, but it's absolutely crucial.</p>
+  
+  <h3>The 80% - Data Cleaning</h3>
+  <p>Most of your time will be spent:</p>
+  <ul>
+    <li>Handling missing values and outliers</li>
+    <li>Standardizing data formats</li>
+    <li>Merging datasets from different sources</li>
+    <li>Feature engineering and selection</li>
+  </ul>
+
+  <p>Real-world data is messy. You'll encounter missing entries, invalid values (like negative frequencies), and outliers that could skew your entire analysis. Ever tried to merge datasets where dates are formatted differently in each file?</p>
+
+  <p>In the real world, your data rarely comes from a single, clean source. You'll pull information from multiple systems that don't always play nicely together. Getting these to work together is very time consuming.</p>
+  
+  <h3>The 20% - The Glory</h3>
+  <p>This is where the magic happens - building models, analyzing results, and extracting insights that can drive real business decisions. You'll experiment with different algorithms, fine-tune parameters, and create visualizations that tell compelling stories.</p>
+  
+  <p>Perhaps the most rewarding part is translating your findings into actionable insights. Your customer churn model helps retain valuable customers. Your forecasting algorithm optimizes operations. This 20% is where you see the real impact of your work.</p>
+  
+  <h3>Why This Reality Is Actually Exciting</h3>
+  <p>Initially, I was disappointed at first, I wanted to jump straight into building neural networks and complex models. But I've come to appreciate why data preparation is so crucial:</p>
+  
+  <p><strong>Quality In, Quality Out:</strong> No amount of sophisticated modeling can compensate for poor-quality data. The time you invest in cleaning and understanding your data directly impacts the reliability of your insights.</p>
+  
+  <p><strong>Domain Expertise:</strong> During the data cleaning process, you become intimately familiar with the business domain. You understand the nuances and context that inform better modeling decisions.</p>
+  
+  <h3>The Bottom Line</h3>
+  <p>Data science isn't just about building models—it's about extracting reliable insights from imperfect information. The 80% spent on data preparation isn't a necessary evil, it's the foundation that makes the 20% of "glory" work possible.</p>
+  
+  <p>University teaches you the algorithms and theory, but the real world teaches you that communication, and data quality are just as important. Master the unglamorous 80%, document your process religiously, and you'll find that the 20% becomes much more impactful.</p>
+  `
+  },
+];
+
+interface BlogModalProps {
+  post: BlogPost | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+function BlogModal({ post, isOpen, onClose }: BlogModalProps) {
+  if (!isOpen || !post) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
+      <div className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-background border border-border rounded-lg shadow-xl overflow-hidden">
+        <div className="flex items-center justify-between p-6 border-b border-border flex-shrink-0">
+          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-1">
+              <CalendarIcon className="w-4 h-4" />
+              <span>{post.date}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <ClockIcon className="w-4 h-4" />
+              <span>{post.readTime}</span>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-lg hover:bg-muted transition-colors"
+          >
+            <X className="w-5 h-5" />          </button>        </div>
+        
+        <div className="flex-1 min-h-0 overflow-y-auto scrollbar-hide">
+          <div className="p-6 space-y-6">
+            <h1 className="text-2xl font-bold tracking-tight text-card-foreground">
+              {post.title}
+            </h1>
+            
+            {/* Blog post image in modal */}
+            {post.imageUrl && (
+              <div className="relative h-64 w-full rounded-lg overflow-hidden">
+                <img 
+                  src={post.imageUrl} 
+                  alt={post.imageAlt || post.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+            
+            <div 
+              className="prose prose-neutral dark:prose-invert max-w-none"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function Blogs() {
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = (post: BlogPost) => {
+    setSelectedPost(post);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedPost(null);
+  };
+
+  return (
+    <div className="w-full h-full flex flex-col items-center">
+      <div className="flex flex-col gap-6 max-w-4xl w-full">
+        <div className="flex flex-col gap-4 p-6 border border-border/50 rounded-lg bg-card">
+          <h1 className="text-3xl font-bold tracking-tight text-card-foreground">Blogs</h1>
+          <p className="text-base leading-relaxed text-card-foreground">
+            Just where I want to share my thoughts.
+          </p>
+        </div>        {/* Blog Posts */}        <div className="space-y-6">
+          {blogPosts.map((post) => (
+            <article 
+              key={post.id}
+              className="group relative border border-border/50 rounded-lg bg-card hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
+              onClick={() => openModal(post)}
+            >
+              {/* Blog post image */}
+              {post.imageUrl && (
+                <div className="relative h-48 w-full overflow-hidden">
+                  <img 
+                    src={post.imageUrl} 
+                    alt={post.imageAlt || post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              )}
+              
+              <div className="p-6">
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <CalendarIcon className="w-4 h-4" />
+                        <span>{post.date}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <ClockIcon className="w-4 h-4" />
+                        <span>{post.readTime}</span>
+                      </div>
+                    </div>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm text-primary font-medium">
+                      Click to read more →
+                    </div>
+                  </div>
+                  
+                  <h2 className="text-xl font-semibold tracking-tight text-card-foreground group-hover:text-primary transition-colors">
+                    {post.title}
+                  </h2>
+                  
+                  <p className="text-base leading-relaxed text-muted-foreground">
+                    {post.excerpt}
+                  </p>
+                </div>
+              </div>
+              
+              {/* Hover overlay indicator */}
+              <div className="absolute inset-0 rounded-lg border-2 border-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <BlogModal 
+        post={selectedPost}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
+    </div>
+  );
+}

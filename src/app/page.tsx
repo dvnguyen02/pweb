@@ -13,6 +13,7 @@ import { Switch } from "@/components/ui/switch";
 import { Main } from "./main";
 import { About } from "./about";
 import { Projects } from "./projects";
+import { Blogs } from "./blogs";
 import { Attach } from "./attach";
 import Contact from "./contact";
 
@@ -20,6 +21,7 @@ const tabs = [
 	{ name: "Main", component: <Main /> },
 	{ name: "About", component: <About /> },
 	{ name: "Projects", component: <Projects /> },
+	{ name: "Blogs", component: <Blogs /> },
 	{ name: "Attach", component: <Attach /> },
 	{ name: "Contact", component: <Contact /> },
 ];
