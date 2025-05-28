@@ -1,4 +1,25 @@
+import React, { useRef, useEffect, useState } from "react";
+
 export function About() {
+	const timelineRef = useRef<HTMLDivElement>(null);
+	const [showTimeline, setShowTimeline] = useState(false);
+
+	useEffect(() => {
+		const node = timelineRef.current;
+		if (!node) return;
+		const observer = new window.IntersectionObserver(
+			([entry]) => {
+				if (entry.isIntersecting) {
+					setShowTimeline(true);
+					observer.disconnect();
+				}
+			},
+			{ threshold: 0.2 }
+		);
+		observer.observe(node);
+		return () => observer.disconnect();
+	}, []);
+
 	return (
 		<div className="w-full h-full flex flex-col items-center">
 			<div className="flex flex-col gap-6 max-w-4xl w-full">
@@ -21,14 +42,14 @@ export function About() {
 						
 						
 						{/* Enhanced Journey Timeline */}
-						<div className="my-6">
+						<div className="my-6" ref={timelineRef}>
 							<h2 className="text-xl font-semibold tracking-tight mb-4 text-card-foreground">My Journey</h2>
 							<div className="relative">
 								{/* Vertical line */}
 								<div className="absolute left-1/2 top-0 bottom-0 w-px bg-border dark:bg-white/20 -translate-x-1/2"></div>
 								
 								{/* Timeline items alternating left/right */}
-								<div className="space-y-12">
+								<div className={`space-y-12 transition-opacity duration-700 ease-out ${showTimeline ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
 									{/* Finance Struggles - Left */}
 									<div className="relative flex items-center justify-start">
 										<div className="absolute left-1/2 -translate-x-1/2 z-10">

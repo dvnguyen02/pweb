@@ -1,5 +1,5 @@
 import { CalendarIcon, ClockIcon, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface BlogPost {
   id: string;
@@ -149,6 +149,25 @@ function BlogModal({ post, isOpen, onClose }: BlogModalProps) {
 export function Blogs() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const postsRef = useRef<HTMLDivElement>(null);
+  const [showPosts, setShowPosts] = useState(false);
+
+  useEffect(() => {
+    const node = postsRef.current;
+    if (!node) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowPosts(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   const openModal = (post: BlogPost) => {
     setSelectedPost(post);
     setIsModalOpen(true);
@@ -167,7 +186,9 @@ export function Blogs() {
           <p className="text-base leading-relaxed text-card-foreground">
             Just where I want to share my thoughts.
           </p>
-        </div>        {/* Blog Posts */}        <div className="space-y-6">
+        </div>
+        {/* Blog Posts */}
+        <div ref={postsRef} className={`space-y-6 transition-opacity duration-700 ease-out ${showPosts ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
           {blogPosts.map((post) => (
             <article 
               key={post.id}

@@ -9,6 +9,7 @@ import {
   CalendarIcon,
 } from "lucide-react";
 import { Figtree } from "next/font/google";
+import React, { useRef, useEffect, useState } from "react";
 
 const font = Figtree({
   subsets: ["latin"],
@@ -33,11 +34,29 @@ export function Attach() {
     }
   ];
 
+  const docsRef = useRef<HTMLDivElement>(null);
+  const [showDocs, setShowDocs] = useState(false);
+
+  useEffect(() => {
+    const node = docsRef.current;
+    if (!node) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShowDocs(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className={`${font.className} flex flex-col gap-4`}>
       <h2 className="text-3xl font-bold text-card-foreground">Resume & Documents</h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div ref={docsRef} className={`grid grid-cols-1 sm:grid-cols-2 gap-4 transition-opacity duration-700 ease-out ${showDocs ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
         {documents.map(({ title, description, link, Icon, lastUpdated }) => (
           <Link
             key={title}
