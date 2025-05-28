@@ -1,28 +1,138 @@
 export function About() {
 	return (
 		<div className="w-full h-full flex flex-col items-center">
-			<div className="flex flex-col gap-6 max-w-2xl w-full">
+			<div className="flex flex-col gap-6 max-w-4xl w-full">
 				<div className="flex flex-col gap-4 p-6 border border-border/50 rounded-lg bg-card">
 					<h1 className="text-3xl font-bold tracking-tight">About Me</h1>
 					
 					<div className="space-y-4 text-base leading-relaxed">
 						<p>
-							A bit about me, I'm a data science student with a bit of a dual personality – by day, I'm diving deep 
-							into machine learning, deep learning and statistics concepts at university, and by night, I'm teaching myself the skills of software engineering.
+							I'm a data science major with a bit of a dual personality. At uni, I'm diving deep 
+							into machine learning, deep learning and statistics concepts, and at home I'm teaching myself about application development.
 						</p>
 						
-						<h2 className="text-xl font-semibold tracking-tight mt-6">The Journey So Far</h2>
-								<p>
-							What started as pure fascination with data and machine learning has evolved into something much broader. 
-							At university, I've built a solid foundation in deep learning and ML models – the kind of stuff that 
-							gets me genuinely excited about what's possible with data. But somewhere along the way, I realized 
-							that knowing how to build great models is only half the story. The other half? <strong>Actually turning 
-							those models into real applications that people can use.</strong> 						
-							That's where my self-taught software engineering journey began.
+						<p>
+							What drives me is the intersection of analytical thinking and creative problem-solving. I love the process of taking messy, real-world data and extracting meaningful insights from it, but I'm equally fascinated by the challenge of building systems that can scale and deliver those insights to actual users. There's something incredibly satisfying about bridging the gap between academic theory and practical applications.
 						</p>
+						
+						<p>
+							When I'm not buried in coursework, I will be exploring the latest developments in AI tech, experimenting with new frameworks, or working on side projects.
+						</p>
+						
+						
+						{/* Enhanced Journey Timeline */}
+						<div className="my-6">
+							<h2 className="text-xl font-semibold tracking-tight mb-4">My Journey</h2>
+							<div className="relative">
+								{/* Vertical line */}
+								<div className="absolute left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2"></div>
+								
+								{/* Timeline items alternating left/right */}
+								<div className="space-y-12">
+									{/* Finance Struggles - Left */}
+									<div className="relative flex items-center justify-start">
+										<div className="absolute left-1/2 -translate-x-1/2 z-10">
+											<div className="w-3 h-3 bg-background border-2 border-border rounded-full"></div>
+										</div>
+										<div className="w-1/2 pr-8 text-right">
+											<div className="border border-border/50 rounded-lg p-4 bg-card/50">
+												<div className="flex items-center justify-end gap-2 mb-2">
+													<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+														2021
+													</span>
+												</div>
+												<h3 className="text-lg font-semibold mb-2">Finance Studies</h3>
+												<p className="text-sm text-muted-foreground leading-relaxed">
+													My path to data science wasn't exactly linear. I originally started university studying finance, but honestly, it didn't click for me at all. I struggled with the material and ended up with pretty poor grades in my first year – it was a wake-up call that I was pursuing something that just wasn't right for me.
+												</p>
+											</div>
+										</div>
+									</div>
+									
+									{/* Discovery - Right */}
+									<div className="relative flex items-center justify-end">
+										<div className="absolute left-1/2 -translate-x-1/2 z-10">
+											<div className="w-3 h-3 bg-background border-2 border-border rounded-full"></div>
+										</div>
+										<div className="w-1/2 pl-8">
+											<div className="border border-border/50 rounded-lg p-4 bg-card/50">
+												<div className="flex items-center gap-2 mb-2">
+													<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+														2022
+													</span>
+												</div>
+												<h3 className="text-lg font-semibold mb-2">Discovery</h3>
+												<p className="text-sm text-muted-foreground leading-relaxed">
+													Found a data science major under the commerce program. The intersection of mathematics, statistics, and technology immediately resonated with me.
+												</p>
+											</div>
+										</div>
+									</div>
+									
+									{/* Switch & Commitment - Left */}
+									<div className="relative flex items-center justify-start">
+										<div className="absolute left-1/2 -translate-x-1/2 z-10">
+											<div className="w-3 h-3 bg-background border-2 border-border rounded-full"></div>
+										</div>
+										<div className="w-1/2 pr-8 text-right">
+											<div className="border border-border/50 rounded-lg p-4 bg-card/50">
+												<div className="flex items-center justify-end gap-2 mb-2">
+													<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+														Mid 2022
+													</span>
+												</div>
+												<h3 className="text-lg font-semibold mb-2">Switch & Commitment</h3>
+												<p className="text-sm text-muted-foreground leading-relaxed">
+													Made the leap to switch majors and committed fully to understanding the material. Grades improved dramatically.
+												</p>
+											</div>
+										</div>
+									</div>
+									
+									{/* Self-Teaching Software Engineering - Right */}
+									<div className="relative flex items-center justify-end">
+										<div className="absolute left-1/2 -translate-x-1/2 z-10">
+											<div className="w-3 h-3 bg-background border-2 border-border rounded-full"></div>
+										</div>
+										<div className="w-1/2 pl-8">
+											<div className="border border-border/50 rounded-lg p-4 bg-card/50">
+												<div className="flex items-center gap-2 mb-2">
+													<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+														2024
+													</span>
+												</div>
+												<h3 className="text-lg font-semibold mb-2">Self-Teaching Software Engineering</h3>
+												<p className="text-sm text-muted-foreground leading-relaxed">
+													Realized that building models is only half the story. Started learning frameworks, cloud platforms, and deployment to turn models into real applications.
+												</p>
+											</div>
+										</div>
+									</div>
 
-					
+									{/* Present/Future - Left */}
+									<div className="relative flex items-center justify-start">
+										<div className="absolute left-1/2 -translate-x-1/2 z-10">
+											<div className="w-3 h-3 bg-foreground border-2 border-background rounded-full shadow-sm"></div>
+										</div>
+										<div className="w-1/2 pr-8 text-right">
+											<div className="border border-border rounded-lg p-4 bg-card shadow-sm">
+												<div className="flex items-center justify-end gap-2 mb-2">
+													<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+														2025
+													</span>
+												</div>
+												<h3 className="text-lg font-semibold mb-2">Ready for What's Next</h3>
+												<p className="text-sm text-muted-foreground leading-relaxed">
+													Finishing degree in June and actively seeking graduate roles where I can bridge ML knowledge with software development to build impactful applications.
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 						
+											
 						<h2 className="text-xl font-semibold tracking-tight mt-6">What's Next</h2>
 								<p>
 							I'm <strong>finishing up my degree at the end of June</strong> and actively looking for graduate roles where I can 
@@ -32,8 +142,7 @@ export function About() {
 						</p>
 						
 						<p>
-							If you're working on interesting AI projects or know of opportunities where someone with my mix of 
-							ML knowledge and software development enthusiasm might fit, I'd love to chat!
+							My early struggles taught me resilience and the importance of finding work that genuinely motivates you. Now I'm eager to bring that same commitment and curiosity to a team where I can contribute to meaningful projects while continuing to grow professionally.
 						</p>
 					</div>
 				</div>
