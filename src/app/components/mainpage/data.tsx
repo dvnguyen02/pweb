@@ -177,12 +177,13 @@ export const currentProject = {
         { name: "Python", icon: <SiPython className="w-4 h-4" /> },
         { name: "WebRTC", icon: <SiWebrtc className="w-4 h-4" /> },
     ],
+    detailedDescription: "A real-time AI-powered notetaking app that transcribes, summarizes, and organizes your notes as you speak. Features live transcription, AI-generated summaries, and seamless export to your favorite tools. Built with Next.js, FastAPI, and WebRTC for low-latency collaboration.",
 };
 
 export const placeholderProject = {
     coverImage: "/images/projects/1.png",
     name: "RAG",
-    description: "AI Laptop Shopping Assistant",
+    description: "RAG Shopping Assistant",
     link: "https://pbtechrag.onrender.com",
     tags: [
         { name: "React", icon: <SiReact className="w-4 h-4" /> },
@@ -190,4 +191,5 @@ export const placeholderProject = {
         { name: "Flask", icon: <SiFlask className="w-4 h-4" /> },
         { name: "LangGraph", icon: <Image src="/images/orgs/langgraph.png" alt="LangGraph" width={16} height={16} /> },
     ],
+    detailedDescription: "An intelligent chatbot for PBTech that helps customers find laptops through natural language conversations. Uses Retrieval-Augmented Generation to search 500+ products and provide personalized recommendations, comparisons, and technical specifications.",
 };

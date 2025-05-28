@@ -8,26 +8,27 @@ import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import TerminalLoader from "@/components/TerminalLoader";
-import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 
 import { Main } from "./main";
 import { About } from "./about";
 import { Projects } from "./projects";
-import { Resume } from "./resume";
+import { Attach } from "./attach";
 import Contact from "./contact";
 
 const tabs = [
 	{ name: "Main", component: <Main /> },
 	{ name: "About", component: <About /> },
 	{ name: "Projects", component: <Projects /> },
-	{ name: "Resume", component: <Resume /> },
+	{ name: "Attach", component: <Attach /> },
 	{ name: "Contact", component: <Contact /> },
 ];
 
-export default function Page() {	const [background, setBackground] = useState<string>(
+export default function Page() {
+	const [background, setBackground] = useState<string>(
 		"black dark:bg-neutral-950"
-	);	const [activeTab, setActiveTab] = useState<{
+	);
+	const [activeTab, setActiveTab] = useState<{
 		name: string;
 		component: React.ReactNode;
 	}>(tabs[0]);

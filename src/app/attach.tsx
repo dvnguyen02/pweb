@@ -4,14 +4,9 @@ import Link from "next/link";
 import { 
   FileTextIcon, 
   BookOpenIcon, 
-  AwardIcon, 
-  FolderIcon,
   ExternalLinkIcon,
   DownloadIcon,
   CalendarIcon,
-  TrendingUpIcon,
-  BrainIcon,
-  CodeIcon
 } from "lucide-react";
 import { Figtree } from "next/font/google";
 
@@ -20,7 +15,7 @@ const font = Figtree({
   variable: "--font-figtree",
 });
 
-export function Resume() {
+export function Attach() {
   const documents = [
     {
       title: "Resume/CV",
@@ -40,7 +35,7 @@ export function Resume() {
 
   return (
     <div className={`${font.className} flex flex-col gap-4`}>
-      <h2 className="text-3xl font-bold">Resume & Documents</h2>
+      <h2 className="text-3xl font-bold text-card-foreground">Resume & Documents</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {documents.map(({ title, description, link, Icon, lastUpdated }) => (
@@ -50,13 +45,13 @@ export function Resume() {
             target="_blank"
             className="sm:cursor-none group"
           >
-            <div className="relative flex flex-col gap-3 bg-muted rounded-xl p-4 hover:ring-4 ring-neutral-200 dark:ring-neutral-700 h-full">
+            <div className="relative flex flex-col gap-3 bg-card border border-border/80 rounded-xl p-4 hover:ring-4 ring-neutral-200 dark:ring-neutral-700 h-full">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
-                  <Icon className="size-5" />
-                  <h3 className="text-xl font-bold">{title}</h3>
+                  <Icon className="size-5 text-card-foreground" />
+                  <h3 className="text-xl font-bold text-card-foreground">{title}</h3>
                 </div>
-                <ExternalLinkIcon className="size-4 opacity-50 group-hover:opacity-100" />
+                <ExternalLinkIcon className="size-4 opacity-50 group-hover:opacity-100 text-card-foreground" />
               </div>
               <p className="text-sm text-muted-foreground flex-grow">{description}</p>
               <div className="flex items-center justify-between text-xs text-muted-foreground">

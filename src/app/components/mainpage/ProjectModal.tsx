@@ -14,6 +14,7 @@ interface ProjectModalProps {
             name: string;
             icon?: React.ReactElement;
         }>;
+        detailedDescription: string;
     };
     isOpen: boolean;
     onClose: () => void;
@@ -75,7 +76,7 @@ export function ProjectModal({ project, isOpen, onClose, mounted }: ProjectModal
                     </p>
                     {/* Detailed description */}
                     <p className="text-white/70 text-sm mt-3 mb-3">
-                        An intelligent chatbot for PBTech that helps customers find laptops through natural language conversations. Uses Retrieval-Augmented Generation to search 500+ products and provide personalized recommendations, comparisons, and technical specifications.
+                        {project.detailedDescription}
                     </p>
                     <div className="mt-4 mb-4">
                         <a

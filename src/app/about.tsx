@@ -3,9 +3,9 @@ export function About() {
 		<div className="w-full h-full flex flex-col items-center">
 			<div className="flex flex-col gap-6 max-w-4xl w-full">
 				<div className="flex flex-col gap-4 p-6 border border-border/50 rounded-lg bg-card">
-					<h1 className="text-3xl font-bold tracking-tight">About Me</h1>
+					<h1 className="text-3xl font-bold tracking-tight text-card-foreground">About Me</h1>
 					
-					<div className="space-y-4 text-base leading-relaxed">
+					<div className="space-y-4 text-base leading-relaxed text-card-foreground">
 						<p>
 							I'm a data science major with a bit of a dual personality. At uni, I'm diving deep 
 							into machine learning, deep learning and statistics concepts, and at home I'm teaching myself about application development.
@@ -22,20 +22,20 @@ export function About() {
 						
 						{/* Enhanced Journey Timeline */}
 						<div className="my-6">
-							<h2 className="text-xl font-semibold tracking-tight mb-4">My Journey</h2>
+							<h2 className="text-xl font-semibold tracking-tight mb-4 text-card-foreground">My Journey</h2>
 							<div className="relative">
 								{/* Vertical line */}
-								<div className="absolute left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2"></div>
+								<div className="absolute left-1/2 top-0 bottom-0 w-px bg-border dark:bg-white/20 -translate-x-1/2"></div>
 								
 								{/* Timeline items alternating left/right */}
 								<div className="space-y-12">
 									{/* Finance Struggles - Left */}
 									<div className="relative flex items-center justify-start">
 										<div className="absolute left-1/2 -translate-x-1/2 z-10">
-											<div className="w-3 h-3 bg-background border-2 border-border rounded-full"></div>
+											<div className="w-3 h-3 bg-white border-2 border-border rounded-full"></div>
 										</div>
 										<div className="w-1/2 pr-8 text-right">
-											<div className="border border-border/50 rounded-lg p-4 bg-card/50">
+											<div className="border border-border/80 rounded-lg p-4 bg-card">
 												<div className="flex items-center justify-end gap-2 mb-2">
 													<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
 														2021
@@ -43,7 +43,7 @@ export function About() {
 												</div>
 												<h3 className="text-lg font-semibold mb-2">Finance Studies</h3>
 												<p className="text-sm text-muted-foreground leading-relaxed">
-													My path to data science wasn't exactly linear. I originally started university studying finance, but honestly, it didn't click for me at all. I struggled with the material and ended up with pretty poor grades in my first year – it was a wake-up call that I was pursuing something that just wasn't right for me.
+													My path to data science wasn't exactly linear. I originally started university studying finance, it didn't click for me at all. It was a wake-up call that I was pursuing something that just wasn't right for me.
 												</p>
 											</div>
 										</div>
@@ -52,10 +52,10 @@ export function About() {
 									{/* Discovery - Right */}
 									<div className="relative flex items-center justify-end">
 										<div className="absolute left-1/2 -translate-x-1/2 z-10">
-											<div className="w-3 h-3 bg-background border-2 border-border rounded-full"></div>
+											<div className="w-3 h-3 bg-white border-2 border-border rounded-full"></div>
 										</div>
 										<div className="w-1/2 pl-8">
-											<div className="border border-border/50 rounded-lg p-4 bg-card/50">
+											<div className="border border-border/80 rounded-lg p-4 bg-card">
 												<div className="flex items-center gap-2 mb-2">
 													<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
 														2022
@@ -72,10 +72,10 @@ export function About() {
 									{/* Switch & Commitment - Left */}
 									<div className="relative flex items-center justify-start">
 										<div className="absolute left-1/2 -translate-x-1/2 z-10">
-											<div className="w-3 h-3 bg-background border-2 border-border rounded-full"></div>
+											<div className="w-3 h-3 bg-white border-2 border-border rounded-full"></div>
 										</div>
 										<div className="w-1/2 pr-8 text-right">
-											<div className="border border-border/50 rounded-lg p-4 bg-card/50">
+											<div className="border border-border/80 rounded-lg p-4 bg-card">
 												<div className="flex items-center justify-end gap-2 mb-2">
 													<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
 														Mid 2022
@@ -92,10 +92,10 @@ export function About() {
 									{/* Self-Teaching Software Engineering - Right */}
 									<div className="relative flex items-center justify-end">
 										<div className="absolute left-1/2 -translate-x-1/2 z-10">
-											<div className="w-3 h-3 bg-background border-2 border-border rounded-full"></div>
+											<div className="w-3 h-3 bg-white border-2 border-border rounded-full"></div>
 										</div>
 										<div className="w-1/2 pl-8">
-											<div className="border border-border/50 rounded-lg p-4 bg-card/50">
+											<div className="border border-border/80 rounded-lg p-4 bg-card">
 												<div className="flex items-center gap-2 mb-2">
 													<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
 														2024
@@ -115,7 +115,7 @@ export function About() {
 											<div className="w-3 h-3 bg-foreground border-2 border-background rounded-full shadow-sm"></div>
 										</div>
 										<div className="w-1/2 pr-8 text-right">
-											<div className="border border-border rounded-lg p-4 bg-card shadow-sm">
+											<div className="border border-border/80 rounded-lg p-4 bg-card shadow-sm">
 												<div className="flex items-center justify-end gap-2 mb-2">
 													<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
 														2025
@@ -123,7 +123,7 @@ export function About() {
 												</div>
 												<h3 className="text-lg font-semibold mb-2">Ready for What's Next</h3>
 												<p className="text-sm text-muted-foreground leading-relaxed">
-													Finishing degree in June and actively seeking graduate roles where I can bridge ML knowledge with software development to build impactful applications.
+													Finishing degree in June and actively seeking graduate roles.
 												</p>
 											</div>
 										</div>
@@ -133,9 +133,9 @@ export function About() {
 						</div>
 						
 											
-						<h2 className="text-xl font-semibold tracking-tight mt-6">What's Next</h2>
+						<h2 className="text-xl font-semibold tracking-tight mt-6 text-card-foreground">What's Next</h2>
 								<p>
-							I'm <strong>finishing up my degree at the end of June</strong> and actively looking for graduate roles where I can 
+							I'm actively looking for graduate roles where I can 
 							bring together my academic background in data science with my passion for building software. Whether 
 							that's as an <strong>AI engineer, software engineer, or data scientist,</strong> I'm excited about roles where I can 
 							continue learning and building intelligent systems that make a difference.

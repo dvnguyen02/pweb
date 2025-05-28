@@ -11,11 +11,11 @@ import {
     placeholderProject
 } from "./components/mainpage";
 
-export function Main() {
+export function Main({ scrollAreaViewportRef }: { scrollAreaViewportRef?: React.RefObject<HTMLDivElement> }) {
     const [expandedProject, setExpandedProject] = useState<string | null>(null);
     const [mounted, setMounted] = useState(false);
     const scrollPositionRef = React.useRef<number>(0);
-    const aboutContainerRef = React.useRef<HTMLDivElement>(null);    React.useEffect(() => { setMounted(true); }, []);
+    React.useEffect(() => { setMounted(true); }, []);
     
     // Scroll lock and restore logic
     React.useEffect(() => {
@@ -23,7 +23,7 @@ export function Main() {
             return;
         }
 
-        const scrollableViewport = aboutContainerRef.current?.closest<HTMLElement>('[data-radix-scroll-area-viewport]');
+        const scrollableViewport = scrollAreaViewportRef?.current;
 
         if (expandedProject) {
             // Save scroll position of the ScrollArea viewport
@@ -50,46 +50,41 @@ export function Main() {
                 // Restore ScrollArea's scroll position with multiple attempts for reliability
                 if (scrollableViewport) {
                     const savedPosition = scrollPositionRef.current;
-                    
                     // Immediate restore
                     scrollableViewport.scrollTop = savedPosition;
-                    
                     // Backup restore attempts with slight delays
                     requestAnimationFrame(() => {
                         scrollableViewport.scrollTop = savedPosition;
                     });
-                    
                     setTimeout(() => {
                         scrollableViewport.scrollTop = savedPosition;
                     }, 50);
-                    
                     setTimeout(() => {
                         scrollableViewport.scrollTop = savedPosition;
                     }, 100);
                 }
             };
         }
-    }, [expandedProject, mounted]);
-	return (
-		<div ref={aboutContainerRef} className="w-full h-full flex flex-col items-center relative">
+    }, [expandedProject, mounted, scrollAreaViewportRef]);
+    return (
+        <div className="w-full h-full flex flex-col items-center relative">
             <div className="flex flex-col items-center w-full gap-6 sm:gap-3">
                 <div className="flex flex-col gap-6 max-w-2xl w-full">
-					<HeroSection />
-					<SkillsSlider />
-					<ExperienceEducation />
+                    <HeroSection />
+                    <SkillsSlider />
+                    <ExperienceEducation />
                     <ProjectsSection 
                         expandedProject={expandedProject}
                         onExpandProject={setExpandedProject}
                     />
-				</div>
-			</div>
-			
-			<ProjectModal
+                </div>
+            </div>
+            <ProjectModal
                 project={expandedProject === 'notetaker' ? currentProject : placeholderProject}
                 isOpen={!!expandedProject}
                 onClose={() => setExpandedProject(null)}
                 mounted={mounted}
             />
         </div>
-	);
+    );
 }

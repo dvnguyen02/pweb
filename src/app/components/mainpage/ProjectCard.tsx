@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { SquareArrowOutUpRightIcon } from "lucide-react";
 import { Card, CardHeader } from "@heroui/react";
+import { Button } from "@/components/ui/button";
 
 interface ProjectCardProps {
     project: {
@@ -74,16 +75,15 @@ export function ProjectCard({ project, projectId, expandedProject, onExpand }: P
                                         {tag.name}
                                     </span>
                                 ))}
-                            </div>
-                            <p className="text-white/80 text-base mt-2 mb-1">
+                            </div>                            <p className="text-white/80 text-base mt-2 mb-1">
                                 {project.description}
                             </p>
-                            <button
-                                className="mt-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+                            <Button
+                                className="mt-2"
                                 onClick={e => { e.stopPropagation(); onExpand(projectId); }}
                             >
                                 More details
-                            </button>
+                            </Button>
                         </CardHeader>
                     </>
                 )}

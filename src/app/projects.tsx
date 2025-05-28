@@ -96,25 +96,22 @@ export function Projects() {
 	return (
 		<section className={`${font.className} space-y-8`}>
 			{/* Header Section */}
-			<div className="text-center space-y-4">
+			<div className="text-center space-y-4 bg-card border border-border/80 rounded-xl p-6">
 				<div className="flex items-center justify-center gap-2 mb-4">
 					<div className="p-2 rounded-full bg-primary/10">
 						<Code2 className="size-6 text-primary" />
 					</div>
-					
 				</div>
-				
 				<div className="space-y-2">
-					<h2 className="text-3xl font-bold tracking-tight">My Projects</h2>
+					<h2 className="text-3xl font-bold tracking-tight text-card-foreground">My Projects</h2>
 					<p className="text-lg text-muted-foreground max-w-2xl mx-auto">
 						A collection of projects I've built to explore new technologies, solve problems, and continuously learn.
 					</p>
 				</div>
-				
 				<div className="flex items-center justify-center gap-2 text-sm">
-					<div className="flex items-center gap-2 px-3 py-1.5 bg-primary/5 rounded-full border">
+					<div className="flex items-center gap-2 px-3 py-1.5 bg-primary/5 rounded-full border border-border/80">
 						<span className="text-muted-foreground">Currently working on</span>
-						<span className="font-medium">Notetaker</span>
+						<span className="font-medium text-card-foreground">Notetaker</span>
 					</div>
 				</div>
 			</div>
