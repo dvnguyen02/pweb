@@ -55,13 +55,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={figtree.className} suppressHydrationWarning>
       <body>
-        <main className="bg-background">
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
-            {children}
-          </ThemeProvider>
+        <div className="min-h-screen flex flex-col bg-background">
+          <main className="flex-1">
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+              {children}
+            </ThemeProvider>
+          </main>
           <ClientPointer />
           <Analytics />
-        </main>
+        </div>
       </body>
     </html>
   );
