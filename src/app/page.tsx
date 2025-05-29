@@ -121,7 +121,6 @@ export default function Page() {
 							<span className="text-blue-400">Ready</span>
 						</div>
 						<div className="flex items-center gap-3">
-							<span className="text-muted-foreground">Built with ❤️</span>
 							<div className="flex items-center gap-1">
 								<a href="https://github.com/dvnguyen02" target="_blank" rel="noopener noreferrer" 
 								   className="text-muted-foreground hover:text-foreground transition-colors">

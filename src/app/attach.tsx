@@ -55,7 +55,12 @@ export function Attach() {
 
   return (
     <div className={`${font.className} flex flex-col gap-4`}>
-      <h2 className="text-3xl font-bold text-card-foreground">Resume & Documents</h2>
+      <div className="flex flex-col gap-4 p-4 sm:p-6 border border-border/50 rounded-lg bg-card">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-card-foreground">Attachments</h1>
+          <p className="text-base leading-relaxed text-card-foreground">
+            Here's where you could find my CV and academic transcript. Feel free to download them for more details about my background and qualifications.
+          </p>
+        </div>
       <div ref={docsRef} className={`grid grid-cols-1 sm:grid-cols-2 gap-4 transition-opacity duration-700 ease-out ${showDocs ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
         {documents.map(({ title, description, link, Icon, lastUpdated }) => (
           <Link
