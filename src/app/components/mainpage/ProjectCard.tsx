@@ -77,9 +77,8 @@ export function ProjectCard({ project, projectId, expandedProject, onExpand }: P
                                 ))}
                             </div>                            <p className="text-white/80 text-base mt-2 mb-1">
                                 {project.description}
-                            </p>
-                            <Button
-                                className="mt-2"
+                            </p>                            <Button
+                                className="mt-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
                                 onClick={e => { e.stopPropagation(); onExpand(projectId); }}
                             >
                                 More details

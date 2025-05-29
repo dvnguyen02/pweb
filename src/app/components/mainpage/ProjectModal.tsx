@@ -24,21 +24,24 @@ interface ProjectModalProps {
 export function ProjectModal({ project, isOpen, onClose, mounted }: ProjectModalProps) {
     if (!mounted || !isOpen || typeof window === 'undefined') {
         return null;
-    }
-
-    return createPortal(
-        <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md"
+    }    return createPortal(        <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-300"
             onClick={e => {
                 if (e.target === e.currentTarget) {
                     onClose();
                 }
             }}
+            style={{
+                animation: 'fadeIn 0.3s ease-out forwards'
+            }}
         >
             <Card
-                className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-2xl max-h-[80vh] scale-100 ring-4 ring-primary shadow-2xl animate-in fade-in transition-all duration-300"
+                className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-2xl max-h-[80vh] ring-4 ring-primary shadow-2xl transform transition-all duration-500 ease-out animate-in zoom-in-95 slide-in-from-bottom-4 fade-in"
                 onClick={e => e.stopPropagation()}
-                style={{ boxShadow: '0 0 20px 3px rgba(255, 255, 255, 0.12), 0 25px 50px -12px rgba(0, 0, 0, 0.3)' }}
+                style={{ 
+                    boxShadow: '0 0 20px 3px rgba(255, 255, 255, 0.12), 0 25px 50px -12px rgba(0, 0, 0, 0.3)',
+                    animation: 'modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards'
+                }}
             >
                 <button
                     onClick={e => { e.stopPropagation(); onClose(); }}

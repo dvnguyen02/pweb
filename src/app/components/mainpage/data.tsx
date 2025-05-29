@@ -167,7 +167,7 @@ export const links = [
 export const currentProject = {
     coverImage: "/images/projects/7.gif",
     name: "Notetaker",
-    description: "AI Real-Time Notetaker",
+    description: "Real-Time Notetaker",
     link: "https://github.com/dvnguyen02/notetaker",
     tags: [
         { name: "Next.js", icon: <SiNextdotjs className="w-4 h-4" /> },
