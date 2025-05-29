@@ -34,7 +34,7 @@ const blogPosts: BlogPost[] = [
       <p>This was the bigger motivator for me. I sometimes struggled to break them down systematically. LeetCode forces you to think step-by-step and consider edge cases, these skills could directly translate to any type of work.</p>
       
       <h3>The Honest Struggle</h3>
-      <p>I won't sugarcoat it—there are days when I look at a medium-level problem and feel completely lost. The jump from easy to medium feels massive sometimes. Dynamic programming problems still make me second-guess myself constantly.</p>
+      <p>There are days when I look at a medium-level problem and feel completely lost. The jump from easy to medium feels massive sometimes. Dynamic programming problems still make me second-guess myself constantly.</p>
       
       
       <h3>Moving Forward</h3>
@@ -98,37 +98,43 @@ function BlogModal({ post, isOpen, onClose }: BlogModalProps) {
   if (!isOpen || !post) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
-      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] flex flex-col bg-background border border-border rounded-lg shadow-xl overflow-hidden">
-        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-border flex-shrink-0">
-          <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
-            <div className="flex items-center gap-1">
-              <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span>{post.date}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span>{post.readTime}</span>
-            </div>
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-300"
+      style={{
+        animation: 'fadeIn 0.3s ease-out forwards'
+      }}
+    >
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />      <div 
+        className="relative w-full max-w-[50vw] max-h-[60vh] flex flex-col bg-background border border-border rounded-lg shadow-xl overflow-hidden transform transition-all duration-500 ease-out animate-in zoom-in-95 slide-in-from-bottom-4 fade-in"
+        style={{ 
+          boxShadow: '0 0 20px 3px rgba(255, 255, 255, 0.12), 0 25px 50px -12px rgba(0, 0, 0, 0.3)',
+          animation: 'modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards'
+        }}
+      >
+        {/* Top right close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 z-10 p-2 bg-background/70 hover:bg-background/90 rounded-full text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95"
+          aria-label="Close blog post"
+        >
+          <X className="w-5 h-5" />
+        </button>        <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground p-4 sm:p-6 border-b border-border flex-shrink-0">
+          <div className="flex items-center gap-1">
+            <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span>{post.date}</span>
           </div>
-          <button
-            onClick={onClose}
-            className="p-1.5 sm:p-2 rounded-lg hover:bg-muted transition-colors"
-          >
-            <X className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
-        </div>
-        
-        <div className="flex-1 min-h-0 overflow-y-auto scrollbar-hide">
-          <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-card-foreground">
+          <div className="flex items-center gap-1">
+            <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span>{post.readTime}</span>
+          </div>
+        </div><div className="flex-1 min-h-0 overflow-y-auto scrollbar-hide">
+          <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 pb-6 sm:pb-8">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-card-foreground leading-tight">
               {post.title}
             </h1>
-            
-            {/* Blog post image in modal */}
+              {/* Blog post image in modal */}
             {post.imageUrl && (
-              <div className="relative h-48 sm:h-64 w-full rounded-lg overflow-hidden">
+              <div className="relative h-48 sm:h-56 w-full rounded-lg overflow-hidden">
                 <img 
                   src={post.imageUrl} 
                   alt={post.imageAlt || post.title}
@@ -136,9 +142,8 @@ function BlogModal({ post, isOpen, onClose }: BlogModalProps) {
                 />
               </div>
             )}
-            
-            <div 
-              className="prose prose-sm sm:prose prose-neutral dark:prose-invert max-w-none"
+              <div 
+              className="prose prose-sm sm:prose-base prose-neutral dark:prose-invert max-w-none leading-relaxed"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
@@ -190,10 +195,9 @@ export function Blogs() {
         </div>
         {/* Blog Posts */}
         <div ref={postsRef} className={`space-y-4 sm:space-y-6 transition-opacity duration-700 ease-out ${showPosts ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
-          {blogPosts.map((post) => (
-            <article 
+          {blogPosts.map((post) => (            <article 
               key={post.id}
-              className="group relative border border-border/50 rounded-lg bg-card hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
+              className="group relative border border-border/50 rounded-lg bg-card hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden transform hover:scale-[1.02] hover:shadow-xl"
               onClick={() => openModal(post)}
             >
               {/* Blog post image */}
