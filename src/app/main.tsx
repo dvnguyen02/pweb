@@ -101,12 +101,10 @@ export function Main({ scrollAreaViewportRef }: { scrollAreaViewportRef?: React.
         );
         observer.observe(node);
         return () => observer.disconnect();
-    }, []);
-
-    return (
-        <div className="w-full h-full flex flex-col items-center relative">
-            <div className="flex flex-col items-center w-full gap-6 sm:gap-3">
-                <div className="flex flex-col gap-6 max-w-2xl w-full">
+    }, []);    return (
+        <div className="w-full h-full flex flex-col items-center relative px-4 sm:px-6">
+            <div className="flex flex-col items-center w-full gap-4 sm:gap-6">
+                <div className="flex flex-col gap-4 sm:gap-6 max-w-2xl w-full">
                     <HeroSection />
                     <SkillsSlider />
                     <div ref={experienceRef}>

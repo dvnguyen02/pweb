@@ -98,35 +98,37 @@ function BlogModal({ post, isOpen, onClose }: BlogModalProps) {
   if (!isOpen || !post) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-background border border-border rounded-lg shadow-xl overflow-hidden">
-        <div className="flex items-center justify-between p-6 border-b border-border flex-shrink-0">
-          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+      <div className="relative w-full max-w-4xl max-h-[95vh] sm:max-h-[90vh] flex flex-col bg-background border border-border rounded-lg shadow-xl overflow-hidden">
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-border flex-shrink-0">
+          <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
             <div className="flex items-center gap-1">
-              <CalendarIcon className="w-4 h-4" />
+              <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>{post.date}</span>
             </div>
             <div className="flex items-center gap-1">
-              <ClockIcon className="w-4 h-4" />
+              <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>{post.readTime}</span>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-lg hover:bg-muted transition-colors"
+            className="p-1.5 sm:p-2 rounded-lg hover:bg-muted transition-colors"
           >
-            <X className="w-5 h-5" />          </button>        </div>
+            <X className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
+        </div>
         
         <div className="flex-1 min-h-0 overflow-y-auto scrollbar-hide">
-          <div className="p-6 space-y-6">
-            <h1 className="text-2xl font-bold tracking-tight text-card-foreground">
+          <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-card-foreground">
               {post.title}
             </h1>
             
             {/* Blog post image in modal */}
             {post.imageUrl && (
-              <div className="relative h-64 w-full rounded-lg overflow-hidden">
+              <div className="relative h-48 sm:h-64 w-full rounded-lg overflow-hidden">
                 <img 
                   src={post.imageUrl} 
                   alt={post.imageAlt || post.title}
@@ -136,7 +138,7 @@ function BlogModal({ post, isOpen, onClose }: BlogModalProps) {
             )}
             
             <div 
-              className="prose prose-neutral dark:prose-invert max-w-none"
+              className="prose prose-sm sm:prose prose-neutral dark:prose-invert max-w-none"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
@@ -177,18 +179,17 @@ export function Blogs() {
     setIsModalOpen(false);
     setSelectedPost(null);
   };
-
   return (
-    <div className="w-full h-full flex flex-col items-center">
+    <div className="w-full h-full flex flex-col items-center px-4 sm:px-6">
       <div className="flex flex-col gap-6 max-w-4xl w-full">
-        <div className="flex flex-col gap-4 p-6 border border-border/50 rounded-lg bg-card">
-          <h1 className="text-3xl font-bold tracking-tight text-card-foreground">Blogs</h1>
+        <div className="flex flex-col gap-4 p-4 sm:p-6 border border-border/50 rounded-lg bg-card">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-card-foreground">Blogs</h1>
           <p className="text-base leading-relaxed text-card-foreground">
             Just where I want to share my thoughts.
           </p>
         </div>
         {/* Blog Posts */}
-        <div ref={postsRef} className={`space-y-6 transition-opacity duration-700 ease-out ${showPosts ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
+        <div ref={postsRef} className={`space-y-4 sm:space-y-6 transition-opacity duration-700 ease-out ${showPosts ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
           {blogPosts.map((post) => (
             <article 
               key={post.id}
@@ -197,7 +198,7 @@ export function Blogs() {
             >
               {/* Blog post image */}
               {post.imageUrl && (
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative h-40 sm:h-48 w-full overflow-hidden">
                   <img 
                     src={post.imageUrl} 
                     alt={post.imageAlt || post.title}
@@ -206,30 +207,29 @@ export function Blogs() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               )}
-              
-              <div className="p-6">
-                <div className="flex flex-col gap-4">
+                <div className="p-4 sm:p-6">
+                <div className="flex flex-col gap-3 sm:gap-4">
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
-                        <CalendarIcon className="w-4 h-4" />
+                        <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                         <span>{post.date}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <ClockIcon className="w-4 h-4" />
+                        <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                         <span>{post.readTime}</span>
                       </div>
                     </div>
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm text-primary font-medium">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs sm:text-sm text-primary font-medium">
                       Click to read more →
                     </div>
                   </div>
                   
-                  <h2 className="text-xl font-semibold tracking-tight text-card-foreground group-hover:text-primary transition-colors">
+                  <h2 className="text-lg sm:text-xl font-semibold tracking-tight text-card-foreground group-hover:text-primary transition-colors">
                     {post.title}
                   </h2>
                   
-                  <p className="text-base leading-relaxed text-muted-foreground">
+                  <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
                     {post.excerpt}
                   </p>
                 </div>
