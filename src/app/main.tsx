@@ -102,17 +102,21 @@ export function Main({ scrollAreaViewportRef }: { scrollAreaViewportRef?: React.
         observer.observe(node);
         return () => observer.disconnect();
     }, []);    return (
-        <div className="w-full h-full flex flex-col items-center relative px-4 sm:px-6">
-            <div className="flex flex-col items-center w-full gap-4 sm:gap-6">
-                <div className="flex flex-col gap-4 sm:gap-6 max-w-2xl w-full">
-                    <HeroSection />
-                    <SkillsSlider />
-                    <div ref={experienceRef}>
+        <div className="w-full h-full flex flex-col items-center relative px-2 sm:px-3 lg:px-4 min-w-0 overflow-hidden">
+            <div className="flex flex-col items-center w-full gap-3 sm:gap-4 lg:gap-6 max-w-full min-w-0">
+                <div className="flex flex-col gap-3 sm:gap-4 lg:gap-6 max-w-2xl w-full min-w-0">
+                    <div className="w-full min-w-0">
+                        <HeroSection />
+                    </div>
+                    <div className="w-full min-w-0">
+                        <SkillsSlider />
+                    </div>
+                    <div ref={experienceRef} className="w-full min-w-0">
                         <div className={`transition-opacity duration-700 ease-out ${showExperience ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
                             <ExperienceEducation />
                         </div>
                     </div>
-                    <div ref={projectsRef}>
+                    <div ref={projectsRef} className="w-full min-w-0">
                         <div className={`transition-opacity duration-700 ease-out ${showProjects ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
                             <ProjectsSection 
                                 expandedProject={expandedProject}

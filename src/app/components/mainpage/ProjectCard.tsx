@@ -25,9 +25,9 @@ export function ProjectCard({ project, projectId, expandedProject, onExpand }: P
     const isExpanded = expandedProject === projectId;
 
     return (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center px-1 sm:px-2">
             <Card
-                className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-lg transition-all duration-300"
+                className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-lg transition-all duration-300 min-w-0"
                 style={{
                     background: 'linear-gradient(180deg, rgba(24,24,27,0.9) 60%, rgba(24,24,27,1) 100%)',
                     boxShadow: '0 0 15px 2px rgba(255, 255, 255, 0.08), 0 8px 32px 0 rgba(0,0,0,0.37)'
@@ -36,7 +36,7 @@ export function ProjectCard({ project, projectId, expandedProject, onExpand }: P
             >
                 {!isExpanded && (
                     <>
-                        <div className="relative w-full h-56 sm:h-64 md:h-72 lg:h-80 overflow-hidden rounded-b-none rounded-t-2xl">
+                        <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 overflow-hidden rounded-b-none rounded-t-2xl">
                             <Image
                                 src={project.coverImage}
                                 alt={project.name}
@@ -47,8 +47,9 @@ export function ProjectCard({ project, projectId, expandedProject, onExpand }: P
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] via-[#18181b]/80 to-transparent" />
                         </div>
-                        <CardHeader className="pb-0 pt-4 px-6 flex-col items-start bg-transparent">
-                            <h4 className="font-bold text-2xl text-white drop-shadow-lg mb-2">{project.name}</h4>
+                        
+                        <CardHeader className="pb-0 pt-4 px-3 sm:px-4 lg:px-6 flex-col items-start bg-transparent min-w-0">
+                            <h4 className="font-bold text-xl sm:text-2xl text-white drop-shadow-lg mb-2 break-words w-full">{project.name}</h4>
                             
                             {/* Show external link icon for RAG project */}
                             {projectId === 'rag' && (
@@ -65,20 +66,22 @@ export function ProjectCard({ project, projectId, expandedProject, onExpand }: P
                                 </div>
                             )}
                             
-                            <div className="flex flex-wrap gap-2 items-center mb-2">
+                            <div className="flex flex-wrap gap-1 sm:gap-2 items-center mb-2 w-full">
                                 {project.tags.map((tag) => (
                                     <span
                                         key={tag.name}
-                                        className="flex items-center bg-[#23232a] border border-[#23232a] rounded-full text-white/90 gap-2 text-sm px-3 py-1.5 shadow"
+                                        className="flex items-center bg-[#23232a] border border-[#23232a] rounded-full text-white/90 gap-1 text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-1.5 shadow break-words"
                                     >
-                                        {tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: 'w-5 h-5 mr-1' })}
-                                        {tag.name}
+                                        {tag.icon && React.cloneElement(tag.icon as React.ReactElement, { className: 'w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 flex-shrink-0' })}
+                                        <span className="truncate">{tag.name}</span>
                                     </span>
                                 ))}
-                            </div>                            <p className="text-white/80 text-base mt-2 mb-1">
+                            </div>
+                            <p className="text-white/80 text-sm sm:text-base mt-2 mb-1 break-words w-full">
                                 {project.description}
-                            </p>                            <Button
-                                className="mt-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
+                            </p>
+                            <Button
+                                className="mt-2 transform transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 text-sm"
                                 onClick={e => { e.stopPropagation(); onExpand(projectId); }}
                             >
                                 More details

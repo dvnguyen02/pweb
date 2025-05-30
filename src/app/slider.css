@@ -9,11 +9,22 @@
 }
 
 .animate-scroll {
-  animation: infinite-scroll 25s linear infinite;
+  animation: infinite-scroll 30s linear infinite;
 }
 
 .animate-scroll-reverse {
-  animation: infinite-scroll-reverse 25s linear infinite;
+  animation: infinite-scroll-reverse 30s linear infinite;
+}
+
+/* Mobile-specific faster animations */
+@media (max-width: 640px) {
+  .animate-scroll {
+    animation: infinite-scroll 20s linear infinite;
+  }
+  
+  .animate-scroll-reverse {
+    animation: infinite-scroll-reverse 20s linear infinite;
+  }
 }
 
 /* Pause animation on hover */
@@ -22,20 +33,38 @@
   animation-play-state: paused;
 }
 
-/* Gradient masks for sliders */
+/* Gradient masks for sliders - Desktop */
 .slider-mask {
   mask-image: linear-gradient(
     to right,
     transparent 0,
-    black 128px,
-    black calc(100% - 128px),
+    black 80px,
+    black calc(100% - 80px),
     transparent 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0,
-    black 128px,
-    black calc(100% - 128px),
+    black 80px,
+    black calc(100% - 80px),
+    transparent 100%
+  );
+}
+
+/* Mobile-specific gradient masks with shorter fade */
+.slider-mask-mobile {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 40px,
+    black calc(100% - 40px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 40px,
+    black calc(100% - 40px),
     transparent 100%
   );
 }
