@@ -79,23 +79,21 @@ export default function Page() {
 					showLoader ? "opacity-0 pointer-events-none" : "opacity-100"
 				)}
 			>
-				{/* Chat Open Button - Top Right, appears after loader */}
-				{!showLoader && (
-					<button 
-						onClick={() => setShowChat(true)}
-						className="fixed top-4 right-4 z-20 bg-primary text-primary-foreground hover:bg-primary/90 p-3 rounded-full shadow-lg transition-all hover:scale-110 active:scale-95"
-						title="Open Chat"
-					>
-						<MessageSquareText className="w-5 h-5" />
-					</button>
-				)}
-
 				<div className="animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[90vh] sm:max-h-96 lg:max-h-[70vh] overflow-hidden ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black transition-all duration-1000 flex flex-col">
-					{/* Settings and theme switch inside the card, top right */}
+					{/* Settings, theme switch, and Chat button inside the card, top right */}
 					<div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2">
 						<Sun className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
 						<Switch checked={isDark} onCheckedChange={setIsDark} />
-						<Moon className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
+						<Moon className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground mr-1 sm:mr-2" />
+						{!showLoader && (
+							<button 
+								onClick={() => setShowChat(true)}
+								className="bg-primary text-primary-foreground hover:bg-primary/90 p-1.5 sm:p-2 rounded-md shadow-sm transition-all hover:scale-110 active:scale-95"
+								title="Open Chat"
+							>
+								<MessageSquareText className="w-3 h-3 sm:w-4 sm:w-4" />
+							</button>
+						)}
 					</div>
 					
 					{/* Window controls */}
