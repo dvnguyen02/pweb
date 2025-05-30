@@ -9,7 +9,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import ParticlesBackground from "@/components/ParticlesBackground";
 import TerminalLoader from "@/components/TerminalLoader";
 import { Switch } from "@/components/ui/switch";
-import { Heart, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, MessageSquareText } from "lucide-react";
+import { ChatWidget } from '@/components/ChatWidget';
 
 import { Main } from "./main";
 import { About } from "./about";
@@ -37,7 +38,7 @@ export default function Page() {
 	}>(tabs[0]);
 	const [isDark, setIsDark] = useState(true);
 	const [showLoader, setShowLoader] = useState(true);
-
+	const [showChat, setShowChat] = useState(false);
 	// Simple loader completion handler
 	const handleLoaderComplete = () => {
 		setShowLoader(false);
@@ -55,26 +56,41 @@ export default function Page() {
 			document.documentElement.classList.remove("dark");
 		}
 	}, [isDark]);
+	
 	return (
 		<div
 			className={cn(
 				"fixed inset-0 h-screen w-screen overflow-hidden touch-none overflow-y-hidden scrollbar-none",
 				`bg-${background}`
 			)}
-		>			{/* Terminal Loader */}
+		>
+			{/* Terminal Loader */}
 			{showLoader && (
 				<TerminalLoader onComplete={handleLoaderComplete} />
 			)}
 			
 			<ParticlesBackground className="absolute inset-0 z-0" />
 			
-			{/* Main content - will be shown after loader completes */}			<div 
+			{/* Main content - will be shown after loader completes */}
+			<div 
 				className={cn(
 					"relative z-10 flex h-full w-full items-center justify-center p-2 sm:p-4",
 					"transition-opacity duration-1000",
-					showLoader ? "opacity-0" : "opacity-100"
+					showLoader ? "opacity-0 pointer-events-none" : "opacity-100"
 				)}
-			>				<div className="animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[90vh] sm:max-h-96 lg:max-h-[70vh] overflow-hidden ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black transition-all duration-1000 flex flex-col">
+			>
+				{/* Chat Open Button - Top Right, appears after loader */}
+				{!showLoader && (
+					<button 
+						onClick={() => setShowChat(true)}
+						className="fixed top-4 right-4 z-20 bg-primary text-primary-foreground hover:bg-primary/90 p-3 rounded-full shadow-lg transition-all hover:scale-110 active:scale-95"
+						title="Open Chat"
+					>
+						<MessageSquareText className="w-5 h-5" />
+					</button>
+				)}
+
+				<div className="animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[90vh] sm:max-h-96 lg:max-h-[70vh] overflow-hidden ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black transition-all duration-1000 flex flex-col">
 					{/* Settings and theme switch inside the card, top right */}
 					<div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2">
 						<Sun className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
@@ -140,6 +156,7 @@ export default function Page() {
 					</div>
 				</div>
 			</div>
+			<ChatWidget isVisible={showChat} onExit={() => setShowChat(false)} />
 		</div>
 	);
 }
