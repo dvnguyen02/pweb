@@ -26,6 +26,7 @@ const tabs = [
 	{ name: "Blogs", component: <Blogs /> },
 	{ name: "Attach", component: <Attach /> },
 	{ name: "Contact", component: <Contact /> },
+	// Chat tab is added dynamically below
 ];
 
 export default function Page() {
@@ -80,20 +81,11 @@ export default function Page() {
 				)}
 			>
 				<div className="animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[90vh] sm:max-h-96 lg:max-h-[70vh] overflow-hidden ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black transition-all duration-1000 flex flex-col">
-					{/* Settings, theme switch, and Chat button inside the card, top right */}
+					{/* Settings, theme switch, and Chat button inside the card, top right - CHAT BUTTON REMOVED FROM HERE*/}
 					<div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2">
 						<Sun className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground" />
 						<Switch checked={isDark} onCheckedChange={setIsDark} />
 						<Moon className="h-3 w-3 sm:h-4 sm:w-4 text-muted-foreground mr-1 sm:mr-2" />
-						{!showLoader && (
-							<button 
-								onClick={() => setShowChat(true)}
-								className="bg-primary text-primary-foreground hover:bg-primary/90 p-1.5 sm:p-2 rounded-md shadow-sm transition-all hover:scale-110 active:scale-95"
-								title="Open Chat"
-							>
-								<MessageSquareText className="w-3 h-3 sm:w-4 sm:w-4" />
-							</button>
-						)}
 					</div>
 					
 					{/* Window controls */}
@@ -109,7 +101,7 @@ export default function Page() {
 							<div
 								key={tab.name}
 								className={cn(
-									"bg-background px-2 sm:px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0",
+									"bg-background px-2 sm:px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer",
 									activeTab.name === tab.name &&
 										"bg-black dark:bg-primary text-primary-foreground"
 								)}
@@ -118,6 +110,21 @@ export default function Page() {
 								{tab.name}
 							</div>
 						))}
+						{/* Chat Tab Button - appears after loader */}
+						{!showLoader && (
+							<div
+								className={cn(
+									"bg-background px-2 sm:px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer flex items-center gap-1.5 group",
+									// Optional: Add active styling if chat is open, e.g.,
+									// showChat && "bg-black dark:bg-primary text-primary-foreground"
+								)}
+								onClick={() => setShowChat(true)}
+								title="Open Chat"
+							>
+								<MessageSquareText className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
+								<span className="text-muted-foreground group-hover:text-foreground transition-colors">Chat</span>
+							</div>
+						)}
 					</div>
 					
 					{/* Content area - flex-1 to take remaining space */}

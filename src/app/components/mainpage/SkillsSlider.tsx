@@ -10,7 +10,7 @@ export function SkillsSlider() {
             <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-bold">What I have worked with</h3>                <button
                     onClick={() => setShowGrid(!showGrid)}
-                    className="flex items-center gap-2 px-3 py-2 bg-card hover:bg-card/80 border border-border rounded-lg transition-all duration-300 hover:scale-105 active:scale-95"
+                    className="flex items-center gap-2 px-3 py-2 bg-card hover:bg-card/80 border border-border rounded-lg hover:scale-105 active:scale-95"
                     title={showGrid ? "Show animated slider" : "Show all tech stacks"}
                 >
                         {showGrid ? (

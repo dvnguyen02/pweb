@@ -41,11 +41,18 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
-
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
+  // Maintain focus when loading state changes
+  useEffect(() => {
+    if (!isLoading && isVisible && inputRef.current) {
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
+    }
+  }, [isLoading, isVisible]);
   const sendMessage = async () => {
     if (!input.trim() || isLoading) return;
 
@@ -59,6 +66,13 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
+
+    // Maintain focus immediately after clearing input
+    setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 10);
 
     try {
       const conversation = messages.map(msg => ({
@@ -102,7 +116,7 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
           
           if (value) {
             buffer += decoder.decode(value, { stream: true });
-            const lines = buffer.split('\n'); // Corrected: Changed from \\n to \n
+            const lines = buffer.split('\n'); 
             buffer = lines.pop() || '';
             
             for (const line of lines) {
@@ -144,12 +158,14 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
           role: 'assistant',
           timestamp: new Date(),
         },
-      ]);
-    } finally {
+      ]);    } finally {
       setIsLoading(false);
-      if (isVisible && inputRef.current) {
-        inputRef.current.focus();
-      }
+      // Ensure focus is maintained after all updates
+      setTimeout(() => {
+        if (inputRef.current && isVisible) {
+          inputRef.current.focus();
+        }
+      }, 50);
     }
   };
 
@@ -193,7 +209,7 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
             onClick={onExit}
             className="text-xs text-muted-foreground hover:text-foreground px-2 py-1 h-auto"
           >
-            Exit to Website
+            Exit Chat
           </Button>
         </div>
 
@@ -203,7 +219,6 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
             <div className="text-muted-foreground">
               <p><span className="text-green-400 font-semibold">david-ai:</span> Hi! I'm David's AI assistant.</p>
               <p><span className="text-green-400 font-semibold">david-ai:</span> Ask me anything about his projects, experience, or skills!</p>
-              <p><span className="text-green-400 font-semibold">david-ai:</span> Type your message below and press Enter.</p>
             </div>
           )}
           {messages.map((message) => (
