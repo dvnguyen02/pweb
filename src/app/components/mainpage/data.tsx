@@ -23,6 +23,7 @@ import {
     SiFastapi,
     SiWebrtc,
     SiFlask,
+    SiLangchain,
 } from "react-icons/si";
 
 export const skills = [
@@ -67,7 +68,7 @@ export const skills = [
 export const frameworks = [
     {
         name: "LangGraph",
-        icon: <Image src="/images/orgs/langgraph.png" alt="LangGraph" width={40} height={40} className="w-10 h-10" />
+        icon: <SiLangchain className="w-10 h-10" />
     },
     {
         name: "Google SDK",
@@ -173,7 +174,7 @@ export const currentProject = {
         { name: "Next.js", icon: <SiNextdotjs className="w-4 h-4" /> },
         { name: "FastAPI", icon: <SiFastapi className="w-4 h-4" /> },
         { name: "React", icon: <SiReact className="w-4 h-4" /> },
-        { name: "LangGraph", icon: <Image src="/images/orgs/langgraph.png" alt="LangGraph" width={16} height={16} /> },
+        { name: "LangGraph", icon: <SiLangchain className="w-4 h-4" /> },
         { name: "Python", icon: <SiPython className="w-4 h-4" /> },
         { name: "WebRTC", icon: <SiWebrtc className="w-4 h-4" /> },
     ],
@@ -189,7 +190,7 @@ export const placeholderProject = {
         { name: "React", icon: <SiReact className="w-4 h-4" /> },
         { name: "Python", icon: <SiPython className="w-4 h-4" /> },
         { name: "Flask", icon: <SiFlask className="w-4 h-4" /> },
-        { name: "LangGraph", icon: <Image src="/images/orgs/langgraph.png" alt="LangGraph" width={16} height={16} /> },
+        { name: "LangGraph", icon: <SiLangchain className="w-4 h-4" /> },
     ],
     detailedDescription: "An intelligent chatbot for PBTech that helps customers find laptops through natural language conversations. Uses Retrieval-Augmented Generation to search 500+ products and provide personalized recommendations, comparisons, and technical specifications.",
 };

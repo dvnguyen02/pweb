@@ -15,7 +15,7 @@ export function SkillsSlider() {
                     {allTechStacks.map((tech, index) => (
                         <div
                             key={`grid-${index}`}
-                            className="flex flex-col items-center gap-1 sm:gap-1.5 p-2 transition-all duration-300 hover:scale-105 group cursor-pointer min-w-0"
+                            className="flex flex-col items-center gap-1 sm:gap-1.5 p-2 hover:scale-105 group cursor-pointer min-w-0"
                             title={tech.name}
                         >
                             <div className="transition-transform duration-300 group-hover:scale-110 flex-shrink-0">

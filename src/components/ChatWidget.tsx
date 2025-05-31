@@ -190,8 +190,8 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
     >
       <div
         className={cn(
-          "rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[90vh] sm:max-h-96 lg:max-h-[70vh] overflow-hidden ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black transition-all duration-1000 flex flex-col",
-          "font-mono text-sm",
+          "rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[90vh] sm:max-h-96 lg:max-h-[70vh] overflow-hidden ring-4 dark:ring-neutral-700 ring-neutral-600 dark:hover:ring-neutral-600 hover:ring-neutral-700 transition-all duration-1000 flex flex-col",
+          "text-sm",
           "transition-all duration-300 ease-out",
           isMounted && isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"
         )}
@@ -199,10 +199,10 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
         {/* Header */}
         <div className="bg-muted/50 p-2 pr-3 flex justify-between items-center border-b border-border flex-shrink-0">
           <div className="flex items-center gap-2 px-1">
-            <div className="size-3 rounded-full bg-red-500"></div>
-            <div className="size-3 rounded-full bg-yellow-500"></div>
-            <div className="size-3 rounded-full bg-green-500"></div>
-            <span className="ml-2 text-xs text-muted-foreground">Chat with David's AI</span>
+            <div className="size-3 sm:size-4 rounded-full bg-red-500"></div>
+            <div className="size-3 sm:size-4 rounded-full bg-yellow-500"></div>
+            <div className="size-3 sm:size-4 rounded-full bg-green-500"></div>
+            <span className="ml-2 text-xs text-muted-foreground">Chat with David's Assistant</span>
           </div>
           <Button
             variant="ghost"
@@ -218,7 +218,6 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
           {messages.length === 0 && !isLoading && (
             <div className="text-muted-foreground">
               <p><span className="text-green-400 font-semibold">david-ai:</span> Hi! I'm David's AI assistant.</p>
-              <p><span className="text-green-400 font-semibold">david-ai:</span> Ask me anything about his projects, experience, or skills!</p>
             </div>
           )}
           {messages.map((message) => (

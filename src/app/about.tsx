@@ -27,13 +27,9 @@ export function About() {
 					
 					<div className="space-y-4 text-base leading-relaxed text-card-foreground">
 						<p>
-							I'm a data science major with a bit of a dual personality. At uni, I'm diving deep 
-							into machine learning, deep learning and statistics concepts, and at home I'm teaching myself about application development.
+							I'm a data science major who's also into app development. I get the theory side at university with machine learning and statistics, then go home and work on building actual applications
 						</p>
 						
-						<p>
-							What drives me is the intersection of analytical thinking and creative problem-solving. I love the process of taking messy, real-world data and extracting meaningful insights from it, but I'm equally fascinated by the challenge of building systems that can scale and deliver those insights to actual users. There's something incredibly satisfying about bridging the gap between academic theory and practical applications.
-						</p>
 						
 						<p>
 							When I'm not buried in coursework, I will be exploring the latest developments in AI tech, experimenting with new frameworks, or working on side projects.

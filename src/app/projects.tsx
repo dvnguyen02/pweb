@@ -46,6 +46,14 @@ const projects = [
 
 		],
 	},
+	{
+		coverImage: "/images/projects/olympic_dashboard.webp",
+		name: "Olympic Games Dashboard (1896-2016) 🏅",
+		description:
+			"Interactive dashboard analyzing 120 years of Olympic history with dynamic filtering by sports, countries, years, and gender.",
+		link: "https://dvidnguyen.shinyapps.io/olympic-analysis/",
+		tags: ["R", "Shiny"]
+	},
 	// {
 	// 	coverImage: "/images/projects/4.png",
 	// 	name: "ML Model Deployment with FastAPI 🚀",
@@ -128,7 +136,7 @@ export function Projects() {
 						target="_blank"
 						className="sm:cursor-none group"
 					>
-						<div className="relative flex flex-col gap-3 bg-muted transition-all duration-300 hover:ring-4 ring-neutral-200 dark:ring-neutral-700 rounded-xl p-3 sm:p-4 group-hover:scale-[1.02]">
+						<div className="relative flex flex-col gap-3 bg-muted transition-all duration-300 hover:ring-4 ring-neutral-500 dark:ring-neutral-700 rounded-xl p-3 sm:p-4 group-hover:scale-[1.02]">
 							<Image
 								src={project.coverImage}
 								alt={project.name}

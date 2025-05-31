@@ -55,11 +55,11 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     ];
 
     const addLines = async () => {
-      let totalInitTime = 200;
+      let totalInitTime = 100;
       
       // First two lines
       for (let i = 0; i < 2; i++) {
-        const typingSpeed = Math.floor(Math.random() * 30) + 200;
+        const typingSpeed = Math.floor(Math.random() * 30) + 100;
         totalInitTime += typingSpeed;
         await new Promise(resolve => setTimeout(resolve, typingSpeed));
         setTerminalLines(prev => [...prev, initializationLines[i]]);
@@ -70,7 +70,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
       }
       
       // Progressive loading bar animation (about 2 seconds)
-      await new Promise(resolve => setTimeout(resolve, 150));
+      await new Promise(resolve => setTimeout(resolve, 50));
       totalInitTime += 150;
       
       setTerminalLines(prev => [...prev, initializationLines[2]]);
@@ -148,7 +148,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         const loss = (1.2 - baseProgress * 1.05).toFixed(4);
         const accuracy = (65 + baseProgress * 29).toFixed(2);
         const lr = epoch > 2 ? 0.0005 : 0.001;
-        
+
         // Multiple steps per epoch for more authentic training simulation
         const stepsPerEpoch = 2;
         for (let step = 1; step <= stepsPerEpoch; step++) {
@@ -199,7 +199,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
       ];
       
       for (let i = 0; i < postTrainingLines.length; i++) {
-        const typingSpeed = Math.floor(Math.random() * 30) + 300;
+        const typingSpeed = Math.floor(Math.random() * 30);
         totalPostTrainingTime += typingSpeed;
         await new Promise(resolve => setTimeout(resolve, typingSpeed));
         setTerminalLines(prev => [...prev, postTrainingLines[i]]);
@@ -292,7 +292,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     >
       <div 
         className={cn(
-          "animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[75vh] sm:max-h-96 lg:max-h-[70vh] overflow-hidden ring-4 dark:ring-neutral-700 ring-black dark:hover:ring-neutral-600 hover:ring-black transition-all duration-1000",
+          "animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[90vh] sm:max-h-96 lg:max-h-[70vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
           !isReady ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
         )}
       >

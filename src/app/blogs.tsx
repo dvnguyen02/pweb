@@ -25,21 +25,14 @@ const blogPosts: BlogPost[] = [
       <p>For the longest time, I thought LeetCode was just for software engineers. As a data science student, I figured my path would be different and focus more on statistics and machine learning. Why would I need to solve algorithm puzzles when I'm building predictive models?</p>
       
       <p>In New Zealand, data science roles often require a lot of years in experience. More importantly, I realized that strong problem-solving skills are also universal for any roles.</p>
-      
-      <h3>Why I Finally Started LeetCode</h3>
-      <p>There are two main reasons pushed me to finally create my LeetCode account (https://leetcode.com/u/kokzodiac/):</p>
-      
-      <p>Let's be honest—the job market is competitive, and having options is crucial. Many companies, even for data science roles, include algorithmic thinking in their interview process. I want to be prepared for whatever comes my way.</p>
+            
+      <p>The job market is competitive, and having options is crucial. Many companies, even for data science roles, include algorithmic thinking in their interview process. I want to be prepared for whatever comes my way.</p>
       
       <p>This was the bigger motivator for me. I sometimes struggled to break them down systematically. LeetCode forces you to think step-by-step and consider edge cases, these skills could directly translate to any type of work.</p>
       
-      <h3>The Honest Struggle</h3>
       <p>There are days when I look at a medium-level problem and feel completely lost. The jump from easy to medium feels massive sometimes. Dynamic programming problems still make me second-guess myself constantly.</p>
       
-      
-      <h3>Moving Forward</h3>
-      <p>My goal isn't to become a competitive programmer overnight. I want to build solid problem-solving fundamentals that will serve me well in interviews and in my career. Whether I end up in data science, software engineering, or somewhere in between, these skills will be valuable.</p>
-      
+            
         `
   },
     {
@@ -69,21 +62,20 @@ const blogPosts: BlogPost[] = [
   <p>In the real world, your data rarely comes from a single, clean source. You'll pull information from multiple systems that don't always play nicely together. Getting these to work together is very time consuming.</p>
   
   <h3>The 20% - The Glory</h3>
-  <p>This is where the magic happens - building models, analyzing results, and extracting insights that can drive real business decisions. You'll experiment with different algorithms, fine-tune parameters, and create visualizations that tell compelling stories.</p>
+  <p>This is where the magic happens - building models, analyzing results, and extracting insights that can drive real business decisions. You'll experiment with different algorithms, fine-tune parameters, and create visualizations that tell stories.</p>
   
   <p>Perhaps the most rewarding part is translating your findings into actionable insights. Your customer churn model helps retain valuable customers. Your forecasting algorithm optimizes operations. This 20% is where you see the real impact of your work.</p>
   
-  <h3>Why This Reality Is Actually Exciting</h3>
   <p>Initially, I was disappointed at first, I wanted to jump straight into building neural networks and complex models. But I've come to appreciate why data preparation is so crucial:</p>
   
-  <p><strong>Quality In, Quality Out:</strong> No amount of sophisticated modeling can compensate for poor-quality data. The time you invest in cleaning and understanding your data directly impacts the reliability of your insights.</p>
+  <p>No amount of sophisticated modeling can compensate for poor-quality data. The time you invest in cleaning and understanding your data directly impacts the reliability of your insights.</p>
   
-  <p><strong>Domain Expertise:</strong> During the data cleaning process, you become intimately familiar with the business domain. You understand the nuances and context that inform better modeling decisions.</p>
+  <p>During the data cleaning process, you become intimately familiar with the business domain. You understand the nuances and context that inform better modeling decisions.</p>
   
   <h3>The Bottom Line</h3>
   <p>Data science isn't just about building models—it's about extracting reliable insights from imperfect information. The 80% spent on data preparation isn't a necessary evil, it's the foundation that makes the 20% of "glory" work possible.</p>
   
-  <p>University teaches you the algorithms and theory, but the real world teaches you that communication, and data quality are just as important. Master the unglamorous 80%, document your process religiously, and you'll find that the 20% becomes much more impactful.</p>
+  <p>University teaches you the algorithms and theory, but the real world teaches you that communication, and data quality are just as important.</p>
   `
   },
 ];

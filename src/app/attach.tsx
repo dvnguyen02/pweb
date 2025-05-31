@@ -69,7 +69,7 @@ export function Attach() {
             target="_blank"
             className="sm:cursor-none group"
           >
-            <div className="relative flex flex-col gap-3 bg-card border border-border/80 rounded-xl p-4 hover:ring-4 ring-neutral-200 dark:ring-neutral-700 h-full">
+            <div className="relative flex flex-col gap-3 bg-card border border-border/80 rounded-xl p-4 hover:ring-4 ring-neutral-500 dark:ring-neutral-700 h-full">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
                   <Icon className="size-5 text-card-foreground" />
