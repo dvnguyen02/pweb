@@ -89,7 +89,7 @@ export default function Page() {
 					showLoader ? "opacity-0 pointer-events-none" : "opacity-100"
 				)}
 			>
-				<div className="animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[65vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col">
+				<div className="animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col">
 					{/* Settings, theme switch, and Chat button inside the card, top right*/}
 					<div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2">
 						{/* Theme toggle removed from here */}
