@@ -81,11 +81,10 @@ export default function Page() {
 			)}
 			
 			<ParticlesBackground className="absolute inset-0 z-0" />
-			
-			{/* Main content - will be shown after loader completes */}
+					{/* Main content - will be shown after loader completes */}
 			<div 
 				className={cn(
-					"relative z-10 flex h-full w-full items-center justify-center p-2 sm:p-4",
+					"relative z-10 flex h-full w-full items-center justify-center p-4",
 					"transition-opacity duration-1000",
 					showLoader ? "opacity-0 pointer-events-none" : "opacity-100"
 				)}
@@ -95,23 +94,21 @@ export default function Page() {
 					<div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2">
 						{/* Theme toggle removed from here */}
 					</div>
-					
-					{/* Combined Window controls and Tabs */}
-					<div className="bg-muted p-2 sm:p-3 flex flex-row items-center gap-x-2 sm:gap-x-3">
+							{/* Combined Window controls and Tabs */}
+					<div className="bg-muted p-3 flex flex-row items-center gap-x-3">
 						{/* Window controls */}
-						<div className="gap-1.5 sm:gap-2 flex flex-row">
-							<div className="size-3 sm:size-4 rounded-full bg-red-500" />
-							<div className="size-3 sm:size-4 rounded-full bg-yellow-500" />
-							<div className="size-3 sm:size-4 rounded-full bg-green-500" />
+						<div className="gap-2 flex flex-row">
+							<div className="size-4 rounded-full bg-red-500" />
+							<div className="size-4 rounded-full bg-yellow-500" />
+							<div className="size-4 rounded-full bg-green-500" />
 						</div>
 						
 						{/* Tabs */}
-						<div className="flex flex-row gap-2 sm:gap-3 overflow-x-auto">
-							{tabs.map((tab) => (
+						<div className="flex flex-row gap-3 overflow-x-auto">							{tabs.map((tab) => (
 								<div
 									key={tab.name}
 									className={cn(
-										"bg-background px-2 sm:px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer",
+										"bg-background px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer",
 										activeTab.name === tab.name &&
 											"bg-black dark:bg-primary text-primary-foreground"
 									)}
@@ -119,12 +116,11 @@ export default function Page() {
 								>
 									{tab.name}
 								</div>
-							))}
-							{/* Chat Tab Button - appears after loader */}
+							))}							{/* Chat Tab Button - appears after loader */}
 							{!showLoader && (
 								<div
 									className={cn(
-										"bg-background px-2 sm:px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer flex items-center gap-1.5 group",
+										"bg-background px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer flex items-center gap-1.5 group",
 										// Optional: Add active styling if chat is open, e.g.,
 										// showChat && "bg-black dark:bg-primary text-primary-foreground"
 									)}
@@ -137,10 +133,9 @@ export default function Page() {
 							)}
 						</div>
 					</div>
-					
-					{/* Content area - flex-1 to take remaining space */}
+							{/* Content area - flex-1 to take remaining space */}
 					<ScrollArea viewportRef={viewportRef} className="bg-background flex-1"> {/* Pass viewportRef here */}
-						<div className="p-3 sm:p-5 pb-4 sm:pb-6 flex flex-col gap-3 mr-1 sm:mr-2">
+						<div className="p-5 pb-6 flex flex-col gap-3 mr-2">
 							{activeTab.component}
 						</div>
 					</ScrollArea>

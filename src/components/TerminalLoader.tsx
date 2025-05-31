@@ -321,7 +321,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         {/* Terminal content */}
         <div 
           ref={terminalRef}
-          className="bg-black h-full p-4 font-mono text-sm sm:text-base flex-1 overflow-y-auto" // Added flex-1 and overflow-y-auto
+          className="bg-black p-4 font-mono text-sm sm:text-base flex-1 overflow-y-auto" // Removed h-full
           style={{ 
             fontFamily: "'Fira Code', Consolas, Monaco, 'Courier New', monospace",
             color: '#00ff00',
