@@ -21,7 +21,7 @@ export function TerminalStatusBar({
       {/* Left side */}
       <div className="flex items-center gap-1 sm:gap-3">
         <span className="text-green-400">●</span>
-        <span className="hidden sm:inline text-muted-foreground">david@wellington:~$</span>
+        <span className="text-muted-foreground">david@wellington:~$</span>
         <span className="text-blue-400">{statusText}</span>
       </div>
       {/* Right side */}
