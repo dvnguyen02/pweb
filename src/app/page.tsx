@@ -79,9 +79,9 @@ export default function Page() {
 			{showLoader && (
 				<TerminalLoader onComplete={handleLoaderComplete} />
 			)}
+					<ParticlesBackground className="absolute inset-0 z-0" />
 			
-			<ParticlesBackground className="absolute inset-0 z-0" />
-					{/* Main content - will be shown after loader completes */}
+			{/* Main content - will be shown after loader completes */}
 			<div 
 				className={cn(
 					"relative z-10 flex h-full w-full items-center justify-center p-4",
@@ -94,48 +94,50 @@ export default function Page() {
 					<div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2">
 						{/* Theme toggle removed from here */}
 					</div>
-							{/* Combined Window controls and Tabs */}
-					<div className="bg-muted p-3 flex flex-row items-center gap-x-3">
-						{/* Window controls */}
-						<div className="gap-2 flex flex-row">
-							<div className="size-4 rounded-full bg-red-500" />
-							<div className="size-4 rounded-full bg-yellow-500" />
-							<div className="size-4 rounded-full bg-green-500" />
-						</div>
-						
-						{/* Tabs */}
-						<div className="flex flex-row gap-3 overflow-x-auto">							{tabs.map((tab) => (
-								<div
-									key={tab.name}
-									className={cn(
-										"bg-background px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer",
-										activeTab.name === tab.name &&
-											"bg-black dark:bg-primary text-primary-foreground"
-									)}
-									onClick={() => setActiveTab(tab)}
-								>
-									{tab.name}
-								</div>
-							))}							{/* Chat Tab Button - appears after loader */}
-							{!showLoader && (
-								<div
-									className={cn(
-										"bg-background px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer flex items-center gap-1.5 group",
-										// Optional: Add active styling if chat is open, e.g.,
-										// showChat && "bg-black dark:bg-primary text-primary-foreground"
-									)}
-									onClick={() => setShowChat(true)}
-									title="Open Chat"
-								>
-									<MessageSquareText className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
-									<span className="text-muted-foreground group-hover:text-foreground transition-colors">Chat</span>
-								</div>
-							)}
-						</div>
+					
+					{/* Window controls */}
+					<div className="bg-muted pt-3 px-3 gap-2 flex flex-row">
+						<div className="size-4 rounded-full bg-red-500" />
+						<div className="size-4 rounded-full bg-yellow-500" />
+						<div className="size-4 rounded-full bg-green-500" />
 					</div>
-							{/* Content area - flex-1 to take remaining space */}
-					<ScrollArea viewportRef={viewportRef} className="bg-background flex-1"> {/* Pass viewportRef here */}
-						<div className="p-5 pb-6 flex flex-col gap-3 mr-2">
+					
+					{/* Tabs */}
+					<div className="bg-muted p-3 flex flex-row gap-3 overflow-x-auto">
+						{tabs.map((tab) => (
+							<div
+								key={tab.name}
+								className={cn(
+									"bg-background px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer",
+									activeTab.name === tab.name &&
+										"bg-black dark:bg-primary text-primary-foreground"
+								)}
+								onClick={() => setActiveTab(tab)}
+							>
+								{tab.name}
+							</div>
+						))}
+						
+						{/* Chat Tab Button - appears after loader */}
+						{!showLoader && (
+							<div
+								className={cn(
+									"bg-background px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer flex items-center gap-1.5 group",
+									// Optional: Add active styling if chat is open, e.g.,
+									// showChat && "bg-black dark:bg-primary text-primary-foreground"
+								)}
+								onClick={() => setShowChat(true)}
+								title="Open Chat"
+							>
+								<MessageSquareText className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
+								<span className="text-muted-foreground group-hover:text-foreground transition-colors">Chat</span>
+							</div>
+						)}
+					</div>
+					
+					{/* Content area - flex-1 to take remaining space */}
+					<ScrollArea viewportRef={viewportRef} className="bg-background flex-1">
+						<div className="p-4 pb-6 flex flex-col gap-3 mr-2">
 							{activeTab.component}
 						</div>
 					</ScrollArea>
