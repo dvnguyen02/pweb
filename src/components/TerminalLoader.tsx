@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 // Remove Button import if not needed
+import { TerminalStatusBar } from "./TerminalStatusBar"; // Added import
 
 interface TerminalLoaderProps {
   onComplete: () => void;
@@ -17,6 +18,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
   const [currentPhase, setCurrentPhase] = useState<number>(0);
   const [isComplete, setIsComplete] = useState<boolean>(false);
   const [isReady, setIsReady] = useState<boolean>(false);
+  const [isDark, setIsDark] = useState(true); // Added state for isDark
   const [currentTime, setCurrentTime] = useState<string>("");
   const terminalRef = useRef<HTMLDivElement>(null);
   const hasInitialized = useRef(false);
@@ -280,7 +282,9 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     
     postTrainingPhase();
   }, [currentPhase, onComplete]);
-    return (
+  
+  // Main return statement
+  return (
     <div 
       className={cn(
         "fixed inset-0 flex items-center justify-center p-4 bg-black z-50",
@@ -317,7 +321,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         {/* Terminal content */}
         <div 
           ref={terminalRef}
-          className="bg-black h-full p-4 font-mono text-sm sm:text-base"
+          className="bg-black h-full p-4 font-mono text-sm sm:text-base flex-1 overflow-y-auto" // Added flex-1 and overflow-y-auto
           style={{ 
             fontFamily: "'Fira Code', Consolas, Monaco, 'Courier New', monospace",
             color: '#00ff00',
@@ -336,6 +340,14 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
             </div>
           ))}
         </div>
+
+        {/* Footer Status Bar */}
+        <TerminalStatusBar 
+          isDark={isDark} 
+          setIsDark={setIsDark} 
+          statusText={isComplete ? "Process Complete" : "Processing..."} 
+          showThemeToggle={false} // Theme toggle is not needed here
+        />
       </div>
     </div>
   );
