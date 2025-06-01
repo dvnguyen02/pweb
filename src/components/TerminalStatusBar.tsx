@@ -4,15 +4,15 @@ import { Sun, Moon, Github, Linkedin, Mail } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 
 interface TerminalStatusBarProps {
-  isDark: boolean;
-  setIsDark: (isDark: boolean) => void;
+  isDark?: boolean;
+  setIsDark?: (isDark: boolean) => void;
   statusText?: string;
   showThemeToggle?: boolean;
 }
 
 export function TerminalStatusBar({ 
-  isDark, 
-  setIsDark, 
+  isDark = true, 
+  setIsDark = () => {}, 
   statusText = "Ready",
   showThemeToggle = true 
 }: TerminalStatusBarProps) {

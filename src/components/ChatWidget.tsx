@@ -189,20 +189,19 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
       )}
     >      <div
         className={cn(
-          "animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
+          "animate-in fade-in zoom-in-95 rounded-2xl bg-background/60 backdrop-blur-sm shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
           "text-sm",
           "transition-all duration-300 ease-out",
           isMounted && isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"
-        )}
-      >{/* Window controls */}
-        <div className="bg-muted pt-3 px-3 gap-2 flex flex-row">
+        )}      >{/* Window controls */}
+        <div className="bg-transparent pt-3 px-3 gap-2 flex flex-row">
           <div className="size-4 rounded-full bg-red-500" />
           <div className="size-4 rounded-full bg-yellow-500" />
           <div className="size-4 rounded-full bg-green-500" />
         </div>
         
         {/* Header */}
-        <div className="bg-muted p-3 flex justify-between items-center border-b border-border flex-shrink-0">
+        <div className="bg-transparent p-3 flex justify-between items-center border-b border-border flex-shrink-0">
           <div className="text-sm font-medium flex items-center gap-2">
             <span className="text-muted-foreground">Chat with David's Assistant</span>
           </div>
@@ -250,10 +249,8 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
             </div>
           )}
           <div ref={messagesEndRef} />
-        </div>
-
-        {/* Input */}
-        <div className="p-2.5 border-t border-border flex items-center gap-2 flex-shrink-0 bg-muted/20">
+        </div>        {/* Input */}
+        <div className="p-2.5 border-t border-border flex items-center gap-2 flex-shrink-0 bg-background/80">
           <span className="text-blue-400 font-semibold pl-1">you@prompt:~$</span>
           <input
             ref={inputRef}

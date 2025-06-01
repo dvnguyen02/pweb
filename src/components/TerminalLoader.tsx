@@ -293,21 +293,20 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         isComplete ? "opacity-0 scale-[98%]" : "opacity-100 scale-100",
         className
       )}
-    >
-      <div        className={cn(
-          "animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
+    >      <div        className={cn(
+          "animate-in fade-in zoom-in-95 rounded-2xl bg-transparent shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
           !isReady ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
         )}
       >
         {/* Terminal header */}        {/* Window controls */}
-        <div className="bg-muted pt-3 px-3 gap-2 flex flex-row">
+        <div className="bg-transparent pt-3 px-3 gap-2 flex flex-row">
           <div className="size-4 rounded-full bg-red-400" />
           <div className="size-4 rounded-full bg-yellow-400" />
           <div className="size-4 rounded-full bg-green-400" />
         </div>
         
         {/* Title bar */}
-        <div className="bg-muted p-3 flex items-center justify-between">
+        <div className="bg-transparent p-3 flex items-center justify-between border-b border-white/20">
           <div className="text-sm font-medium flex items-center gap-2">
             <span>python3</span>
             <span className="text-neutral-600">-</span>
