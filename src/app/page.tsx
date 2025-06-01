@@ -80,16 +80,18 @@ export default function Page() {
 				<TerminalLoader onComplete={handleLoaderComplete} />
 			)}
 					<ParticlesBackground className="absolute inset-0 z-0" />
-			
-			{/* Main content - will be shown after loader completes */}
+					{/* Main content - will be shown after loader completes */}
 			<div 
 				className={cn(
-					"relative z-10 flex h-full w-full items-center justify-center p-4",
+					"relative z-10 fixed inset-0 flex items-center justify-center p-4",
 					"transition-opacity duration-1000",
 					showLoader ? "opacity-0 pointer-events-none" : "opacity-100"
 				)}
 			>
-				<div className="animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col">
+				<div className={cn(
+					"animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
+					!showLoader ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+				)}>
 					{/* Settings, theme switch, and Chat button inside the card, top right*/}
 					<div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2">
 						{/* Theme toggle removed from here */}
