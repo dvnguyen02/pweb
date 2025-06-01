@@ -120,17 +120,16 @@ function BlogModal({ post, isOpen, onClose }: BlogModalProps) {
             <span>{post.readTime}</span>
           </div>
         </div><div className="flex-1 min-h-0 overflow-y-auto scrollbar-hide">
-          <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 pb-6 sm:pb-8">
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-card-foreground leading-tight">
+          <div className="p-4 sm:p-6 space-y-4 sm:space-y-6 pb-6 sm:pb-8">            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-card-foreground leading-tight">
               {post.title}
             </h1>
               {/* Blog post image in modal */}
             {post.imageUrl && (
-              <div className="relative h-48 sm:h-56 w-full rounded-lg overflow-hidden">
+              <div className="relative w-full rounded-lg overflow-hidden">
                 <img 
                   src={post.imageUrl} 
                   alt={post.imageAlt || post.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-contain"
                 />
               </div>
             )}
