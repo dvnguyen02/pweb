@@ -34,9 +34,8 @@ export function ProjectModal({ project, isOpen, onClose, mounted }: ProjectModal
             style={{
                 animation: 'fadeIn 0.3s ease-out forwards'
             }}
-        >
-            <Card
-                className="relative overflow-hidden border-none bg-[#18181b] shadow-xl rounded-2xl p-0 w-full max-w-2xl max-h-[80vh] ring-4 ring-primary shadow-2xl transform transition-all duration-500 ease-out animate-in zoom-in-95 slide-in-from-bottom-4 fade-in"
+        >            <Card
+                className="relative overflow-hidden border-none bg-gradient-to-br from-slate-900/40 to-slate-800/20 backdrop-blur-sm shadow-xl rounded-2xl p-0 w-full max-w-2xl max-h-[80vh] ring-4 ring-white/20 hover:ring-white/30 shadow-2xl transform transition-all duration-500 ease-out animate-in zoom-in-95 slide-in-from-bottom-4 fade-in border border-white/10"
                 onClick={e => e.stopPropagation()}
                 style={{ 
                     boxShadow: '0 0 20px 3px rgba(255, 255, 255, 0.12), 0 25px 50px -12px rgba(0, 0, 0, 0.3)',
@@ -59,7 +58,7 @@ export function ProjectModal({ project, isOpen, onClose, mounted }: ProjectModal
                         style={{filter: 'blur(0px)'}}
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#18181b] via-[#18181b]/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/40 to-transparent" />
                 </div>
                 <CardHeader className="pb-0 pt-4 px-6 flex-col items-start bg-transparent">
                     <h4 className="font-bold text-2xl text-white drop-shadow-lg mb-2">{project.name}</h4>

@@ -189,7 +189,7 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
       )}
     >      <div
         className={cn(
-          "animate-in fade-in zoom-in-95 rounded-2xl bg-background/60 backdrop-blur-sm shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
+          "animate-in fade-in zoom-in-95 rounded-2xl bg-background/20 backdrop-blur-sm shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
           "text-sm",
           "transition-all duration-300 ease-out",
           isMounted && isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"
@@ -250,7 +250,7 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
           )}
           <div ref={messagesEndRef} />
         </div>        {/* Input */}
-        <div className="p-2.5 border-t border-border flex items-center gap-2 flex-shrink-0 bg-background/80">
+        <div className="p-2.5 border-t border-border flex items-center gap-2 flex-shrink-0 bg-background/60 backdrop-blur-sm">
           <span className="text-blue-400 font-semibold pl-1">you@prompt:~$</span>
           <input
             ref={inputRef}
