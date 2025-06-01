@@ -52,10 +52,9 @@ export function Attach() {
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
-
   return (
     <div className={`${font.className} flex flex-col gap-4`}>
-      <div className="flex flex-col gap-4 p-4 sm:p-6 border border-border/50 rounded-lg bg-card">
+      <div className="flex flex-col gap-4 p-4 sm:p-6 border border-border/50 rounded-lg bg-transparent">
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-card-foreground">Attachments</h1>
           <p className="text-base leading-relaxed text-card-foreground">
             Here's where you could find my CV and academic transcript. Feel free to download them for more details about my background and qualifications.
@@ -68,8 +67,7 @@ export function Attach() {
             href={link}
             target="_blank"
             className="sm:cursor-none group"
-          >
-            <div className="relative flex flex-col gap-3 bg-card border border-border/80 rounded-xl p-4 hover:ring-4 ring-neutral-500 dark:ring-neutral-700 h-full">
+          >            <div className="relative flex flex-col gap-3 bg-transparent border border-border/80 rounded-xl p-4 hover:ring-4 ring-neutral-500 dark:ring-neutral-700 h-full">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
                   <Icon className="size-5 text-card-foreground" />

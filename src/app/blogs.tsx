@@ -176,20 +176,18 @@ export function Blogs() {
     setIsModalOpen(false);
     setSelectedPost(null);
   };
-  return (
-    <div className="w-full h-full flex flex-col items-center px-4 sm:px-6">
+  return (    <div className="w-full h-full flex flex-col items-center px-4 sm:px-6">
       <div className="flex flex-col gap-6 max-w-4xl w-full">
-        <div className="flex flex-col gap-4 p-4 sm:p-6 border border-border/50 rounded-lg bg-card">
+        <div className="flex flex-col gap-4 p-4 sm:p-6 border border-border/50 rounded-lg bg-transparent">
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-card-foreground">Blogs</h1>
           <p className="text-base leading-relaxed text-card-foreground">
             Just where I want to share my thoughts.
           </p>
         </div>
-        {/* Blog Posts */}
-        <div ref={postsRef} className={`space-y-4 sm:space-y-6 transition-opacity duration-700 ease-out ${showPosts ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
+        {/* Blog Posts */}        <div ref={postsRef} className={`space-y-4 sm:space-y-6 transition-opacity duration-700 ease-out ${showPosts ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
           {blogPosts.map((post) => (            <article 
               key={post.id}
-              className="group relative border border-border/50 rounded-lg bg-card hover:bg-card/80 hover:border-border hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden transform hover:scale-[1.02] hover:shadow-xl"
+              className="group relative border border-border/50 rounded-lg bg-transparent hover:bg-transparent/80 hover:border-border hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden transform hover:scale-[1.02] hover:shadow-xl"
               onClick={() => openModal(post)}
             >
               {/* Blog post image */}

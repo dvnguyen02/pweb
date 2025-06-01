@@ -104,7 +104,7 @@ export function Projects() {
 	return (
 		<section className={`${font.className} space-y-6 sm:space-y-8 px-4 sm:px-6`}>
 			{/* Header Section */}
-			<div className="text-center space-y-4 bg-card border border-border/80 rounded-xl p-4 sm:p-6">
+			<div className="text-center space-y-4 bg-transparent border border-border/80 rounded-xl p-4 sm:p-6">
 				<div className="flex items-center justify-center gap-2 mb-4">
 					<div className="p-2 rounded-full bg-primary/10">
 						<Code2 className="size-5 sm:size-6 text-primary" />
@@ -136,7 +136,7 @@ export function Projects() {
 						target="_blank"
 						className="sm:cursor-none group"
 					>
-						<div className="relative flex flex-col gap-3 bg-muted transition-all duration-300 hover:ring-4 ring-neutral-500 dark:ring-neutral-700 rounded-xl p-3 sm:p-4 group-hover:scale-[1.02]">
+						<div className="relative flex flex-col gap-3 bg-transparent transition-all duration-300 hover:ring-4 ring-neutral-500 dark:ring-neutral-700 rounded-xl p-3 sm:p-4 group-hover:scale-[1.02]">
 							<Image
 								src={project.coverImage}
 								alt={project.name}
