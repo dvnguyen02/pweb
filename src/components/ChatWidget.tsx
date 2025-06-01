@@ -187,22 +187,24 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
         "transition-opacity duration-300 ease-out",
         isMounted && isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       )}
-    >
-      <div
+    >      <div
         className={cn(
-          "rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[90vh] sm:max-h-96 lg:max-h-[70vh] overflow-hidden ring-4 dark:ring-neutral-700 ring-neutral-600 dark:hover:ring-neutral-600 hover:ring-neutral-700 transition-all duration-1000 flex flex-col",
+          "animate-in fade-in zoom-in-95 rounded-2xl bg-background backdrop-blur-lg shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
           "text-sm",
           "transition-all duration-300 ease-out",
           isMounted && isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"
         )}
-      >
+      >{/* Window controls */}
+        <div className="bg-muted pt-3 px-3 gap-2 flex flex-row">
+          <div className="size-4 rounded-full bg-red-500" />
+          <div className="size-4 rounded-full bg-yellow-500" />
+          <div className="size-4 rounded-full bg-green-500" />
+        </div>
+        
         {/* Header */}
-        <div className="bg-muted/50 p-2 pr-3 flex justify-between items-center border-b border-border flex-shrink-0">
-          <div className="flex items-center gap-2 px-1">
-            <div className="size-3 sm:size-4 rounded-full bg-red-500"></div>
-            <div className="size-3 sm:size-4 rounded-full bg-yellow-500"></div>
-            <div className="size-3 sm:size-4 rounded-full bg-green-500"></div>
-            <span className="ml-2 text-xs text-muted-foreground">Chat with David's Assistant</span>
+        <div className="bg-muted p-3 flex justify-between items-center border-b border-border flex-shrink-0">
+          <div className="text-sm font-medium flex items-center gap-2">
+            <span className="text-muted-foreground">Chat with David's Assistant</span>
           </div>
           <Button
             variant="ghost"
