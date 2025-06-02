@@ -1,4 +1,4 @@
-import { MapPinIcon, PhoneIcon } from "lucide-react";
+import { MapPinIcon, PhoneIcon, HandIcon } from "lucide-react";
 import {
     Tooltip,
     TooltipContent,
@@ -49,9 +49,8 @@ export function HeroSection() {
                     <MapPinIcon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                     <span className="break-words min-w-0 truncate">Victoria University of Wellington</span>
                 </div>
-                
-                <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-2 break-words">
-                    Kia ora! <span className="animate-wave hand-emoji">👋</span> I'm a Third Year Data Science Student. Currently studying data science and discovering that 80% of it is just cleaning messy data.
+                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-2 break-words">
+                    Kia ora! <span className="inline-block animate-wave transition-transform duration-300 hover:scale-125" style={{ transformOrigin: '70% 70%' }}>👋</span> I'm a Third Year Data Science Student. Currently studying data science and discovering that 80% of it is just cleaning messy data.
                 </p>
             </div>
         </div>

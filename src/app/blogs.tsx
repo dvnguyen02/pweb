@@ -22,9 +22,10 @@ const blogPosts: BlogPost[] = [
     imageUrl: "/images/blogs/lc.jpeg", 
     imageAlt: "LeetCode practice and coding challenges",
     content: `
+      <h4>TLDR: Started doing LeetCode because problem-solving skills are valuable.</h4>
       <p>For the longest time, I thought LeetCode was just for software engineers. As a data science student, I figured my path would be different and focus more on statistics and machine learning. Why would I need to solve algorithm puzzles when I'm building predictive models?</p>
       
-      <p>In New Zealand, data science roles often require a lot of years in experience. More importantly, I realized that strong problem-solving skills are also universal for any roles.</p>
+      <p>In New Zealand, data science roles often require a lot of years in experience. And for a grad like me to get into that, it is indeed very difficult. More importantly, I realized that strong problem-solving skills are also universal for any roles.</p>
             
       <p>The job market is competitive, and having options is crucial. Many companies, even for data science roles, include algorithmic thinking in their interview process. I want to be prepared for whatever comes my way.</p>
       
@@ -44,6 +45,7 @@ const blogPosts: BlogPost[] = [
     imageUrl: "/images/blogs/data.jpg",
     imageAlt: "Data science workflow visualization",
     content: `
+      <h4>TLDR: Data science work is 80% data cleaning and only 20% actual modeling</h4>
       <p>Data science is often portrayed as this glamorous field where you build amazing machine learning models and uncover groundbreaking insights. While that's partially true, the reality is quite different.</p>
       
       <p>After spending countless hours on university projects and a last year internship at NZTA, I've learned that the majority of data science work involves cleaning and preparing data. It's not the most exciting part, but it's absolutely crucial.</p>
