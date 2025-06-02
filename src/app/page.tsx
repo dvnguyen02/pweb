@@ -25,7 +25,6 @@ const tabs = [
 	{ name: "Blogs", component: <Blogs /> },
 	{ name: "Attach", component: <Attach /> },
 	{ name: "Contact", component: <Contact /> },
-	// Chat tab is added dynamically below
 ];
 
 export default function Page() {
@@ -118,7 +117,7 @@ export default function Page() {
 							</div>
 						)}
 					</div>
-							{/* Content area - flex-1 to take remaining space */}
+							{/* Content area */}
 					<ScrollArea viewportRef={viewportRef} className="bg-transparent flex-1">
 						<div className="p-4 pb-6 flex flex-col gap-3 mr-2">
 							{activeTab.component}

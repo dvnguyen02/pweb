@@ -14,6 +14,7 @@ import {
     SiNextdotjs,
     SiTailwindcss,
     SiPostgresql,
+    SiMysql,
     SiGit,
     SiGooglecloud,
     SiPandas,
@@ -38,10 +39,13 @@ export const skills = [
     {
         name: "Golang",
         icon: <SiGo className="w-10 h-10" />
-    },
-    {
+    },    {
         name: "R",
         icon: <SiR className="w-10 h-10" />
+    },
+    {
+        name: "SQL",
+        icon: <SiMysql className="w-10 h-10" />
     },
     {
         name: "React",

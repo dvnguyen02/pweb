@@ -218,7 +218,7 @@ export function ChatWidget({ isVisible, onExit }: ChatWidgetProps) {
         <div className="flex-1 overflow-y-auto p-3 space-y-2 text-foreground scrollbar-hide">
           {messages.length === 0 && !isLoading && (
             <div className="text-muted-foreground">
-              <p><span className="text-green-400 font-semibold">david-ai:</span> Hi! I'm David's AI assistant.</p>
+              <p><span className="text-green-400 font-semibold">C:\User~$ </span>ollama run david_assistant:1b</p>
             </div>
           )}
           {messages.map((message) => (

@@ -9,7 +9,7 @@ interface ProjectsSectionProps {
 export function ProjectsSection({ expandedProject, onExpandProject }: ProjectsSectionProps) {
     return (
         <>
-            <h3 className="text-2xl font-bold mb-4">My Current Projects</h3>
+            <h3 className="text-lg sm:text-xl font-bold min-w-0 truncate">My Current Projects</h3>
             <div className="w-full flex flex-col items-center gap-8">
                 <ProjectCard
                     project={currentProject}

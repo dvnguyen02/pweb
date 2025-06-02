@@ -26,12 +26,12 @@ export function About() {
 					
 					<div className="space-y-4 text-base leading-relaxed text-card-foreground">
 						<p>
-							I'm a data science major who's also into app development. I get the theory side at university with machine learning and statistics, then go home and work on building actual applications
+							I'm a data science students who's also into application development. I get the theory side at university about machine learning and statistics, then go home and work on building actual applications
 						</p>
 						
 						
 						<p>
-							When I'm not buried in coursework, I will be exploring the latest developments in AI tech, experimenting with new frameworks, or working on side projects.
+							When I'm not buried in coursework, I will be exploring the latest developments in AI tech, experimenting with new frameworks, working on side projects, or playing TFT (I have hit Grandmaster in three consecutive seasons!).
 						</p>
 						
 								{/* Enhanced Journey Timeline */}
@@ -94,13 +94,13 @@ export function About() {
 											</div>
 											<h3 className="text-base sm:text-lg font-semibold mb-2">Switch & Commitment</h3>
 												<p className="text-sm text-muted-foreground leading-relaxed">
-													Made the leap to switch majors and committed fully to data science materials.
+													Made the leap to switch majors and committed fully to data science.
 												</p>
 											</div>
 										</div>
 									</div>
-									
-									{/* Self-Teaching Software Engineering */}
+
+									{/* Enjoying Data Science */}
 									<div className="relative flex items-center sm:justify-end">
 										<div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 z-10">
 											<div className="w-3 h-3 bg-white border-2 border-border rounded-full"></div>
@@ -108,10 +108,29 @@ export function About() {
 										<div className="border border-border/80 rounded-lg p-3 sm:p-4 bg-transparent">
 											<div className="flex items-center gap-2 mb-2">
 												<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+													2023
+												</span>
+											</div>
+											<h3 className="text-base sm:text-lg font-semibold mb-2">Diving Deep into DS</h3>
+												<p className="text-sm text-muted-foreground leading-relaxed">
+													Dove deep into exploring data science concepts, working on various projects, and discovering the exciting possibilities within machine learning and statistical analysis.
+												</p>
+											</div>
+										</div>
+									</div>
+									
+									{/* Self-Teaching Software Engineering */}
+									<div className="relative flex items-center">
+										<div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 z-10">
+											<div className="w-3 h-3 bg-white border-2 border-border rounded-full"></div>
+										</div>									<div className="ml-10 sm:ml-0 sm:w-1/2 sm:pr-8 sm:text-right">
+										<div className="border border-border/80 rounded-lg p-3 sm:p-4 bg-transparent">
+											<div className="flex items-center gap-2 mb-2 sm:justify-end">
+												<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
 													2024
 												</span>
 											</div>
-											<h3 className="text-base sm:text-lg font-semibold mb-2">Learning Application Development</h3>
+											<h3 className="text-base sm:text-lg font-semibold mb-2">Learning Web Development</h3>
 												<p className="text-sm text-muted-foreground leading-relaxed">
 													Realized that building models is only half the story. Started learning frameworks, cloud platforms, and deployment to turn models into real applications.
 												</p>
@@ -120,19 +139,19 @@ export function About() {
 									</div>
 
 									{/* Present/Future */}
-									<div className="relative flex items-center">
+									<div className="relative flex items-center sm:justify-end">
 										<div className="absolute left-4 sm:left-1/2 sm:-translate-x-1/2 z-10">
 											<div className="w-3 h-3 bg-foreground border-2 border-background rounded-full shadow-sm"></div>
-										</div>									<div className="ml-10 sm:ml-0 sm:w-1/2 sm:pr-8 sm:text-right">
+										</div>									<div className="ml-10 sm:ml-0 sm:w-1/2 sm:pl-8">
 										<div className="border border-border/80 rounded-lg p-3 sm:p-4 bg-transparent shadow-sm">
-											<div className="flex items-center gap-2 mb-2 sm:justify-end">
+											<div className="flex items-center gap-2 mb-2">
 												<span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
 													2025
 												</span>
 											</div>
 											<h3 className="text-base sm:text-lg font-semibold mb-2">What's Next</h3>
 												<p className="text-sm text-muted-foreground leading-relaxed">
-													Finishing degree in June and actively seeking graduate roles.
+													Finishing degree in June and actively seeking graduate roles either in data science or software engineering.
 												</p>
 											</div>
 										</div>
@@ -140,13 +159,6 @@ export function About() {
 								</div>
 							</div>
 						</div>
-
-
-						<h2 className="text-lg sm:text-xl font-semibold tracking-tight mt-6 text-card-foreground">Upcoming Timeline</h2>
-								<p>
-							I'm actively looking for graduate roles where I can 
-							bring together my academic background in data science with my passion for building software.
-						</p>
 					</div>
 				</div>
 			</div>

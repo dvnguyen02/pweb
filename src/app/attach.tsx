@@ -16,21 +16,22 @@ const font = Figtree({
   variable: "--font-figtree",
 });
 
-export function Attach() {
-  const documents = [
+export function Attach() {  const documents = [
     {
       title: "Resume/CV",
       description: "My resume detailing my education, work experience, projects, skills, and certifications.",
-      link: "https://drive.google.com/file/d/1OHZ48Y-1_B4x_uizQ0OYq58UB9HbNO3S/view?usp=sharing",
+      link: "/documents/resume.pdf", 
       Icon: FileTextIcon,
-      lastUpdated: "May 2025"
+      lastUpdated: "May 2025",
+      filename: "resume.pdf"
     },
     {
       title: "Academic Transcript",
       description: "My transcript from Victoria University of Wellington.",
-      link: "https://drive.google.com/file/d/1coDnJCEo272aFQLGVRdIT7ggFdHV-BaA/view?usp=sharing",
+      link: "/documents/transcript.pdf", 
       Icon: BookOpenIcon,
-      lastUpdated: "Current"
+      lastUpdated: "Current",
+      filename: "transcript.pdf"
     }
   ];
 
@@ -57,17 +58,18 @@ export function Attach() {
       <div className="flex flex-col gap-4 p-4 sm:p-6 border border-border/50 rounded-lg bg-transparent">
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-card-foreground">Attachments</h1>
           <p className="text-base leading-relaxed text-card-foreground">
-            Here's where you could find my CV and academic transcript. Feel free to download them for more details about my background and qualifications.
+            Here's where you could find my CV and academic transcript. Feel free to download them for more details.
           </p>
-        </div>
-      <div ref={docsRef} className={`grid grid-cols-1 sm:grid-cols-2 gap-4 transition-opacity duration-700 ease-out ${showDocs ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
-        {documents.map(({ title, description, link, Icon, lastUpdated }) => (
+        </div>      <div ref={docsRef} className={`grid grid-cols-1 sm:grid-cols-2 gap-4 transition-opacity duration-700 ease-out ${showDocs ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
+        {documents.map(({ title, description, link, Icon, lastUpdated, filename }) => (
           <Link
             key={title}
             href={link}
             target="_blank"
+            rel="noopener noreferrer"
+            download={filename}
             className="sm:cursor-none group"
-          >            <div className="relative flex flex-col gap-3 bg-transparent border border-border/80 rounded-xl p-4 hover:ring-4 ring-neutral-500 dark:ring-neutral-700 h-full">
+          ><div className="relative flex flex-col gap-3 bg-transparent border border-border/80 rounded-xl p-4 hover:ring-4 ring-neutral-500 dark:ring-neutral-700 h-full">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
                   <Icon className="size-5 text-card-foreground" />

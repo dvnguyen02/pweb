@@ -7,6 +7,7 @@ import {
     ExperienceEducation,
     ProjectsSection,
     ProjectModal,
+    Contact,
     currentProject,
     placeholderProject
 } from "./components/mainpage";
@@ -115,14 +116,18 @@ export function Main({ scrollAreaViewportRef }: { scrollAreaViewportRef?: React.
                         <div className={`transition-opacity duration-700 ease-out ${showExperience ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
                             <ExperienceEducation />
                         </div>
-                    </div>
-                    <div ref={projectsRef} className="w-full min-w-0">
+                    </div>                    <div ref={projectsRef} className="w-full min-w-0">
                         <div className={`transition-opacity duration-700 ease-out ${showProjects ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
                             <ProjectsSection 
                                 expandedProject={expandedProject}
                                 onExpandProject={setExpandedProject}
                             />
                         </div>
+                    </div>
+                    
+                    {/* Contact section */}
+                    <div className="w-full min-w-0">
+                        <Contact />
                     </div>
                 </div>
             </div>

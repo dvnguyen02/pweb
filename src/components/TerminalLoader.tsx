@@ -300,15 +300,15 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
       >
         {/* Terminal header */}        {/* Window controls */}
         <div className="bg-transparent pt-3 px-3 gap-2 flex flex-row">
-          <div className="size-4 rounded-full bg-red-400" />
-          <div className="size-4 rounded-full bg-yellow-400" />
-          <div className="size-4 rounded-full bg-green-400" />
+          <div className="size-4 rounded-full bg-red-500" />
+          <div className="size-4 rounded-full bg-yellow-500" />
+          <div className="size-4 rounded-full bg-green-500" />
         </div>
         
         {/* Title bar */}
         <div className="bg-transparent p-3 flex items-center justify-between border-b border-white/20">
           <div className="text-sm font-medium flex items-center gap-2">
-            <span>python3</span>
+            <span>python 3.12</span>
             <span className="text-neutral-600">-</span>
           </div>
           <div className="text-xs text-muted-foreground font-mono">
@@ -343,7 +343,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         <TerminalStatusBar 
           isDark={isDark} 
           setIsDark={setIsDark} 
-          statusText={isComplete ? "Process Complete" : "Processing..."} 
+          statusText={isComplete ? "Process Complete" : "Training..."} 
           showThemeToggle={false} // Theme toggle is not needed here
         />
       </div>

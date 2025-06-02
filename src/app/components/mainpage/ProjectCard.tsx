@@ -22,10 +22,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, projectId, expandedProject, onExpand }: ProjectCardProps) {
-    const isExpanded = expandedProject === projectId;
-
-    return (
-        <div className="w-full flex justify-center px-1 sm:px-2">            <Card
+    const isExpanded = expandedProject === projectId;    return (
+        <div className="w-full flex justify-center px-1 sm:px-2 mt-4">            <Card
                 className="relative overflow-hidden border-none bg-gradient-to-br from-slate-900/40 to-slate-800/20 backdrop-blur-sm shadow-xl rounded-2xl p-0 w-full max-w-lg transition-all duration-300 min-w-0 ring-2 ring-white/10 hover:ring-white/20 border border-white/10"
                 style={{
                     boxShadow: '0 0 15px 2px rgba(255, 255, 255, 0.08), 0 8px 32px 0 rgba(0,0,0,0.37)'

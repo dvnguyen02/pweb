@@ -4,4 +4,5 @@ export { ExperienceEducation } from "./ExperienceEducation";
 export { ProjectCard } from "./ProjectCard";
 export { ProjectModal } from "./ProjectModal";
 export { ProjectsSection } from "./ProjectsSection";
+export { Contact } from "./Contact";
 export * from "./data";
