@@ -17,7 +17,6 @@ import { Projects } from "./projects";
 import { Blogs } from "./blogs";
 import { Attach } from "./attach";
 import Contact from "./contact";
-
 const tabs = [
 	{ name: "Main", component: <Main /> },
 	{ name: "About", component: <About /> },
@@ -72,9 +71,8 @@ export default function Page() {
 					"relative z-10 fixed inset-0 flex items-center justify-center p-4",
 					"transition-opacity duration-1000",
 					showLoader ? "opacity-0 pointer-events-none" : "opacity-100"
-				)}
-			>				<div className={cn(
-					"animate-in fade-in zoom-in-95 rounded-2xl bg-transparent shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
+				)}			>				<div className={cn(
+					"animate-in fade-in zoom-in-95 rounded-2xl bg-transparent shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-1000 flex flex-col",
 					!showLoader ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
 				)}>
 					{/* Settings, theme switch, and Chat button inside the card, top right*/}
@@ -124,7 +122,9 @@ export default function Page() {
 						</div>
 					</ScrollArea>
 							{/* Terminal Status Bar Footer - always at bottom */}
-					<TerminalStatusBar showThemeToggle={false} />
+					<TerminalStatusBar 
+					showThemeToggle={false}
+					 />
 				</div>
 			</div>
 			<ChatWidget isVisible={showChat} onExit={() => setShowChat(false)} />

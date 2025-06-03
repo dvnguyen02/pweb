@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-// Remove Button import if not needed
 import { TerminalStatusBar } from "./TerminalStatusBar"; // Added import
 
 interface TerminalLoaderProps {
@@ -140,7 +139,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     
     const trainingSimulation = async () => {
       let totalTrainingTime = 0;
-      const targetMinTime = 5000; // 5 seconds minimum
+      const targetMinTime = 1000; // 5 seconds minimum
       
       // Reduce to 3 epochs instead of 5
       for (let epoch = 1; epoch <= 3; epoch++) {
@@ -149,7 +148,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         
         const loss = (1.2 - baseProgress * 1.05).toFixed(4);
         const accuracy = (65 + baseProgress * 29).toFixed(2);
-        const lr = epoch > 2 ? 0.0005 : 0.001;
+        const lr = 0.001;
 
         // Multiple steps per epoch for more authentic training simulation
         const stepsPerEpoch = 2;
@@ -294,7 +293,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         className
       )}
     >      <div        className={cn(
-          "animate-in fade-in zoom-in-95 rounded-2xl bg-transparent shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden ring-4 ring-neutral-500 hover:ring-neutral-600 dark:ring-neutral-700 dark:hover:ring-neutral-600 transition-all duration-1000 flex flex-col",
+          "animate-in fade-in zoom-in-95 rounded-2xl bg-transparent shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-1000 flex flex-col",
           !isReady ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
         )}
       >
@@ -333,18 +332,16 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
             <div key={index} className="py-0.5 whitespace-pre-wrap">
               {line}
               {index === terminalLines.length - 1 && !isComplete && (
-                <span className="ml-1 inline-block w-2 h-5 animate-[blink_1s_infinite]" style={{ background: '#00ff00', boxShadow: '0 0 5px #00ff00' }}></span>
+                <span className="ml-1 inline-block w-2 h-5 animate-[blink_1s_infinite]" style={{ background: '#00ff00', boxShadow: '0 0 5pxrgb(208, 255, 0)' }}></span>
               )}
             </div>
           ))}
-        </div>
+      </div>
 
         {/* Footer Status Bar */}
         <TerminalStatusBar 
-          isDark={isDark} 
-          setIsDark={setIsDark} 
           statusText={isComplete ? "Process Complete" : "Training..."} 
-          showThemeToggle={false} // Theme toggle is not needed here
+          showThemeToggle={false}
         />
       </div>
     </div>
