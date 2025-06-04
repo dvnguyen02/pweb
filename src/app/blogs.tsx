@@ -99,7 +99,7 @@ function BlogModal({ post, isOpen, onClose }: BlogModalProps) {
       }}
     >
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />      <div 
-        className="relative w-full max-w-[50vw] max-h-[60vh] flex flex-col bg-background border border-border rounded-lg shadow-xl overflow-hidden transform transition-all duration-500 ease-out animate-in zoom-in-95 slide-in-from-bottom-4 fade-in"
+        className="relative w-full max-w-[70vw] max-h-[75vh] flex flex-col bg-background border border-border rounded-lg shadow-xl overflow-hidden transform transition-all duration-500 ease-out animate-in zoom-in-95 slide-in-from-bottom-4 fade-in"
         style={{ 
           boxShadow: '0 0 20px 3px rgba(255, 255, 255, 0.12), 0 25px 50px -12px rgba(0, 0, 0, 0.3)',
           animation: 'modalPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards'

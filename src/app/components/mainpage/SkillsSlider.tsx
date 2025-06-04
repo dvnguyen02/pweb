@@ -4,12 +4,12 @@ export function SkillsSlider() {
     const allTechStacks = [...skills, ...frameworks];
       // Technologies I specialize in
     const specializedTechs = allTechStacks.filter(tech => 
-        ["Python", "R", "SQL", "TypeScript", "React", "Next.js"].includes(tech.name)
+        ["Python", "R", "TypeScript", "React", "Next.js", "Tailwind CSS", "FastAPI", "PostgreSQL"].includes(tech.name)
     );
     
     // Other technologies I have worked with
     const otherTechs = allTechStacks.filter(tech => 
-        !["Python", "R", "SQL", "TypeScript", "React", "Next.js"].includes(tech.name)
+        !["Python", "R", "SQL", "TypeScript", "React", "Next.js", "Tailwind CSS", "FastAPI", "PostgreSQL"].includes(tech.name)
     );
 
     const TechGrid = ({ techs, keyPrefix }: { techs: typeof allTechStacks, keyPrefix: string }) => (
