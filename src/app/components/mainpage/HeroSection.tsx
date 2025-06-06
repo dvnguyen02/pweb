@@ -49,9 +49,9 @@ export function HeroSection() {
                     <MapPinIcon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                     <span className="break-words min-w-0 truncate">Victoria University of Wellington</span>
                 </div>
-                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-2 break-words">
-                    Kia ora! <span className="inline-block animate-wave transition-transform duration-300 hover:scale-125" style={{ transformOrigin: '70% 70%' }}>👋</span> I'm a Third Year Data Science Student. Currently studying data science and discovering that 80% of it is just cleaning messy data.
-                </p>
+                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-2 break-words">
+                        Kia ora! <span className="inline-block animate-wave transition-transform duration-300 hover:scale-125" style={{ transformOrigin: '70% 70%' }}>👋</span> I'm a <strong>soon to be Data Science graduate</strong> passionate about turning messy data into <strong>actionable insights</strong>. Currently seeking <strong>full-time opportunities</strong> where I can apply my <strong>analytical skills</strong> to solve complex business problems.
+                    </p>
             </div>
         </div>
     );

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
-import { TerminalStatusBar } from "./TerminalStatusBar"; // Added import
+import { TerminalStatusBar } from "./TerminalStatusBar";
 
 interface TerminalLoaderProps {
   onComplete: () => void;
@@ -16,17 +16,39 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
   const [terminalLines, setTerminalLines] = useState<string[]>([]);
   const [currentPhase, setCurrentPhase] = useState<number>(0);
   const [isComplete, setIsComplete] = useState<boolean>(false);
-  const [isReady, setIsReady] = useState<boolean>(false);
-  const [isDark, setIsDark] = useState(true); // Added state for isDark
+  const [isReady, setIsReady] = useState<boolean>(false);  const [isDark, setIsDark] = useState(true); // Added state for isDark
   const [currentTime, setCurrentTime] = useState<string>("");
+  const [showSkipButton, setShowSkipButton] = useState<boolean>(false);
   const terminalRef = useRef<HTMLDivElement>(null);
-  const hasInitialized = useRef(false);
-
-  // Set isReady after a small delay to ensure smooth mounting
+  const hasInitialized = useRef(false);  // Set isReady after a small delay to ensure smooth mounting
   useEffect(() => {
     const timer = setTimeout(() => setIsReady(true), 50);
     return () => clearTimeout(timer);
   }, []);
+
+  // Show skip button immediately
+  useEffect(() => {
+    setShowSkipButton(true);
+  }, []);
+  // Skip function
+  const handleSkip = () => {
+    setIsComplete(true);
+    setTimeout(() => {
+      onComplete();
+    }, 500);
+  };
+
+  // Keyboard support for ESC key
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && showSkipButton && !isComplete) {
+        handleSkip();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [showSkipButton, isComplete]);
 
   // Clock update - add this first
   useEffect(() => {
@@ -43,7 +65,6 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     return () => clearInterval(clockInterval);
   }, []);
 
-  // Initialization phase - 5 seconds total
   useEffect(() => {
     if (hasInitialized.current) return;
     hasInitialized.current = true;
@@ -56,11 +77,11 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     ];
 
     const addLines = async () => {
-      let totalInitTime = 100;
+      let totalInitTime = 50;
       
       // First two lines
       for (let i = 0; i < 2; i++) {
-        const typingSpeed = Math.floor(Math.random() * 30) + 100;
+        const typingSpeed = Math.floor(Math.random() * 30) + 50;
         totalInitTime += typingSpeed;
         await new Promise(resolve => setTimeout(resolve, typingSpeed));
         setTerminalLines(prev => [...prev, initializationLines[i]]);
@@ -94,7 +115,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
       ];
       
       for (let i = 0; i < loadingBarSteps.length; i++) {
-        const stepDelay = i === loadingBarSteps.length - 1 ? 200 : 150;
+        const stepDelay = i === loadingBarSteps.length - 1 ? 100 : 50;
         totalInitTime += stepDelay;
         await new Promise(resolve => setTimeout(resolve, stepDelay));
         
@@ -121,8 +142,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         }
       }
       
-      // Add a final pause to ensure initialization phase is ~5 seconds
-      const remainingTime = 5000 - totalInitTime;
+      const remainingTime = 4000 - totalInitTime;
       if (remainingTime > 0) {
         await new Promise(resolve => setTimeout(resolve, remainingTime));
       }
@@ -133,14 +153,14 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     addLines();
   }, []);
   
-  // Training phase - 5-7 seconds
+  // Training phase - 1-3 seconds
   useEffect(() => {
     if (currentPhase !== 1) return;
     
     const trainingSimulation = async () => {
       let totalTrainingTime = 0;
-      const targetMinTime = 1000; // 5 seconds minimum
-      
+      const targetMinTime = 250; // 250 milliseconds minimum
+
       // Reduce to 3 epochs instead of 5
       for (let epoch = 1; epoch <= 3; epoch++) {
         // Calculate realistic metrics that improve over time
@@ -156,7 +176,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
           const actualStep = Math.floor((500 / stepsPerEpoch) * step);
           const trainingLine = `Epoch [${epoch}/3], Step [${actualStep}/500], Loss: ${loss}, Accuracy: ${accuracy}%, LR: ${lr}`;
           
-          const stepDelay = 600;
+          const stepDelay = 200;
           totalTrainingTime += stepDelay;
           
           await new Promise(resolve => setTimeout(resolve, stepDelay));
@@ -169,7 +189,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         
         // Brief pause between epochs
         if (epoch < 3) {
-          const epochPause = 350;
+          const epochPause = 200;
           totalTrainingTime += epochPause;
           await new Promise(resolve => setTimeout(resolve, epochPause));
         }
@@ -187,14 +207,13 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     trainingSimulation();
   }, [currentPhase]);
   
-  // Post-training phase - 2-3 seconds + transition phase - 1.5 seconds
   useEffect(() => {
     if (currentPhase !== 2) return;
     
     const postTrainingPhase = async () => {
       let totalPostTrainingTime = 0;
-      const targetMinTime = 2000; // 2 seconds minimum
-      
+      const targetMinTime = 1000; // 1 second minimum
+
       const postTrainingLines = [
         "Training completed successfully! 🎉",
       ];
@@ -246,7 +265,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
       // Add test accuracy result
       const testResult = "Test accuracy: 80.8%";
       await new Promise(resolve => setTimeout(resolve, 500));
-      totalPostTrainingTime += 200;
+      totalPostTrainingTime += 100;
       setTerminalLines(prev => [...prev, testResult]);
       
       // Add any additional delay to meet minimum time
@@ -261,7 +280,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
       ];
       
       for (let i = 0; i < finalLines.length; i++) {
-        const typingSpeed = Math.floor(Math.random() * 50) + 500;
+        const typingSpeed = Math.floor(Math.random() * 50) + 250;
         await new Promise(resolve => setTimeout(resolve, typingSpeed));
         setTerminalLines(prev => [...prev, finalLines[i]]);
         
@@ -298,10 +317,23 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         )}
       >
         {/* Terminal header */}        {/* Window controls */}
-        <div className="bg-transparent pt-3 px-3 gap-2 flex flex-row">
-          <div className="size-4 rounded-full bg-red-500" />
-          <div className="size-4 rounded-full bg-yellow-500" />
-          <div className="size-4 rounded-full bg-green-500" />
+        <div className="bg-transparent pt-3 px-3 gap-2 flex flex-row justify-between items-center">
+          <div className="flex gap-2">
+            <div className="size-4 rounded-full bg-red-500" />
+            <div className="size-4 rounded-full bg-yellow-500" />
+            <div className="size-4 rounded-full bg-green-500" />
+          </div>
+          
+          {/* Skip Button */}
+          {showSkipButton && !isComplete && (
+            <button
+              onClick={handleSkip}
+              className="text-xs text-neutral-400 hover:text-neutral-200 transition-colors duration-200 px-2 py-1 rounded-md hover:bg-neutral-800/50 font-mono"
+              aria-label="Skip loading animation"
+            >
+              ESC
+            </button>
+          )}
         </div>
         
         {/* Title bar */}
