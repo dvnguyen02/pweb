@@ -50,7 +50,12 @@ export function HeroSection() {
                     <span className="break-words min-w-0 truncate">Victoria University of Wellington</span>
                 </div>
                     <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-2 break-words">
-                        Kia ora! <span className="inline-block animate-wave transition-transform duration-300 hover:scale-125" style={{ transformOrigin: '70% 70%' }}>👋</span> I'm a <strong>soon to be Data Science graduate</strong> passionate about turning messy data into <strong>actionable insights</strong>. Currently seeking <strong>full-time opportunities</strong> where I can apply my <strong>analytical skills</strong> to solve complex business problems.
+                        Kia ora! <span className="inline-block animate-wave transition-transform duration-300 hover:scale-125" style={{ transformOrigin: '70% 70%' }}>👋</span> I'm a <strong>soon to be Data Science graduate</strong> passionate about turning messy data into <strong>actionable insights</strong>. 
+                    </p>
+                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-2 break-words">    
+                    Currently seeking <strong>full-time opportunities</strong> where I can apply my <strong>analytical skills</strong> to solve complex business problems.
+                    </p>
+                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-2 break-words">
                     </p>
             </div>
         </div>
