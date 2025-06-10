@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
-import ParticlesBackground from "@/components/ParticlesBackground";
+import Particles from "@/components/Particles/Particles";
 import TerminalLoader from "@/components/TerminalLoader";
 import { MessageSquareText } from "lucide-react";
 import { ChatWidget } from '@/components/ChatWidget';
@@ -60,11 +60,23 @@ export default function Page() {
 				`bg-${background}`
 			)}
 		>
-			{/* Terminal Loader */}
-			{showLoader && (
+			{/* Terminal Loader */}			{showLoader && (
 				<TerminalLoader onComplete={handleLoaderComplete} />
 			)}
-					<ParticlesBackground className="absolute inset-0 z-0" />
+					<Particles 
+						className="absolute inset-0 z-0"
+						particleCount={250}
+						particleSpread={8}
+						speed={0.05}
+						particleColors={["#ffffff", "#f0f0f0", "#e0e0e0"]}
+						moveParticlesOnHover={true}
+						particleHoverFactor={0.5}
+						alphaParticles={true}
+						particleBaseSize={80}
+						sizeRandomness={1.2}
+						cameraDistance={25}
+						disableRotation={false}
+					/>
 					{/* Main content - will be shown after loader completes */}
 			<div 
 				className={cn(
