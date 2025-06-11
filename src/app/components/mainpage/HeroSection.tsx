@@ -6,12 +6,13 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { links } from "./data";
+import TrueFocus from "@/components/animations/TrueFocus/TrueFocus";
 
 export function HeroSection() {
     return (
         <div className="relative flex flex-col gap-3 pb-6 rounded-lg p-3 sm:p-4 lg:p-6 w-full min-w-0">
             {/* Social Icons - Responsive positioning */}
-            <div className="flex gap-1 sm:gap-2 items-center justify-end mb-2 sm:absolute sm:top-4 sm:right-4 sm:mb-0 flex-shrink-0 overflow-x-auto">
+            <div className="flex gap-1 sm:gap-2 items-center justify-end mb-2 sm:absolute sm:top-4 sm:right-4 sm:mb-0 flex-shrink-0 justify-center mb-2 sm:absolute sm:top-4 sm:right-4 sm:mb-0 flex-shrink-0 ">
                 {links.map((link) => (
                     <a
                         href={link.url}
@@ -38,12 +39,18 @@ export function HeroSection() {
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
-            </div>
-
-            <div className="min-w-0 flex-1">
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight break-words">
-                    David Nguyen
-                </h1>
+            </div>            <div className="min-w-0 flex-1">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight break-words">
+                    <TrueFocus
+                        sentence="David Nguyen"
+                        manualMode={true}
+                        blurAmount={3}
+                        borderColor="white"
+                        glowColor="rgba(59, 130, 246, 0.6)"
+                        animationDuration={0.5}
+                        className="justify-start"
+                    />
+                </div>
                 
                 <div className="flex items-center gap-2 text-sm sm:text-base lg:text-lg mt-2 min-w-0">
                     <MapPinIcon className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
