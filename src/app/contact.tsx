@@ -22,7 +22,7 @@ export default function Contact() {
   }, []);
   return (    <div className="w-full h-full flex flex-col items-center px-4 sm:px-6">
       <div className="flex flex-col gap-6 max-w-2xl w-full">
-        <div ref={contactRef} className={`flex flex-col gap-4 p-4 sm:p-6 border border-border/80 rounded-lg bg-transparent transition-opacity duration-700 ease-out ${showContact ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
+        <div ref={contactRef} className={`flex flex-col gap-4 p-4 sm:p-6 rounded-lg bg-transparent transition-opacity duration-700 ease-out ${showContact ? 'opacity-100 animate-fade-in-up' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-card-foreground">Contact me</h1>
           <p className="text-base leading-relaxed text-center text-card-foreground">
             You can contact me via LinkedIn, GitHub, or Email.

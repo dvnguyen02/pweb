@@ -1,5 +1,4 @@
 // Data constants for the main page components
-import Image from "next/image";
 import {
     GithubIcon,
     LinkedinIcon,

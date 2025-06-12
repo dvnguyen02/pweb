@@ -90,40 +90,40 @@ export default function Page() {
 					{/* Settings, theme switch, and Chat button inside the card, top right*/}
 					<div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2">
 						{/* Theme toggle removed from here */}
-					</div>					{/* Window controls */}
-					<div className="bg-transparent pt-3 px-3 gap-2 flex flex-row">
-						<div className="size-4 rounded-full bg-red-500" />
-						<div className="size-4 rounded-full bg-yellow-500" />
-						<div className="size-4 rounded-full bg-green-500" />
-					</div>
-					
-					{/* Tabs */}
-					<div className="bg-transparent p-3 flex flex-row gap-3 overflow-x-auto">
-						{tabs.map((tab) => (
+					</div>									
+					{/* Terminal-style Tabs */}
+					<div className="bg-black/80 border-b border-white/20 p-0 flex flex-row w-full">
+						{tabs.map((tab, index) => (
 							<div
 								key={tab.name}
 								className={cn(
-									"bg-transparent px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer border border-white/20",
+									"relative flex-1 px-4 py-2 text-sm font-medium duration-200 cursor-pointer border-r border-white/10 last:border-r-0 group text-center",
+									"bg-black/40 text-gray-400 hover:bg-black/60 hover:text-gray-200",
 									activeTab.name === tab.name &&
-										"bg-transparent border-white/60 text-white shadow-lg"
+										"bg-black/90 text-blue-400 border-b-2 border-b-blue-400"
 								)}
 								onClick={() => setActiveTab(tab)}
 							>
-								{tab.name}
+								<span className="mr-2 text-white/40 group-hover:text-white/60">$</span>
+								{tab.name.toLowerCase()}
+								{activeTab.name === tab.name && (
+									<span className="ml-1 animate-pulse">|</span>
+								)}
 							</div>
 						))}
-						
-						{/* Chat Tab Button - appears after loader */}
+								{/* Terminal Chat Tab - appears after loader */}
 						{!showLoader && (
 							<div
 								className={cn(
-									"bg-transparent px-3 py-1 rounded-lg font-medium duration-300 text-sm whitespace-nowrap flex-shrink-0 cursor-pointer flex items-center gap-1.5 group border border-white/20"
+									"relative flex-1 px-4 py-2 text-xs font-medium duration-200 cursor-pointer border-r border-white/10 group text-center",
+									"bg-black/40 text-gray-400 hover:bg-black/60 hover:text-gray-200 flex items-center justify-center gap-1"
 								)}
 								onClick={() => setShowChat(true)}
-								title="Open Chat"
+								title="Open Chat Terminal"
 							>
-								<MessageSquareText className="w-3.5 h-3.5 text-muted-foreground group-hover:text-foreground transition-colors" />
-								<span className="text-muted-foreground group-hover:text-foreground transition-colors">Chat</span>
+								<span className="text-white/40 group-hover:text-white/60">$</span>
+								<MessageSquareText className="w-3 h-3" />
+								<span>chat</span>
 							</div>
 						)}
 					</div>

@@ -319,9 +319,6 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         {/* Terminal header */}        {/* Window controls */}
         <div className="bg-transparent pt-3 px-3 gap-2 flex flex-row justify-between items-center">
           <div className="flex gap-2">
-            <div className="size-4 rounded-full bg-red-500" />
-            <div className="size-4 rounded-full bg-yellow-500" />
-            <div className="size-4 rounded-full bg-green-500" />
           </div>
           
           {/* Skip Button */}

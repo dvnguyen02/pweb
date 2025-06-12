@@ -12,25 +12,25 @@ export function HeroSection() {
     return (
         <div className="relative flex flex-col gap-3 pb-6 rounded-lg p-3 sm:p-4 lg:p-6 w-full min-w-0">
             {/* Social Icons - Responsive positioning */}
-            <div className="flex gap-1 sm:gap-2 items-center justify-end mb-2 sm:absolute sm:top-4 sm:right-4 sm:mb-0 flex-shrink-0 justify-center mb-2 sm:absolute sm:top-4 sm:right-4 sm:mb-0 flex-shrink-0 ">
-                {links.map((link) => (
+            <div className="flex gap-1 sm:gap-2 items-center justify-end mb-2 sm:absolute sm:top-4 sm:right-4 sm:mb-0 flex-shrink-0 z-10 relative">                {links.map((link) => (
                     <a
                         href={link.url}
                         key={link.name}
-                        className="p-1.5 sm:p-2 rounded-lg flex-shrink-0"
+                        className="p-1.5 sm:p-2 flex-shrink-0 relative z-20"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={link.name}
+                        style={{ pointerEvents: 'auto' }}
                     >
                         <div className="w-4 h-4 sm:w-5 sm:h-5">
                             {link.icon}
                         </div>
                     </a>
-                ))}
-                {/* Phone Icon with Custom Tooltip */}                <TooltipProvider>
+                ))}                {/* Phone Icon with Custom Tooltip */}                
+                <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div className="p-1.5 sm:p-2 rounded-lg flex-shrink-0">
+                            <div className="p-1.5 sm:p-2 flex-shrink-0 relative z-20" style={{ pointerEvents: 'auto' }}>
                                 <PhoneIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                             </div>
                         </TooltipTrigger>
@@ -44,11 +44,12 @@ export function HeroSection() {
                     <TrueFocus
                         sentence="David Nguyen"
                         manualMode={true}
-                        blurAmount={3}
-                        borderColor="white"
+                        blurAmount={2}
+                        borderColor="pink"
                         glowColor="rgba(59, 130, 246, 0.6)"
                         animationDuration={0.5}
                         className="justify-start"
+                        pauseBetweenAnimations= {10}
                     />
                 </div>
                 

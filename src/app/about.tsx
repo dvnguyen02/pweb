@@ -21,7 +21,7 @@ export function About() {
 	}, []);
 	return (		<div className="w-full h-full flex flex-col items-center px-4 sm:px-6">
 			<div className="flex flex-col gap-6 max-w-4xl w-full">
-				<div className="flex flex-col gap-4 p-4 sm:p-6 border border-border/50 rounded-lg bg-transparent">
+				<div className="flex flex-col gap-4 p-4 sm:p-6 rounded-lg bg-transparent">
 					<h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-card-foreground">About Me</h1>
 					
 					<div className="space-y-4 text-base leading-relaxed text-card-foreground">
