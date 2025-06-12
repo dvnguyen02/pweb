@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { TerminalStatusBar } from "./TerminalStatusBar";
+import { X, Minus, Square } from "lucide-react";
 
 interface TerminalLoaderProps {
   onComplete: () => void;
@@ -16,11 +17,13 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
   const [terminalLines, setTerminalLines] = useState<string[]>([]);
   const [currentPhase, setCurrentPhase] = useState<number>(0);
   const [isComplete, setIsComplete] = useState<boolean>(false);
-  const [isReady, setIsReady] = useState<boolean>(false);  const [isDark, setIsDark] = useState(true); // Added state for isDark
+  const [isReady, setIsReady] = useState<boolean>(false);
   const [currentTime, setCurrentTime] = useState<string>("");
   const [showSkipButton, setShowSkipButton] = useState<boolean>(false);
   const terminalRef = useRef<HTMLDivElement>(null);
-  const hasInitialized = useRef(false);  // Set isReady after a small delay to ensure smooth mounting
+  const hasInitialized = useRef(false);
+
+  // Set isReady after a small delay to ensure smooth mounting
   useEffect(() => {
     const timer = setTimeout(() => setIsReady(true), 50);
     return () => clearTimeout(timer);
@@ -30,6 +33,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
   useEffect(() => {
     setShowSkipButton(true);
   }, []);
+
   // Skip function
   const handleSkip = () => {
     setIsComplete(true);
@@ -50,7 +54,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [showSkipButton, isComplete]);
 
-  // Clock update - add this first
+  // Clock update
   useEffect(() => {
     const updateClock = () => {
       const now = new Date();
@@ -70,7 +74,12 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     hasInitialized.current = true;
 
     const initializationLines = [
-      "$ python train_model.py",
+      "Windows PowerShell",
+      "Copyright (C) Microsoft Corporation. All rights reserved.",
+      "",
+      "Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows",
+      "",
+      "PS C:\\David\\Portfolio> python train_model.py",
       "Initializing neural network...",
       "Using CUDA-enabled GPU acceleration",
       "Model architecture: EfficientNetV2", 
@@ -79,9 +88,9 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     const addLines = async () => {
       let totalInitTime = 50;
       
-      // First two lines
-      for (let i = 0; i < 2; i++) {
-        const typingSpeed = Math.floor(Math.random() * 30) + 50;
+      // Add PowerShell header lines quickly
+      for (let i = 0; i < 6; i++) {
+        const typingSpeed = i < 5 ? 50 : Math.floor(Math.random() * 30) + 150;
         totalInitTime += typingSpeed;
         await new Promise(resolve => setTimeout(resolve, typingSpeed));
         setTerminalLines(prev => [...prev, initializationLines[i]]);
@@ -91,13 +100,13 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         }
       }
       
-      // Progressive loading bar animation (about 2 seconds)
+      // Progressive loading bar animation
       await new Promise(resolve => setTimeout(resolve, 50));
       totalInitTime += 150;
       
-      setTerminalLines(prev => [...prev, initializationLines[2]]);
+      setTerminalLines(prev => [...prev, initializationLines[6]]);
       
-      // Start with empty loading bar and progressively fill it
+      // Loading bar with PowerShell-style progress
       const loadingBarSteps = [
         "Loading dataset... [                    ] 0%",
         "Loading dataset... [█                   ] 5%",
@@ -130,8 +139,8 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         }
       }
       
-      // Display the last two initialization lines
-      for (let i = 3; i < initializationLines.length; i++) {
+      // Display the remaining initialization lines
+      for (let i = 7; i < initializationLines.length; i++) {
         const typingSpeed = Math.floor(Math.random() * 30) + 200;
         totalInitTime += typingSpeed;
         await new Promise(resolve => setTimeout(resolve, typingSpeed));
@@ -153,24 +162,21 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     addLines();
   }, []);
   
-  // Training phase - 1-3 seconds
+  // Training phase
   useEffect(() => {
     if (currentPhase !== 1) return;
     
     const trainingSimulation = async () => {
       let totalTrainingTime = 0;
-      const targetMinTime = 250; // 250 milliseconds minimum
+      const targetMinTime = 250;
 
-      // Reduce to 3 epochs instead of 5
       for (let epoch = 1; epoch <= 3; epoch++) {
-        // Calculate realistic metrics that improve over time
         const baseProgress = (epoch - 1) / 3;
         
         const loss = (1.2 - baseProgress * 1.05).toFixed(4);
         const accuracy = (65 + baseProgress * 29).toFixed(2);
         const lr = 0.001;
 
-        // Multiple steps per epoch for more authentic training simulation
         const stepsPerEpoch = 2;
         for (let step = 1; step <= stepsPerEpoch; step++) {
           const actualStep = Math.floor((500 / stepsPerEpoch) * step);
@@ -187,7 +193,6 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
           }
         }
         
-        // Brief pause between epochs
         if (epoch < 3) {
           const epochPause = 200;
           totalTrainingTime += epochPause;
@@ -195,7 +200,6 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         }
       }
       
-      // Add additional delay if needed to meet minimum training time
       const remainingTime = targetMinTime - totalTrainingTime;
       if (remainingTime > 0) {
         await new Promise(resolve => setTimeout(resolve, remainingTime));
@@ -212,7 +216,7 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     
     const postTrainingPhase = async () => {
       let totalPostTrainingTime = 0;
-      const targetMinTime = 1000; // 1 second minimum
+      const targetMinTime = 1000;
 
       const postTrainingLines = [
         "Training completed successfully! 🎉",
@@ -229,7 +233,6 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         }
       }
       
-      // Progressively animate evaluation progress bar - takes ~1 second
       const progressSteps = [
         "Evaluating on test set... [          ] 0%",
         "Evaluating on test set... [█         ] 10%",
@@ -262,13 +265,11 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         }
       }
       
-      // Add test accuracy result
       const testResult = "Test accuracy: 80.8%";
       await new Promise(resolve => setTimeout(resolve, 500));
       totalPostTrainingTime += 100;
       setTerminalLines(prev => [...prev, testResult]);
       
-      // Add any additional delay to meet minimum time
       const remainingTime = targetMinTime - totalPostTrainingTime;
       if (remainingTime > 0) {
         await new Promise(resolve => setTimeout(resolve, remainingTime));
@@ -276,7 +277,8 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
       
       const finalLines = [
         "Deploying to production... ✓",
-        "$ open portfolio.tsx"
+        "PS C:\\David\\Portfolio> start portfolio.tsx",
+        "Opening portfolio application..."
       ];
       
       for (let i = 0; i < finalLines.length; i++) {
@@ -289,11 +291,9 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         }
       }
       
-      // Set complete status for fade-out
       await new Promise(resolve => setTimeout(resolve, 1200));
       setIsComplete(true);
       
-      // Final transition fade-out timing 
       await new Promise(resolve => setTimeout(resolve, 1200));
       onComplete();
     };
@@ -301,7 +301,6 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
     postTrainingPhase();
   }, [currentPhase, onComplete]);
   
-  // Main return statement
   return (
     <div 
       className={cn(
@@ -311,21 +310,23 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
         isComplete ? "opacity-0 scale-[98%]" : "opacity-100 scale-100",
         className
       )}
-    >      <div        className={cn(
-          "animate-in fade-in zoom-in-95 rounded-2xl bg-transparent shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-1000 flex flex-col",
-          !isReady ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
-        )}
-      >
-        {/* Terminal header */}        {/* Window controls */}
-        <div className="bg-transparent pt-3 px-3 gap-2 flex flex-row justify-between items-center">
-          <div className="flex gap-2">
+    >
+      <div className={cn(
+        "animate-in fade-in zoom-in-95 rounded-2xl bg-transparent shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-1000 flex flex-col",
+        !isReady ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
+      )}>
+        {/* PowerShell-style Terminal Header */}
+        <div className="bg-[#1e1e1e] border-b border-[#3c3c3c] flex flex-row w-full relative">
+          {/* Single tab for PowerShell */}
+          <div className="flex items-center justify-center px-4 py-2 text-sm bg-[#1e1e1e] text-white border-r border-[#3c3c3c] flex-1">
+            <span className="select-none font-mono">Windows PowerShell</span>
           </div>
-          
+
           {/* Skip Button */}
           {showSkipButton && !isComplete && (
             <button
               onClick={handleSkip}
-              className="text-xs text-neutral-400 hover:text-neutral-200 transition-colors duration-200 px-2 py-1 rounded-md hover:bg-neutral-800/50 font-mono"
+              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-[#cccccc] hover:text-white transition-colors duration-200 px-2 py-1 rounded-sm hover:bg-[#3c3c3c] font-mono z-10"
               aria-label="Skip loading animation"
             >
               ESC
@@ -333,45 +334,48 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
           )}
         </div>
         
-        {/* Title bar */}
-        <div className="bg-transparent p-3 flex items-center justify-between border-b border-white/20">
-          <div className="text-sm font-medium flex items-center gap-2">
-            <span>python 3.12</span>
-            <span className="text-neutral-600">-</span>
-          </div>
-          <div className="text-xs text-muted-foreground font-mono">
-            {currentTime}
-          </div>
-        </div>
-        
-        {/* Terminal content */}
+        {/* Terminal content with black background */}
         <div 
           ref={terminalRef}
-          className="bg-black p-4 font-mono text-sm sm:text-base flex-1 overflow-y-auto" // Removed h-full
+          className="bg-black flex-1 overflow-y-auto p-4 font-mono text-sm"
           style={{ 
-            fontFamily: "'Fira Code', Consolas, Monaco, 'Courier New', monospace",
-            color: '#00ff00',
-            textShadow: '0 0 5px #00ff00',
-            backgroundImage: "radial-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 0)",
-            backgroundSize: "30px 30px",
-            backgroundPosition: "50% 50%",
+            fontFamily: "'Consolas', 'Courier New', monospace",
+            color: '#cccccc',
           }}
         >
           {terminalLines.map((line, index) => (
-            <div key={index} className="py-0.5 whitespace-pre-wrap">
+            <div key={index} className={cn(
+              "py-0.5 whitespace-pre-wrap",
+              line.startsWith("PS C:\\") && "text-yellow-300",
+              line.startsWith("Windows PowerShell") && "text-white font-bold",
+              line.startsWith("Copyright") && "text-[#cccccc]",
+              line.startsWith("Install the latest") && "text-[#cccccc]",
+              line.includes("Training completed") && "text-green-400",
+              line.includes("Epoch") && "text-cyan-300",
+              line.includes("Loading dataset") && "text-white",
+              line.includes("Evaluating") && "text-white",
+              line.includes("Test accuracy") && "text-green-400",
+              line.includes("Deploying") && "text-green-400"
+            )}>
               {line}
-              {index === terminalLines.length - 1 && !isComplete && (
-                <span className="ml-1 inline-block w-2 h-5 animate-[blink_1s_infinite]" style={{ background: '#00ff00', boxShadow: '0 0 5pxrgb(208, 255, 0)' }}></span>
+              {index === terminalLines.length - 1 && !isComplete && line.trim() !== "" && (
+                <span className="ml-1 inline-block w-2 h-4 bg-white animate-[blink_1s_infinite]"></span>
               )}
             </div>
           ))}
-      </div>
+        </div>
 
-        {/* Footer Status Bar */}
-        <TerminalStatusBar 
-          statusText={isComplete ? "Process Complete" : "Training..."} 
-          showThemeToggle={false}
-        />
+        {/* PowerShell Status Bar */}
+        <div className="bg-[#1e1e1e] border-t border-[#3c3c3c] px-3 py-1 flex items-center justify-between text-xs text-[#cccccc]">
+          <div className="flex items-center gap-4">
+            <span>{isComplete ? "Process Complete" : "Training in progress..."}</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span>UTF-8</span>
+            <span>CRLF</span>
+            <span>{currentTime}</span>
+          </div>
+        </div>
       </div>
     </div>
   );
