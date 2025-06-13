@@ -96,34 +96,28 @@ export default function Page() {
 					</div>
 
 					{/* PowerShell-style Terminal Tabs */}
-					<div className="bg-[#1e1e1e] border-b border-[#3c3c3c] flex flex-row w-full relative">
-						{/* Main tabs - distributed evenly */}
+					<div className="bg-[#1e1e1e] border-b border-[#3c3c3c] flex flex-row w-full relative">					{/* Main tabs */}
 						{tabs.map((tab, index) => (
 							<div
 								key={tab.name}
 								className={cn(
-									"relative flex items-center justify-center px-3 py-2 text-sm cursor-pointer group flex-1",
+									"relative flex items-center justify-between px-3 py-2 text-sm cursor-pointer group flex-1",
 									"bg-[#2d2d30] text-[#cccccc] border-r border-[#3c3c3c]",
 									"hover:bg-[#383838] transition-colors duration-150",
-									activeTab.name === tab.name && "bg-[#1e1e1e] text-white"
+									activeTab.name === tab.name && "bg-[#1a1a1a] text-white"
 								)}
 								onClick={() => setActiveTab(tab)}
 							>
-								<span className="select-none font-mono">
+								<span className="select-none">
 									{tab.name}
-								</span>
-								{/* Close button for non-active tabs */}
-								{activeTab.name !== tab.name && (
-									<X className="w-3 h-3 ml-2 opacity-0 group-hover:opacity-60 hover:opacity-100 transition-opacity" />
-								)}
+								</span>								{/* Close button - always show, white color */}
+								<X className="w-3 h-3 opacity-40 group-hover:opacity-60 hover:opacity-100 transition-opacity text-white hover:text-gray-200" />
 							</div>
-						))}
-
-						{/* Chat Tab - appears after loader, also takes equal space */}
+						))}					{/* Chat Tab - appears after loader*/}
 						{!showLoader && (
 							<div
 								className={cn(
-									"relative flex items-center justify-center px-3 py-2 text-sm cursor-pointer group flex-1",
+									"relative flex items-center justify-between px-3 py-2 text-sm cursor-pointer group flex-1",
 									"bg-[#2d2d30] text-[#cccccc] border-r border-[#3c3c3c]",
 									"hover:bg-[#383838] transition-colors duration-150"
 								)}
@@ -134,9 +128,9 @@ export default function Page() {
 									<MessageSquareText className="w-3 h-3 mr-1" />
 									<span className="select-none font-mono">chat</span>
 								</div>
-								<X className="w-3 h-3 ml-2 opacity-0 group-hover:opacity-60 hover:opacity-100 transition-opacity" />
+								<X className="w-3 h-3 opacity-40 group-hover:opacity-60 hover:opacity-100 transition-opacity text-white hover:text-gray-200" />
 							</div>
-						)}						
+						)}
 					</div>
 
 					{/* Content area */}
