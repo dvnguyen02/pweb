@@ -106,16 +106,13 @@ export default function Page() {
 			
 			<Particles 
 				className="absolute inset-0 z-0"
-				particleCount={250}
+				particleCount={100}
 				particleSpread={8}
 				speed={0.05}
-				particleColors={["#ffffff", "#f0f0f0", "#e0e0e0"]}
-				moveParticlesOnHover={true}
-				particleHoverFactor={0.5}
-				alphaParticles={true}
+				moveParticlesOnHover={false}
 				particleBaseSize={80}
 				sizeRandomness={1.2}
-				cameraDistance={25}
+				cameraDistance={30}
 				disableRotation={false}
 			/>
 
