@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Particles from "@/components/Particles/Particles";
 import TerminalLoader from "@/components/TerminalLoader";
-import { MessageSquareText, X, Plus, ChevronDown, Home, User, FolderOpen, BookOpen, Paperclip, Mail } from "lucide-react";
+import { MessageSquareText, X, Plus, ChevronDown, Home, User, FolderOpen, BookOpen, Paperclip, Mail, Minus, Square } from "lucide-react";
 import { ChatWidget } from '@/components/ChatWidget';
 import { TerminalStatusBar } from "@/components/TerminalStatusBar";
 
@@ -126,11 +126,35 @@ export default function Page() {
 				<div className={cn(
 					"animate-in fade-in zoom-in-95 rounded-2xl bg-transparent shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-1000 flex flex-col",
 					!showLoader ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
-				)}>
-					{/* Settings, theme switch, and Chat button inside the card, top right*/}
-					<div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-20 flex items-center gap-2">
-						{/* Theme toggle removed from here */}
-					</div>					{/* PowerShell-style Terminal Tabs */}
+				)}>					{/* Window Controls and Settings */}
+					<div className="absolute top-0 right-0 z-20 flex items-center bg-[#1e1e1e]">
+						{/* Windows-style Window Controls */}
+						<div className="flex items-center">
+							{/* Minimize Button */}
+							<button
+								className="w-12 h-8 flex items-center justify-center text-white hover:bg-gray-500/20 transition-colors duration-150"
+								title="Minimize"
+							>
+								<Minus className="w-4 h-4" />
+							</button>
+							
+							{/* Maximize Button */}
+							<button
+								className="w-12 h-8 flex items-center justify-center text-white hover:bg-gray-500/20 transition-colors duration-150"
+								title="Maximize"
+							>
+								<Square className="w-4 h-4" />
+							</button>
+							
+							{/* Close Button */}
+							<button
+								className="w-12 h-8 flex items-center justify-center text-white hover:bg-red-500 hover:text-white transition-colors duration-150"
+								title="Close"
+							>
+								<X className="w-4 h-4" />
+							</button>
+						</div>
+					</div>{/* PowerShell-style Terminal Tabs */}
 					<div className="bg-[#1e1e1e] border-b border-[#3c3c3c] flex flex-row w-full relative">
 						{/* Open tabs */}
 						{openTabs.map((tab, index) => (							<div

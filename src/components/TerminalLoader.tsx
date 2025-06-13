@@ -314,19 +314,47 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
       <div className={cn(
         "animate-in fade-in zoom-in-95 rounded-2xl bg-transparent shadow-2xl w-full sm:max-w-2xl lg:max-w-[60vw] h-full max-h-[85vh] sm:max-h-96 lg:max-h-[85vh] overflow-hidden border border-white/10 hover:border-white/20 transition-all duration-1000 flex flex-col",
         !isReady ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
-      )}>
-        {/* PowerShell-style Terminal Header */}
+      )}>        {/* PowerShell-style Terminal Header */}
         <div className="bg-[#1e1e1e] border-b border-[#3c3c3c] flex flex-row w-full relative">
           {/* Single tab for PowerShell */}
           <div className="flex items-center justify-center px-4 py-2 text-sm bg-[#1e1e1e] text-white border-r border-[#3c3c3c] flex-1">
             <span className="select-none font-mono">Windows PowerShell</span>
           </div>
 
+          {/* Windows-style Window Controls */}
+          <div className="absolute top-0 right-0 z-20 flex items-center bg-[#1e1e1e]">
+            <div className="flex items-center">
+              {/* Minimize Button */}
+              <button
+                className="w-12 h-8 flex items-center justify-center text-white hover:bg-gray-500/20 transition-colors duration-150"
+                title="Minimize"
+              >
+                <Minus className="w-4 h-4" />
+              </button>
+              
+              {/* Maximize Button */}
+              <button
+                className="w-12 h-8 flex items-center justify-center text-white hover:bg-gray-500/20 transition-colors duration-150"
+                title="Maximize"
+              >
+                <Square className="w-4 h-4" />
+              </button>
+              
+              {/* Close Button */}
+              <button
+                className="w-12 h-8 flex items-center justify-center text-white hover:bg-red-500 hover:text-white transition-colors duration-150"
+                title="Close"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
           {/* Skip Button */}
           {showSkipButton && !isComplete && (
             <button
               onClick={handleSkip}
-              className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-[#cccccc] hover:text-white transition-colors duration-200 px-2 py-1 rounded-sm hover:bg-[#3c3c3c] font-mono z-10"
+              className="absolute right-14 top-1/2 transform -translate-y-1/2 text-xs text-[#cccccc] hover:text-white transition-colors duration-200 px-2 py-1 rounded-sm hover:bg-[#3c3c3c] font-mono z-10"
               aria-label="Skip loading animation"
             >
               ESC
