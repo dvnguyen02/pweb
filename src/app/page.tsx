@@ -106,7 +106,7 @@ export default function Page() {
 			
 			<Particles 
 				className="absolute inset-0 z-0"
-				particleCount={100}
+				particleCount={50}
 				particleSpread={8}
 				speed={0.05}
 				moveParticlesOnHover={false}

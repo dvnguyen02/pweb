@@ -339,9 +339,9 @@ const TerminalLoader: React.FC<TerminalLoaderProps> = ({
               >
                 <Square className="w-4 h-4" />
               </button>
-              
-              {/* Close Button */}
+                {/* Close Button */}
               <button
+                onClick={handleSkip}
                 className="w-12 h-8 flex items-center justify-center text-white hover:bg-red-500 hover:text-white transition-colors duration-150"
                 title="Close"
               >

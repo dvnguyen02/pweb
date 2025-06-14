@@ -26,7 +26,8 @@ export function HeroSection() {
                             {link.icon}
                         </div>
                     </a>
-                ))}                {/* Phone Icon with Custom Tooltip */}                
+                ))}                
+                {/* Phone Icon with Tooltip */}                
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
@@ -44,12 +45,10 @@ export function HeroSection() {
                     <TrueFocus
                         sentence="David Nguyen"
                         manualMode={true}
-                        blurAmount={2}
-                        borderColor="pink"
-                        glowColor="rgba(59, 130, 246, 0.6)"
+                        blurAmount={1.5}
+                        borderColor="grey"
                         animationDuration={0.5}
                         className="justify-start"
-                        pauseBetweenAnimations= {10}
                     />
                 </div>
                 
